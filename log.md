@@ -34,10 +34,14 @@ Today's study session included:
 
 * Old way of retrieving elements of an array: 
 const = [2, 3, 4];
+
+
 const a = arr[0]; → 2
 const b = arr[1]; → 3
 const c = arr[2]; → 4
 
 * Array Destructuring
 const = [2, 3, 4];
+
+
 const [x, y, z] = arr; → 2 3 4 

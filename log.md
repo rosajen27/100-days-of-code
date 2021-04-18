@@ -32,15 +32,23 @@ Today's study session included:
 
 **Thoughts**: Destructuring - ES6 Feature, a way of unpacking values from an array or an object into separate variables (to break a complex data structure down into a smaller data structure like a variable).
 
-* Old way of retrieving elements of an array: 
+* Old way of retrieving elements of an array:
+
+
 const = [2, 3, 4];
 
 
 const a = arr[0]; → 2
+
+
 const b = arr[1]; → 3
+
+
 const c = arr[2]; → 4
 
 * Array Destructuring
+
+
 const = [2, 3, 4];
 
 

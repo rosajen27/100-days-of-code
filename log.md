@@ -53,3 +53,35 @@ const = [2, 3, 4];
 
 
 const [x, y, z] = arr; → 2 3 4 
+
+
+### Day 5: April 19, 2021
+
+**Today's Progress**: Practiced destructuring objects in isolation
+
+**Thoughts**:To destructure objects we use the curly braces. Then all we have to do is to provide the variable names that exactly match the property names that we want to retrieve from the object. The order of elements does not matter - so we do not have to manually skip elements like in an array. Helpful when retrieving elements from an object when using APIs
+
+
+### Day 6: April 20, 2021
+
+**Today's Progress**: Practiced implementing The Spread Operator (...) in isolation
+
+**Thoughts**: We can use the spread operator to basically expand an array into all its elements (unpacking all the array elements at once)
+
+
+const arr = [7, 8, 9];
+
+
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+
+
+console.log(badNewArr); → [1, 2, 7, 8, 9]
+
+
+
+const newArr = [1, 2, ...arr];
+console.log(newArr); → [1, 2, 7, 8, 9]
+
+
+
+Same exact results. What the spread operator does is to basically take all the values out of this arr array and then write them individually as if we wrote 7, 8, 9 manually.

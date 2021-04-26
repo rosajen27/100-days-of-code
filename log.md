@@ -220,6 +220,83 @@ for (const item of menu.entries()) {
 
 ### Day 12: April 26, 2021
 
-**Today's Progress**: Enhanced Object Literals
+**Today's Progress**: Looping Objects: Keys, Values, Entries
 
-**Thoughts**:
+**Thoughts**:We have different options, depending on what exactly we want to loop over. Do we want to loop over the object’s property names, values, or both?
+
+
+Looping over property names (aka keys):
+
+
+const properties = Object.keys(openingHours);
+
+
+let openStr = `We are open on ${properties.length} days: `;
+
+
+
+for (const day of properties) {
+	openStr += `${day}, `;
+}
+
+
+console.log(openStr);
+
+
+→ We are open on 3 days: thu, fri, sat,
+
+
+Looping over property values:
+
+
+const values = Object.values(openingHours);
+
+
+console.log(values);
+
+
+→ 0: {open: 12, close: 22}
+
+
+→ 1: {open: 11, close: 23}
+
+
+→ 2: {open: 0, close: 24}
+
+
+
+Entries() (names plus the values together):
+
+
+const entries = Object.entries(openingHours);
+
+
+console.log(entries);
+
+
+→ 0: [“thu”, {...}]
+
+
+→ 1: [“fri”, {...}]
+
+
+→ 2: [“sat”, {...}]
+
+
+----------------------------------------------------
+for (const [day, {open, close}] of entries) {
+
+
+	console.log(`On ${day} we open at ${open} and close at ${close});
+
+    
+}
+
+
+→ On thu we open at 12 and close at 22
+
+
+→ On fri we open at 11 and close at 23
+
+
+→ On sat we open at 0 and close at 24

@@ -195,6 +195,31 @@ In the case of the AND operator, it works in the exact opposite way of the OR op
 
 ### Day 11: April 25, 2021
 
-**Today's Progress**: 
+**Today's Progress**: Looping Arrays using the for of loop
+
+**Thoughts**: This loop will automatically loop over the entire array, and in each iteration, it will give us access to the current array element.
+
+
+for (const item of menu) console.log(item);
+
+
+→ results in printing each menu item separately in the console
+
+
+
+What if we also wanted the current index and not just the current element?
+
+
+for (const item of menu.entries()) {
+	console.log(item);
+}
+
+
+→ results in printing the index of each menu item AND the menu item separately in the console (ex: [0, “Focaccia”] )
+
+
+### Day 12: April 26, 2021
+
+**Today's Progress**: Enhanced Object Literals
 
 **Thoughts**:

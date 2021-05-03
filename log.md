@@ -300,3 +300,245 @@ for (const [day, {open, close}] of entries) {
 
 
 → On sat we open at 0 and close at 24
+
+### Day 13: April 27, 2021
+
+**Today's Progress**: Sets
+
+**Thoughts**: A set is a collection of unique values. So that means that a set can never have any duplicates.
+Sets are also iterables, so you can loop over them.
+
+
+In sets, there are no indexes, so there is no way of getting values out of a set. If your goal is to actually store values in order and then retrieve it, then the best use case is to just use an array.
+
+
+
+const ordersSet = new Set([“Pasta”, “Pizza”, “Pizza”, “Risotto”, “Pasta”, “Pizza”]);
+
+
+console.log(ordersSet);
+
+
+→ Set(3) {“Pasta”, “Pizza”, “Risotto”} All the duplicates are gone. 
+
+
+Also works with strings
+
+
+console.log(new Set(“Jenny”)); → Set(5) {“J”, “e”, “n”, “n”, “y”}
+
+
+We can get the size of a set
+
+
+console.log(ordersSet.size); → 3
+
+
+
+We can check if a certain element is in a set
+
+
+console.log(ordersSet.has(“Pizza”); → true 
+
+
+
+We can add new elements to a set
+
+
+ordersSet.add(“Garlic Bread”);
+
+
+
+We can also delete elements
+
+
+ordersSet.delete(“Risotto”);
+
+
+### Day 14: April 28, 2021
+
+**Today's Progress**: Maps Fundamentals
+
+**Thoughts**: (More useful than sets), A map is a data structure that we can use to map values to keys. So, just like an object, data is stored in key value pairs in maps.  
+The big difference between objects and maps is that in maps, the keys can have any type (it can even be objects, arrays, or other maps). Meanwhile, in objects the keys are basically always strings.
+The easiest way to create a map is to actually create an empty map. Then you fill up the map with the set method.
+
+
+
+const rest = new Map();
+
+
+rest.set(“name”, “Classico Italiano”);
+
+
+rest.set(1, “Firenze, Italy”);
+
+
+rest.set(2, “Lisbon, Portugal”);
+
+
+rest.set(“categories”, [“Italian”, “Pizzeria”, “Vegetarian”, “Organic”]);
+
+
+	.set(“open”, 11)
+
+
+	.set(“close”, 23)
+
+
+	.set(true, “We are open”)
+
+
+	.set(false, “We are closed”);
+
+
+
+// example: compare the time and see if restaurant is open or closed
+const time = 21;
+
+
+console.log(rest.get(time > rest.get(“open”) && time < rest.get(“close”)));
+
+
+→ We are open
+
+
+### Day 15: April 29, 2021
+
+**Today's Progress**: Maps Iteration
+
+**Thoughts**: There is another way of populating a new map without having to use the set method.
+
+const question = new Map([
+
+
+	[“question”, “What is the best programming language in the world?],
+
+
+	[1, “C”],
+
+
+	[2, “Java”],
+
+
+	[3, “JavaScript”],
+
+
+	[“correct”, 3],
+
+
+	[true, “Correct!”],
+
+
+	[false, “Try again!”],
+
+
+]);
+
+
+console.log(question);
+
+
+// Quiz App
+
+
+console.log(question.get(“question));
+
+
+for (const [key, value] of question) {
+
+
+	if(typeof key === “number”) console.log(`Answer ${key}: ${value}`);
+
+
+}
+
+
+const answer = Number(prompt(“Your answer?”));
+
+
+console.log(answer);
+
+
+
+console.log(question.get(question.get(“correct”) === answer));
+
+
+→ Correct!
+
+
+### Day 16: April 30, 2021
+
+**Today's Progress**: Which data structure to use?
+
+**Thoughts**: There are essentially three sources of data.
+
+1. From the program itself: Data written directly in source code
+
+2. From the UI: Data input from the user data written in the DOM
+
+3. From external sources: Data fetched for example from web API
+
+
+There a four built in data structures in JavaScript.
+
+Simple list? Use Arrays or Sets
+
+Key/Value pairs? Use Objects or Maps (keys allow us to describe values)
+
+Data from web APIs usually are in JSON
+
+JSON is essentially just text, but it can easily be converted to JavaScript objects because it uses the same formatting as JavaScript objects and arrays.
+
+
+
+### Day 17: May 1, 2021
+
+**Today's Progress**: Arrays vs. Sets
+
+**Thoughts**: Arrays:
+
+Use when you need ordered list of values (might contain duplicates)
+
+Use when you need to manipulate data
+
+
+Sets:
+
+Use when you need to work with unique values
+
+Use when high-performance is really important
+
+Use to remove duplicates from arrays
+
+
+Sets are not meant to replace arrays, but rather to compliment them whenever we are dealing with unique values.
+
+
+
+### Day 18: May 2, 2021
+
+**Today's Progress**: Objects vs. Maps
+
+**Thoughts**: Objects:
+
+More traditional key/value store (“abused” objects)
+
+Easier to write and access values with . and []
+
+
+Maps:
+
+Before performance
+
+Keys can have any data type
+
+Easy to iterate
+
+Easy to compute size
+
+
+As a conclusion, you should use maps when you simply need to map keys to values and also when you need keys that are not strings.
+
+
+If you need functions as values, then you should absolutely use an object for that. In objects, these functions are called methods and you can use the this keyword to access properties of the same object, which is impossible in maps. Also, when working with JSON data, you will probably be using objects for that as well, unless you then want to convert the objects to maps (but that is something that we usually do not do)

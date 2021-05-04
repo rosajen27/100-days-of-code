@@ -542,3 +542,75 @@ As a conclusion, you should use maps when you simply need to map keys to values 
 
 
 If you need functions as values, then you should absolutely use an object for that. In objects, these functions are called methods and you can use the this keyword to access properties of the same object, which is impossible in maps. Also, when working with JSON data, you will probably be using objects for that as well, unless you then want to convert the objects to maps (but that is something that we usually do not do)
+
+
+### Day 19: May 3, 2021
+
+**Today's Progress**: Strings
+
+**Thoughts**: Just like in arrays, we can get the character of a string at a certain position. We can also read the length properties of strings, just like we can in arrays. 
+
+
+const plane = "A320";
+
+console.log(plane[0]); --> A
+
+console.log(plane.length) --> 4
+
+
+Strings also have methods and some of them are quite similar to the array methods (Strings are also zero based). One good use case is to extract part of a string using the slice method (the slice method needs indexes as arguments).
+
+
+console.log(plane.indexOf("0")); --> A
+
+const airline = "TAP Air Portugal"
+
+console.log(plane.slice(4)); --> Air Portugal
+
+console.log(plane.slice(4, 7)); --> Air
+
+console.log(airline.slice(-2)); --> al
+
+
+console.log(airline.slice(0, airline.indexOf(" "))); --> Tap
+
+
+** Note: This does not change the underlying string, because it is impossible to mutate strings. They are primitives.
+
+
+### Day 20: May 4, 2021
+
+**Today's Progress**: String Methods (continued)
+
+**Thoughts**: 
+
+// Changing the case of a string
+
+console.log(airline.toLowerCase()); --> tap air portugal
+
+console.log(airline.toUpperCase()); --> TAP AIR PORTUGAL
+
+
+// Remove extra whitespace
+
+const email = "    hello@gmail.com \n";
+
+const trimmedEmail = email.trim();
+
+console.log(trimmedEmail); --> hello@gmail.com
+
+
+// Replace
+
+const priceGB = "288,97";
+
+const priceUS = priceGB.replace(",", "."); --> 288.97
+
+
+// Booleans
+
+const plane = "A320neo";
+
+console.log(plane.includes("A320")); --> true
+
+console.log(plane.startsWith("Air")); --> false

@@ -614,3 +614,79 @@ const plane = "A320neo";
 console.log(plane.includes("A320")); --> true
 
 console.log(plane.startsWith("Air")); --> false
+
+
+### Day 21: May 5, 2021
+
+**Today's Progress**: String Methods (continued)
+
+**Thoughts**: 
+
+// Split and Join
+
+console.log(“a+very+nice+string”.split(“+”)); → [“a”, “very”, “nice”, “string”]
+
+console.log(“Jennifer Rosa”).split(“ “)); → [“Jennifer”, “Rosa”]
+
+
+Real World Example:
+
+const [firstName, lastName] = “Jennifer Rosa”.split(“ “); 
+
+const newName = [“Ms.”, firstName, lastName.toUpperCase()].join(“ “);
+
+console.log(newName); → Ms. Jennifer ROSA
+
+
+// Create a function that capitalizes the first letter of a name
+
+const capitalizeName = function(name) {
+
+	const names = name.split(“ “);
+
+	Const namesUpper = [];
+
+
+	for (const n of names) {
+
+		namesUpper.push(n[0].toUpperCase() + n.slice(1));
+
+	}
+
+	console.log(namesUpper.join(“ “));
+
+};
+
+
+capitalizeName(“jennifer rosa”); → Jennifer Rosa
+
+
+// Padding
+
+const message = “Go to gate 23!”;
+
+console.log(message.padStart.(25, “+”)); → +++++++++++Go to gate 23!
+
+console.log(message.padEnd.(25, “+”)); → Go to gate 23!+++++++++++
+
+
+// Masking
+
+const maskCreditCard = function(number) {
+
+	const str = String(number);
+
+	const last = str.slice(-4);
+
+	Return last.padStart(str.length, “*”);
+
+}
+
+console.log(maskCreditCard(4337846386467384)); → ************7384
+
+
+// Repeat
+
+const newMessage = “Bad Weather.. All Departures Delayed… ”;
+
+console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 

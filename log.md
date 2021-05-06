@@ -692,7 +692,7 @@ const newMessage = “Bad Weather.. All Departures Delayed… ”;
 console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 
 
 
-### Day 222: May 6, 2021
+### Day 22: May 6, 2021
 
 **Today's Progress**: Functions: Default Parameters
 

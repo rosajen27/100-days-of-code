@@ -690,3 +690,53 @@ console.log(maskCreditCard(4337846386467384)); → ************7384
 const newMessage = “Bad Weather.. All Departures Delayed… ”;
 
 console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 
+
+
+### Day 222: May 6, 2021
+
+**Today's Progress**: Functions: Default Parameters
+
+**Thoughts**: 
+Sometimes it is useful to have functions where some parameters are set by default, this way we do not have to pass them in manually, in case we don’t want to change the default.
+
+
+const bookings = [];
+
+const createBooking = function(flightNum, numPassengers, price) {
+
+	const booking = {
+
+		flightNum,
+
+		numPassengers,
+
+		price
+
+	}
+
+	console.log(booking);
+
+	bookings.push(booking);
+
+}
+
+createBooking(“LH123”); 
+
+→ {flightNum: “LH123”, numPassengers: undefined, price: undefined}
+
+
+What we see here was that the numPassengers are the price are set to undefined, because we didn’t specify them. Now we can use short circuiting to our advantage, because we know that these are faulty values. Let’s say we want to set the number of passengers to one by default…
+
+
+numPassengers = numPassengers || 1;
+
+price = price || 199;
+
+
+This works because whenever this is a falsy value (which undefined is), then the result of the OR operator will be the second operand. 
+
+
+Default values can contain any expression. For example, we can multiply x 1.2. We can also use the value of the other parameters that were set before it. 
+
+// Example, you can say the price will be calculated based on the number of passengers
+price = 199 * numPassengers

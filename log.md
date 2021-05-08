@@ -760,3 +760,48 @@ On the other hand, when we pass an object as an argument on a function, the func
 - So, when we pass primitive values, the function works with a value, which is a copy of the original value
 
 - When we pass an object, the function works with a value that address to the spot where the original object is in the memory (still is not a reference)
+
+
+### Day 24: May 8, 2021
+
+**Today's Progress**: Functions: First Class and Higher Order Functions
+
+**Thoughts**: JavaScript is a language that has first class functions, which in technical terms means that functions are so called first citizens. In practice, this means that functions are simply values. Functions are just another “type” of object. And since objects are values, functions are values too. 
+
+And since functions are values, we can do many interesting things with them like storing them in variables or object properties.
+
+const add = (a, b) => a + b;
+
+const counter = {
+
+	value: 23,
+
+	inc: function() { this.value++; }
+
+
+We can also pass functions as arguments to other functions.
+
+const greet = () => console.log(“Hey Jennifer”);
+
+btnClose.addEventListener(“click”, greet)
+
+
+We can also return a function from another function.
+
+
+We can call methods on functions
+
+counter.inc.bind(someOtherObject);
+
+
+The fact that JavaScript has first-class functions makes it possible for us to use and write higher order functions. A higher order function is either a function that receives another function as an argument or a function that returns a new function.
+
+const greet = () => console.log(“Hey Jennifer”);
+
+btnClose.addEventListener(“click”, greet)
+
+
+First class functions are just a feature that a programming language either has or does not have. All it means is that all functions are values. There are no first class functions in practice (it’s just a concept).
+
+
+There are however higher order functions in practice, which are possible because the language supports first class functions.

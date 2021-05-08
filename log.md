@@ -740,3 +740,23 @@ Default values can contain any expression. For example, we can multiply x 1.2. W
 
 // Example, you can say the price will be calculated based on the number of passengers
 price = 199 * numPassengers
+
+
+### Day 23: May 7, 2021
+
+**Today's Progress**: Functions: How Passing Arguments Works - Value vs.
+Reference
+
+**Thoughts**: When we pass a primitive type as an argument on a function, the function makes a copy of the ORIGINAL VALUE, and works with it.
+
+
+On the other hand, when we pass an object as an argument on a function, the function makes a copy of the REFERENCE that points to the place of the memory where the object is stored. This copy is a value itself, not a reference. Because of all of this, the original object can be modified from inside of a function.
+
+
+- In programming languages, Arguments can be passed by value, or passed by reference
+
+- JS does not have passing by reference, only passing by value
+
+- So, when we pass primitive values, the function works with a value, which is a copy of the original value
+
+- When we pass an object, the function works with a value that address to the spot where the original object is in the memory (still is not a reference)

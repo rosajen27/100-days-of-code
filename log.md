@@ -805,3 +805,161 @@ First class functions are just a feature that a programming language either has 
 
 
 There are however higher order functions in practice, which are possible because the language supports first class functions.
+
+
+### Day 25: May 9, 2021
+
+**Today's Progress**: Callback Functions, Functions Calling Functions, and the Call and Apply Method
+
+**Thoughts**: Functions Accepting Callback Functions
+
+Callback functions are functions that we do not call ourselves. But instead, we call JavaScript to basically tell them later. In this case, it is the transformer function that will callback the upperFirstWord and oneWord functions.
+
+
+const oneWord = function(str) {
+
+	return str.replace(/ /g, “”).toLowerCase();
+
+}
+
+
+const upperFirstWord = function(str) {
+
+	const [first, ...others] = str.split(“ “);
+
+	return [first.toUpperCase(), ...others].join(“ “);
+
+}
+
+
+// higher order function (a function that takes in another function)
+
+const transformer = function(str, fn) {
+
+	console.log(`Original string: ${str});
+
+	console.log(`Transformed string: ${fn(str)}`);
+
+	console.log(`Transformed by: ${fn.name}`);
+
+}
+
+transformer(“JavaScript is the best!”, upperFirstWord);
+
+→ Original string: JavaScript is the best!
+
+→ Transformed string: JAVASCRIPT is the best!
+
+→ Transformed by: UpperFirstWord
+
+
+transformer(“JavaScript is the best!”, oneWord);
+
+→ Original string: JavaScript is the best!
+
+→ Transformed string: javascriptisthebest!
+
+→ Transformed by: oneWord
+
+
+Why are callback functions helpful? The first big advantage of this is that it makes it easy to split up our code into more reusable and interconnected parts. Callback functions also allow us to create abstraction (hide the detail of some code implementation because we don’t really care about all of that detail. This allows us to think about problems at a higher, more abstract level).
+
+
+Functions Returning Functions
+
+What is the point of having a function returning another function? It is extremely useful in some situations, especially if we’re using an important programming paradigm called functional programming. 
+
+
+const greet = function(greeting) {
+
+	return function(name) {
+
+		console.log(`${greeting} ${name}`);
+
+	}
+
+}
+
+const greeterHey = greet(“Hey”);
+
+greeterHey(“Jennifer”);
+
+→ Hey Jennifer
+
+
+greet(“Hello”)(“Jen”);
+
+→ Hello Jen
+
+
+The Call and Apply Methods
+
+const jetblue = {
+
+	airline: “Jetblue”,
+
+	iataCode: “JB”,
+
+	bookings: [],
+
+	book(flightNum, name) {
+
+		console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+	this.bookings.push({flight: `${this.iataCode}${flightNum}`, name});
+
+	},
+
+};
+
+jetblue.book(239, “Jennifer Rosa”);
+
+jetblue.book(635, “John Smith”);
+
+→ Jennifer Rosa booked a seat on Jetblue flight JB239
+
+→ John Smith booked a seat on Jetblue flight JB635
+
+console.log(jetblue);
+
+→ {airline: “Jetblue”, iataCode: “JB”, bookings” Array(2), book: f}
+
+
+// new airline
+
+const eurowings = {
+
+	name: “Eurowings”,
+
+	iataCode: “EW”,
+
+	bookings: [],
+
+};
+
+
+const book = jetblue.book;
+
+
+book(23, “John Snow”); → Uncaught TypeError: Cannot read property ‘airline’ of undefined at book
+
+
+So, how do we tell JavaScript that we want to create a booking on the new Eurowings airline? We need to tell JavaScript explicitly what the this keyword should be like. There are three function methods that can do this: call, apply, bind.
+
+
+book.call(eurowings, 23, “John Snow”);
+
+console.log(eurowings);
+
+→ {name: “Eurowings”, iataCode: “EW”, bookings: Arr(1)}
+
+	Bookings: Array(1)
+
+	0: {flight: “EW23”, name: “John Snow”}
+
+
+Recap: We called the call method, which called the book function, with the this keyword set to eurowings. This allows us to manually and explicitly set the this keyword of any function that we want to call.
+
+
+The apply method does basically the same thing. The only difference is that the apply method does not receive a list of arguments. Instead, it will take an array of the arguments.
+

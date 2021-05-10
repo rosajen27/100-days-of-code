@@ -963,3 +963,55 @@ Recap: We called the call method, which called the book function, with the this 
 
 The apply method does basically the same thing. The only difference is that the apply method does not receive a list of arguments. Instead, it will take an array of the arguments.
 
+### Day 26: May 10, 2021
+
+**Today's Progress**: The Bind Method
+
+**Thoughts**: Just like the Call Method, bind also allows us to manually set the this keywords for any function call. Now, the difference is that bind does not immediately call the function. Instead, it returns a new function where the this keyword is bound. So it is set to whatever value we pass into bind. 
+
+const eurowings = {
+	name: “Eurowings”,
+	iataCode: “EW”,
+	bookings: [],
+};
+const book = jetblue.book;
+
+const bookEW = book.bind(eurowings); 
+// note: this will NOT call the book function. Instead, it will return a new function where the this keyword will always be set to Eurowings. 
+
+bookEW(23, “Steven Williams”); 
+→ Steven Williams booked a seat on Eurowings flight EW23
+// note: this now looks like the normal book function call again. That is because this function already has the this keyword set in stone basically. So we no longer need to specify the this keyword again. 
+The bind method is really useful because we could now go ahead and do the same for multiple airlines. So creating one booking function for each of the airlines. This then makes it easier to book a flight for each of the airlines if we have to do it multiple times.
+
+const bookEW = book.bind(eurowings); 
+const bookJB = book.bind(jetblue);
+
+// Bind Method with Event Listeners
+In an event listener function, the this keyword always points to the element on which that handler is attached to. In this case, jetblue.buyPlane is the handler function and it is attached to the document.querySelector(“.buy”) button element. Therefore, inside of the handler function, the this keyword will point to the button element. 
+
+In order for the this keyword to point to the jetblue object instead, we need to manually define the this keyword by passing in a function with the bind method. Bind is going to return a new function, so the this keyword should be jetblue so that’s exactly what we define. So the end result is that the number of planes should increase each time we press the button.
+
+
+jetblue.planes = 300;
+jetblue.buyPlane = function() {
+	console.log(this);
+	this.planes++;
+	console.log(this.planes);
+};
+
+document
+	.querySelector(“.buy”)
+	.addEventListener(“click”, jetblue.buyPlane.bind(jetblue));
+
+
+// Partial Application
+Partial application means that we can preset parameters.
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+→ 220
+
+We can use the bind method to preset the rate to always be 23% for example.
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
+→ 123

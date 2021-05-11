@@ -1015,3 +1015,25 @@ We can use the bind method to preset the rate to always be 23% for example.
 const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(100));
 → 123
+
+### Day 27: May 11, 2021
+
+**Today's Progress**: Immediately Invoked Function Expressions (IIFE)
+
+**Thoughts**: Sometimes in JavaScript, we need a function that is only executed once, and then never again. So basically a function that disappears right after it’s called once. We can trick JavaScript into thinking that this anonymous function is an expression by wrapping it in parentheses and then calling it.
+
+
+(function() {
+
+	console.log(“This will never run again.”);
+
+})();
+
+
+(() => console.log(“This will ALSO never run again”))();
+
+
+Why was this pattern invented? We already know that functions create scopes. It is important to note that one scope does not have access to variables from an inner scope. Therefore, we say that all data defined inside a scope is private and encapsulated. Data encapsulation and data privacy are important concepts in programming.
+
+
+Many times we need to protect our variables, from being accidentally overwritten by some other parts of the program, or even with external scripts or libraries.

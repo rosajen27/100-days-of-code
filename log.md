@@ -1037,3 +1037,55 @@ Why was this pattern invented? We already know that functions create scopes. It 
 
 
 Many times we need to protect our variables, from being accidentally overwritten by some other parts of the program, or even with external scripts or libraries.
+
+
+### Day 28: May 12, 2021
+
+**Today's Progress**: Closures
+
+**Thoughts**: A closure is not a feature that we explicitly use. We don’t create closures manually, it happens automatically in certain situations. 
+
+
+const secureBooking = function() {
+
+	let passengerCount = 0;
+
+	return function() {
+
+		passengerCount++;
+
+		console.log(`${passengerCount} passengers`);
+
+	}
+}
+
+const booker = secureBooking();
+
+
+
+A closure makes a function remember all the variables that existed at the function’s “birth place”.
+
+
+A function always has access to the variable environment of the execution context in which it was created, even after that execution context is gone. The closure is then basically this variable environment attached to the function, exactly as it was at the time and place that the function was created. 
+
+
+In this example, the Booker function has access to the passengerCount variable because it’s basically defined in the scope in which the Booker function was actually created. So in a sense, the scope chain is actually preserved through the closure, even when a scope has already been destroyed because its execution context is gone. This means that even though the execution context has actually been destroyed, the variable environment somehow keeps living somewhere in the engine. 
+
+
+ (function () {
+
+ const header = document.querySelector('h1');
+
+ header.style.color = 'red';
+
+
+ document.querySelector("body").addEventListener("click", function() {
+
+     header.style.color="blue";
+
+ })
+
+ })();
+
+
+How does the callback function get access to the header variable? The explanation is the closure. The header is in the "backpack" of this function.

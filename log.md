@@ -1248,3 +1248,58 @@ movements.forEach(function(movement, index, array) {
 When should you use for each and when should you use for of loop? One fundamental difference between the two of them is that you cannot break out of a forEach loop. So the continue and break statements do not work in a forEach loop at all. So instead, forEach will always loop over the entire array and there is nothing you can do about it. 
 
 So if you really need to break out of a loop, then you have to keep using the for of loop, but other than that then it just comes down to personal preference.
+
+
+### Day 31: May 15, 2021
+
+**Today's Progress**: forEach with Maps and Sets
+
+**Thoughts**: We can call forEach on maps.
+
+
+const currencies = new Map([
+
+	["USD", "United States dollar"],
+
+	["EUR", "Euro],
+
+	["GBP", "Pound sterling"],
+
+]);
+
+
+currencies.forEach(function(value, key, map) {
+
+	console.log(`${key}: ${value}`);
+
+}); 
+
+
+--> USD: United States Dollar
+
+--> EUR: Euro
+
+--> GBP: Pound sterling
+
+
+We can fall forEach on sets.
+
+
+const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+
+console.log(currenciesUnique);
+
+--> {"USD", "GBP", "EUR"}
+
+currenciesUnique.forEach(function(value, key, map) {
+
+	console.log(`${key}: ${value}`);
+});
+
+--> USD: USD
+
+--> GBP: GBP
+
+--> EUR: EUR
+
+The key here is exactly the same as the value. Why is that? A set doesn't have keys and it doesn't have indexes either. So there is no value that would make sense for the key.

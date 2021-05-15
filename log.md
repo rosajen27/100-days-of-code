@@ -1089,3 +1089,162 @@ In this example, the Booker function has access to the passengerCount variable b
 
 
 How does the callback function get access to the header variable? The explanation is the closure. The header is in the "backpack" of this function.
+
+
+### Day 29: May 13, 2021
+
+**Today's Progress**: Array methods
+
+**Thoughts**: Why do arrays have methods? Methods are simply functions that we can call on objects. So basically, they are functions attached to objects. So if we have array methods, that means that arrays themselves are also objects. And so these array methods are simply functions that are attached to all arrays that we create in JavaScript.
+
+
+
+Slice Method: we can extract part of any array, but without changing the orginial array.
+
+
+let arr = ["a", "b", "c", "d", "e"];
+
+
+console.log(arr.slice(2)); --> ["c", "d", "e"]
+
+console.log(arr.slice(2, 4)); --> ["c", "d"]
+
+console.log(arr.slice(-2)); --> ["d", "e"]
+
+console.log(arr.slice(-1)); --> ["e"]
+
+console.log(arr.slice(1, -2)); --> ["b", "c"]
+
+console.log(arr.slice()); --> ["a", "b" "c", "d", "e"] //shallow copy
+
+SAME AS DOING console.log([...arr]);
+
+
+
+Splice Method: works similar to the slice method, but the fundamental difference is that it does actually change/mutate the original array
+
+
+
+Reverse Method: Reverses the order of the array. This method also mutates the original array.
+
+const arr2 = ["j", "i", "h", "g", "f"];
+
+console.log(arr2.reverse()); --> ["f", "g", "h", "i", "j"]
+
+
+
+Concat Method: Concatinates two arrays. This method does not mutate the original array.
+
+const letters = arrconcat(arr2);
+
+console.log(letters); --> ["a", "b" "c", "d", "e", "f", "g", "h", "i", "j"]
+
+SAME AS DOING: console.log([...arr, ...arr2]);
+
+
+
+Join Method: Results with a string with the seperator that we specify.
+
+console.log(letters.join(" - ")); --> a - b - c - d - e - f - g - h - i - j 
+
+
+### Day 30: May 14, 2021
+
+**Today's Progress**: Looping Arrays: forEach
+
+**Thoughts**: Let's say that we wanted to loop over an array, in order to print a message for each movement. In this scenario, positive values are deposits and negative values are withdrawals.
+
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+
+
+// for of loop
+
+
+for (const movement of movements) {
+
+	if(movement > 0) {
+
+		console.log(`You deposited ${movement}`)
+
+	} else {
+
+		console.log(`You withdrew ${Math.abs(movement)}`);
+
+	}
+
+}
+
+--> You deposited 200
+
+--> You deposited 450
+
+--> You withdrew 400 ... etc. etc.
+
+
+
+// forEach
+
+movements.forEach(function(movement) {
+
+	if(movement > 0) {
+
+		console.log(`You deposited ${movement}`)
+
+	} else {
+
+		console.log(`You withdrew ${Math.abs(movement)}`);
+
+	}
+
+}); --> // Same result as for of loop
+
+
+What if we needed access to a counter variable? 
+
+// For of
+
+for (const [i, movement] of movements.entries()) {
+
+	if(movement > 0) {
+
+		console.log(`Movement ${{i + 1}: You deposited ${movement}`)
+
+	} else {
+
+		console.log(`Movement ${{i + 1}: You withdrew ${Math.abs(movement)}`);
+
+	}
+
+});
+
+--> Movement 1: You deposited 200
+
+--> Movement 2: You deposited 450
+
+--> Movement 3: You withdrew 400 ... etc. etc.
+
+
+// for Each
+
+movements.forEach(function(movement, index, array) {
+
+	if(movement > 0) {
+
+		console.log(`Movement ${{index + 1} You deposited ${movement}`)
+
+	} else {
+
+		console.log(`Movement ${{index + 1} You withdrew ${Math.abs(movement)}`);
+
+	}
+
+}); --> // Same result as for of loop
+
+
+
+When should you use for each and when should you use for of loop? One fundamental difference between the two of them is that you cannot break out of a forEach loop. So the continue and break statements do not work in a forEach loop at all. So instead, forEach will always loop over the entire array and there is nothing you can do about it. 
+
+So if you really need to break out of a loop, then you have to keep using the for of loop, but other than that then it just comes down to personal preference.

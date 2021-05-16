@@ -1303,3 +1303,21 @@ currenciesUnique.forEach(function(value, key, map) {
 --> EUR: EUR
 
 The key here is exactly the same as the value. Why is that? A set doesn't have keys and it doesn't have indexes either. So there is no value that would make sense for the key.
+
+
+
+### Day 32: May 16, 2021
+
+**Today's Progress**: Begin developing Bankist App
+
+**Thoughts**: Through the development of this application, I will have the opportunity to apply concepts I have learned about functions and arrays. Bankist is a fictitious and minimalist online banking application that allows the user to:
+
+
+- Log in with a username and password
+- View and sort their monetary movements
+- Transfer money to another account
+- Request a loan from the bank
+- Delete their account
+
+
+GitHub Repo: https://github.com/rosajen27/bankist

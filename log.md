@@ -1392,3 +1392,42 @@ const checkDogs = function (dogsJulia, dogsKate) {
 checkDogs(dogsJulia, dogsKate);
 
 checkDogs(dogsJulia2, dogsKate2);
+
+
+### Day 34: May 25, 2021
+
+**Today's Progress**: Data Transformations: map, filter, reduce
+
+**Thoughts**: In JavaScript, there are three big and important array methods that we use all the time to perform data transformations. These are methods that we use to create new arrays based on transforming data from other arrays. (Map, Filter, Reduce)
+
+
+- Map Method: the map method is yet another method that we can use to loop over arrays. The map method is similar to the forEach method, but the map method creates a brand new array based on the original array. 
+
+
+So essentially the map method takes an array, loops over that array and in each iteration, it applies a callback function that we specify on our code to the current array element.
+
+
+We say that it maps the values of the original array to a new array and that's why this method is called map.
+
+
+Map returns a new array containing the results of applying an operation on all original array elements.
+
+
+Example: [3, 1, 4, 3, 2] <-- original array
+
+Map: current * 2 = [6, 2, 8, 6, 4] <-- new array
+
+
+- Filter Method: is used to filter for elements in the original array, which satisfies a certain condition.
+
+
+Example: [3, 1, 4, 3, 2] <-- original array
+
+Filter: current > 2 = [3, 4, 3] <-- filtered array
+
+
+- Reduce Method: used to boil ("reduce") down all of the elements of the original array into one single value. An example of this can be to add all the elements of an array together. It can also be many other operations.
+
+Example: [3, 1, 4, 3, 2] <-- original array
+
+Reduce: accumulator + current = [13]

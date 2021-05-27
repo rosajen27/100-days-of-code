@@ -1431,3 +1431,14 @@ Filter: current > 2 = [3, 4, 3] <-- filtered array
 Example: [3, 1, 4, 3, 2] <-- original array
 
 Reduce: accumulator + current = [13]
+
+
+### Day 35: May 26, 2021
+
+**Today's Progress**: Polishing Portfolio, GitHub, and Resume
+
+**Thoughts**: With 3 weeks left of the 2020-2021 school year, I will be utilizing this upcoming summer break as an opportunity to begin the application process. I aspire to transition from a k-6 educator to a front end web developer.
+
+✨ Portfolio: https://rosajen27.github.io
+👾 GitHub: https://github.com/rosajen27
+📄 Resume: https://bit.ly/2Svsirg

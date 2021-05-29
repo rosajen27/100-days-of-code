@@ -1442,3 +1442,58 @@ Reduce: accumulator + current = [13]
 ✨ Portfolio: https://rosajen27.github.io
 👾 GitHub: https://github.com/rosajen27
 📄 Resume: https://bit.ly/2Svsirg
+
+
+### Day 36: May 27, 2021
+
+**Today's Progress**: The Map Method
+
+**Thoughts**: The Map method is another way we can loop over arrays. Unlike forEach, the Map method will give us a brand new array. This new array will contain in each position the results of applying a callback function to the original array elements.
+
+
+With the Map method - besides the current array element, we also get access to the current index as well as the whole array.
+
+
+Applied this new knowledge into Bankist App Project
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+- Used the Map method to convert EUR to USD
+- Used the Map method to return movement descriptions
+
+
+### Day 37: May 28, 2021
+
+**Today's Progress**: Using the Map and forEach method to computer usernames for each account owner in Bankist App.
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: The username will be the initials of each of the four users.
+
+
+const user = "Steven Thomas Williams"; // stw
+
+const username = user.toLowerCase().split(" ").map
+(function(name) {
+
+  return name[0];
+
+}).join("");
+
+
+### Day 38: May 29, 2021
+
+**Today's Progress**: Using the Filter Method to filter out negative values (withdrawals) in Bankist App.
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: The Filter Method is used to filter for elements that satisfy a certain condition by using a callback function.
+
+
+// filter out negative values (withdrawals)
+
+const deposits = movements.filter(function(movement) {
+
+	return movement > 0;
+	
+});

@@ -1497,3 +1497,25 @@ const deposits = movements.filter(function(movement) {
 	return movement > 0;
 	
 });
+
+
+### Day 39: May 30, 2021
+
+**Today's Progress**: Using the Reduce Method to add multiple values (deposits and withdrawals) in Bankist App in order to determine global balance of the account.
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: The reduce method is used to boil down all the elements in an array to one single value.
+
+
+// accumulator --> SNOWBALL
+
+// 0 --> initial value
+
+const balance = movements.reduce(function(accumulator, currentValue, i, arr) {
+
+	console.log(`Iteration ${i}: ${accumulator}`);
+
+	return accumulator + currentValue;
+	
+}, 0);

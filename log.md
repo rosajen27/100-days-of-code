@@ -1603,13 +1603,21 @@ We could do each of these operations individually and store each result in a new
 We can only chain a method after another one, if the first one returns an array. 
 
 const totalDepositsUSD = movements
+
   .filter(function (movement) {
+
     return movement > 0;
+
   }).map(function (movement) {
+
     return movement * eurToUSD;
+
   }).reduce(function (accumulator, movement) {
+
     return accumulator + movement;
+
   }, 0);
+
 
 console.log(totalDepositsUSD);
 
@@ -1618,14 +1626,23 @@ You can inspect the current array at any stage of the 'pipeline' using the third
 
 
 console.log(movements);
+
 const totalDepositsUSD = movements
+
   .filter(function (movement) {
+
     return movement > 0;
+
   }).map(function (movement, index, array) {
+
     console.log(array)
+
     return movement * eurToUSD;
+
   }).reduce(function (accumulator, movement) {
+
     return accumulator + movement;
+	
   }, 0);
 
 console.log(totalDepositsUSD);

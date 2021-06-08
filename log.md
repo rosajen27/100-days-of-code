@@ -1587,3 +1587,45 @@ const calcAverageHumanAge = function (ages) {
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+
+### Day 41: June 7, 2021
+
+**Today's Progress**: Practiced Chaining Methods together in Bankist App.
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: My next task with the Bankist App was to take all the movement deposits then convert them from Euros to Dollars and add them all up, so that we know exactly how much was deposited into the account in US dollars.
+
+
+We could do each of these operations individually and store each result in a new variable OR instead, we can chain the methods.
+
+We can only chain a method after another one, if the first one returns an array. 
+
+const totalDepositsUSD = movements
+  .filter(function (movement) {
+    return movement > 0;
+  }).map(function (movement) {
+    return movement * eurToUSD;
+  }).reduce(function (accumulator, movement) {
+    return accumulator + movement;
+  }, 0);
+
+console.log(totalDepositsUSD);
+
+
+You can inspect the current array at any stage of the 'pipeline' using the third parameter of the callback function
+
+
+console.log(movements);
+const totalDepositsUSD = movements
+  .filter(function (movement) {
+    return movement > 0;
+  }).map(function (movement, index, array) {
+    console.log(array)
+    return movement * eurToUSD;
+  }).reduce(function (accumulator, movement) {
+    return accumulator + movement;
+  }, 0);
+
+console.log(totalDepositsUSD);

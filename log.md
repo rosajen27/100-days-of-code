@@ -1642,7 +1642,24 @@ const totalDepositsUSD = movements
   }).reduce(function (accumulator, movement) {
 
     return accumulator + movement;
-	
+
   }, 0);
 
 console.log(totalDepositsUSD);
+
+
+### Day 41: June 8, 2021
+
+**Today's Progress**: Continued to practiced Chaining Methods together in Bankist App.
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: Chained filter, map, and reduce methods to create calcDisplaySummary function in order to display a summary of all deposits, withdrawals and interest earned in the user's account. Interest only applies if balance is equal to 1 or greater.
+
+
+Important Notes: 
+
+
+We should not overuse chaining, and instead optimize it. Chaining many methods one after the other can cause performance issues if using large arrays. 
+
+It is a bad practice in JavaScript to chain methods that mutate the underlying original array. An example of that is the splice or reverse methods. 

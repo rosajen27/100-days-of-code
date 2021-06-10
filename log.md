@@ -1742,3 +1742,27 @@ const avg1Arrow = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
 const avg2Arrow = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1Arrow, avg2Arrow);
+
+
+### Day 43: June 10, 2021
+
+**Today's Progress**: The Find Method
+
+**Thoughts**: We can use the find method to retrieve one element of an array based on a condition. Just like the filter method, the find method also needs a callback function that returns a Boolean. The result will be either true or false. 
+
+
+Unlike the filter method, the find method will actually not return a new array, but it will only return the first element in the array that satisfies this condition - not an array.
+
+
+Usually the goal of the find method is to find exactly one element. 
+
+
+// Using the Bankist App as an example...
+
+// find the first negative movement (withdrawal)
+
+movements.find(function(movement) {
+
+	return movement < 0;
+
+});

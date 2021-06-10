@@ -1669,7 +1669,7 @@ It is a bad practice in JavaScript to chain methods that mutate the underlying o
 
 ### Day 42: June 9, 2021
 
-**Today's Progress**: Chaining Methods Coding challenge provided by Jonas Schmedtmann's JavaScript Course.
+**Today's Progress**: Solved a Chaining Methods Coding Challenge provided by Jonas Schmedtmann's JavaScript Course.
 
 **Thoughts**: Challenge: Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time use chaining.
 
@@ -1680,6 +1680,7 @@ Test Data 2: [16, 6, 10, 5, 6, 1, 4]
 
 
 Solution:
+
 
 
 // WRITTEN EXPLICITLY 
@@ -1721,8 +1722,6 @@ const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1, avg2);
-
-
 
 
 

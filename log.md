@@ -1581,6 +1581,8 @@ const calcAverageHumanAge = function (ages) {
 
   }, 0);
 
+  return averageAge;
+
 }
 
 
@@ -1663,3 +1665,81 @@ Important Notes:
 We should not overuse chaining, and instead optimize it. Chaining many methods one after the other can cause performance issues if using large arrays. 
 
 It is a bad practice in JavaScript to chain methods that mutate the underlying original array. An example of that is the splice or reverse methods. 
+
+
+### Day 42: June 9, 2021
+
+**Today's Progress**: Chaining Methods Coding challenge provided by Jonas Schmedtmann's JavaScript Course.
+
+**Thoughts**: Challenge: Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time use chaining.
+
+
+Test Data 1: [5, 2, 4, 1, 15, 8, 3]
+
+Test Data 2: [16, 6, 10, 5, 6, 1, 4]
+
+
+Solution:
+
+
+// WRITTEN EXPLICITLY 
+
+const calcAverageHumanAge = function (ages) {
+
+  const avgAges = ages.map(function (age) {
+
+    if (age <= 2) {
+
+      return age * 2;
+
+    } else {
+
+      return 16 + age * 4;
+
+    }
+
+  }).filter(function (age) {
+
+    return age >= 18;
+
+  }).reduce(function (accumulator, currentValue, i, arr) {
+
+    return accumulator + currentValue / arr.length;
+
+  }, 0);
+
+
+
+  return avgAges;
+
+};
+
+
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1, avg2);
+
+
+
+
+
+// WRITTEN WITH ARROW FUNCTIONS
+
+const calcAverageHumanAgeArrow = ages =>
+
+  ages.map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+
+    .filter(age => age >= 18)
+
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+
+
+const avg1Arrow = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
+
+const avg2Arrow = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1Arrow, avg2Arrow);

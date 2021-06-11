@@ -1774,4 +1774,10 @@ movements.find(function(movement) {
 
 GitHub Repo: https://github.com/rosajen27/bankist
 
-**Thoughts**:
+**Thoughts**: Implemented an event handler that:
+
+- prevents log in form from submitting (page reload)
+- clear log in input fields after user is signed in
+- displays UI and welcome message
+- display movements, balance, and summary of corresponding account user logged in with
+- dynamically use interest rate depending on the current user

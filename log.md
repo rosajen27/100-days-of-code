@@ -1766,3 +1766,12 @@ movements.find(function(movement) {
 	return movement < 0;
 
 });
+
+
+### Day 44: June 11, 2021
+
+**Today's Progress**: Implementing the log in feature to Bankist Application
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**:

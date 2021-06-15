@@ -1781,3 +1781,58 @@ GitHub Repo: https://github.com/rosajen27/bankist
 - displays UI and welcome message
 - display movements, balance, and summary of corresponding account user logged in with
 - dynamically use interest rate depending on the current user
+
+
+### Day 45: June 12, 2021
+
+**Today's Progress**: Implementing transfers feature to Bankist Application
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: Implemented an event handler that:
+
+- allows the user to transfer money from one account to another account
+- subtracts amount transfered from current account
+- adds amount transfered from current account to reciever account
+- transfer can only happen if amount is greather than 0
+- the current user needs to have enough money to execute the transfer
+- user should also not be able to transfer money to own/same account
+
+
+### Day 46: June 13, 2021
+
+**Today's Progress**: The findIndex Method
+
+**Thoughts**: The the findIndex method works almost the same way as find. But as the name says, findIndex returns the index of the found element and not the element itself. To delete an element from an array, we use the splice method, but for the splice method, we need the index at which we want to delete, so we use the findIndex method.
+
+
+The findIndex method is similar to the indexOf method. However, the big difference here is that with indexOf we can only search for a value that is in the array. Example: .indexOf(23) - if the array contains the 23, then it's true and if not, then it's false.
+
+
+But on the other hand, with findIndex we can create a complex condition, such as the one implemented in the Bankist App to delete user from data:
+
+
+const index = accounts.findIndex(function (account) {
+
+      return account.username === currentAccount.username;
+
+    });
+
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+
+### Day 47: June 14, 2021
+
+**Today's Progress**: Implementing the log out feature to Bankist Application
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: When the user logs out or deletes their account, input fields should be cleared and the UI should be hidden.
+
+
+### Day 48: June 15, 2021
+
+**Today's Progress**: some and every
+
+**Thoughts**:

@@ -1,5 +1,8 @@
 # 100 Days Of Code - Log
 
+Udemy Course: The Complete JavaScript Course 2021 by Jonas Schmedtmann
+
+-----------------------------------------------------------------------------------------------------------------
 ### Day 1: April 15, 2021
 
 **Today's Progress**: Spending some time this week revewing and studying how JavaScript works behind the scenes in order to solidify previously learned concepts. 
@@ -2021,3 +2024,78 @@ The loan functionality will allow the user to:
 
 - request a loan
 - bank will grant a loan if there is at least one deposit in the account with at least 10% of the requested loan amount
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 50: June 16, 2021
+
+**Today's Progress**: ✨ 50 days ✨ - flat metho
+
+
+**Thoughts**: What if we wanted to take all these elements in the separate arrays, and put them all together in one big array? We can use the flat method. Using the flat method will remove the nested arrays and flatten the array.
+
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8]];
+
+console.log(arr.flat()); --> [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+What if we have an array which is even deeper nested?
+
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]];
+
+console.log(arrDep.flat()); --> [Array(2), 3, 4, Array(2), 7, 8]
+
+
+This result still contains the two inner arrays. This means that the flat method only goes one level deep, when flattening the array. We can fix that by using the depth argument. 1 is the default depth.
+
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]];
+
+console.log(arrDep.flat(2)); --> [1, 2, 3, 4, 5, 6, 7, 8]
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+With the Bankist App, let's say that the bank itself wants to calculate the overall balance of all the movements of all the account.
+
+
+The first thing to do is to take the movements out of the accounts array and put them all into one array.
+
+
+const accountMovements = accounts.map(function 
+
+(account) {
+
+	return account.movements
+
+});
+
+console.log(accountMovements); --> // this will return a nested structure (an array which contains other arrays)
+
+
+const allMovements = accountMovements.flat();
+console.log(allMovements); --> // this will return a single array with all movements together
+
+
+Then all we have to do is add them all together.
+
+
+const overallBalance = allMovements.reduce(function
+(accumulator, currentMovement) {
+
+	return accumulator + currentMovement
+
+}, 0);
+
+console.log(overallBalance); --> 17840
+
+
+
+-----------------------------------------------------------------------------------------------------------------

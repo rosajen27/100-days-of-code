@@ -1833,6 +1833,45 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 ### Day 48: June 15, 2021
 
-**Today's Progress**: some and every
+**Today's Progress**: Using the some and every methods within Bankist Application in order to implement bank loan functionality.
 
-**Thoughts**:
+GitHub Repo: https://github.com/rosajen27/bankist
+
+**Thoughts**: SOME METHOD - Let's say that we would like to know if there has been any deposits (positive movements) on a specific account - so any number above zero.
+
+
+const anyDeposits = movements.some(function(movement) {
+
+	return movement > 0;
+
+});
+
+console.log(anyDeposits); --> true (this is because there are some movements in the account that is a deposit)
+
+
+In conclusion, if there is any value for which this condition is true, then the some method will return true.
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+EVERY METHOD - The every method is pretty similar to the some method, but the difference between them is that every only returns true if all of the elements in the array satisfy the condition that we pass in.
+
+If every element passes the test in our callback function, only then the every method returns true, hence the name.
+
+const everyDeposits = movements.every(function (movement) {
+
+	retun movement > 0;
+
+});
+
+console.log(everyDeposits); --> false (this is because not every single movement in the account is a deposit)
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+The loan functionality will allow the user to:
+
+- request a loan
+- bank will grant a loan if there is at least one deposit in the account with at least 10% of the requested loan amount

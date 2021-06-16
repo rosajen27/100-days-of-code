@@ -10,6 +10,9 @@ Today's study session included:
     3. Scope and The Scope Chain.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 2: April 16, 2021
 
 **Today's Progress**: Spending some time this week revewing and studying how JavaScript works behind the scenes in order to solidify previously learned concepts. 
@@ -18,12 +21,18 @@ Today's study session included:
     1. Variable Environment: Hoisting and The TDZ
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 3: April 17, 2021
 
 **Today's Progress**: Spending some time this week revewing and studying how JavaScript works behind the scenes in order to solidify previously learned concepts. 
 
 Today's study session included: 
     1. The this Keyword
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 4: April 18, 2021
@@ -55,11 +64,17 @@ const = [2, 3, 4];
 const [x, y, z] = arr; → 2 3 4 
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 5: April 19, 2021
 
 **Today's Progress**: Practiced destructuring objects in isolation
 
 **Thoughts**:To destructure objects we use the curly braces. Then all we have to do is to provide the variable names that exactly match the property names that we want to retrieve from the object. The order of elements does not matter - so we do not have to manually skip elements like in an array. Helpful when retrieving elements from an object when using APIs
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 6: April 20, 2021
@@ -85,6 +100,9 @@ console.log(newArr); → [1, 2, 7, 8, 9]
 
 
 Same exact results. What the spread operator does is to basically take all the values out of this arr array and then write them individually as if we wrote 7, 8, 9 manually.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 7: April 21, 2021
@@ -116,6 +134,9 @@ console.log(restaurantCopy.name); → Ristorante Roma
 
 
 console.log(restaurant.name); → Clasicco Italiano
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 8: April 22, 2021
@@ -176,6 +197,9 @@ add(5, 3, 7, 2); → 17
 add(8, 2, 5, 3, 2, 1, 4); → 25
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 9: April 23, 2021
 
 **Today's Progress**: Short Circuiting (&& and ||)
@@ -186,11 +210,17 @@ add(8, 2, 5, 3, 2, 1, 4); → 25
 In the case of the AND operator, it works in the exact opposite way of the OR operator. The AND operator short circuits when the first value is falsy, and then immediately returns that falsy value without even evaluating the second operand.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 10: April 24, 2021
 
 **Today's Progress**: The Nullish Coalescing Operator (??)
 
 **Thoughts**: The Nullish Coalescing Operator works with the idea or with the concept of nullish values instead of falsy values. Nullish values are null and undefined. It does not include zero or the empty string.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 11: April 25, 2021
@@ -216,6 +246,9 @@ for (const item of menu.entries()) {
 
 
 → results in printing the index of each menu item AND the menu item separately in the console (ex: [0, “Focaccia”] )
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 12: April 26, 2021
@@ -301,6 +334,10 @@ for (const [day, {open, close}] of entries) {
 
 → On sat we open at 0 and close at 24
 
+
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 13: April 27, 2021
 
 **Today's Progress**: Sets
@@ -355,6 +392,9 @@ We can also delete elements
 ordersSet.delete(“Risotto”);
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 14: April 28, 2021
 
 **Today's Progress**: Maps Fundamentals
@@ -401,6 +441,9 @@ console.log(rest.get(time > rest.get(“open”) && time < rest.get(“close”)
 
 
 → We are open
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 15: April 29, 2021
@@ -467,6 +510,9 @@ console.log(question.get(question.get(“correct”) === answer));
 → Correct!
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 16: April 30, 2021
 
 **Today's Progress**: Which data structure to use?
@@ -491,6 +537,8 @@ Data from web APIs usually are in JSON
 JSON is essentially just text, but it can easily be converted to JavaScript objects because it uses the same formatting as JavaScript objects and arrays.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
 
 ### Day 17: May 1, 2021
 
@@ -514,6 +562,8 @@ Use to remove duplicates from arrays
 
 Sets are not meant to replace arrays, but rather to compliment them whenever we are dealing with unique values.
 
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 18: May 2, 2021
@@ -542,6 +592,9 @@ As a conclusion, you should use maps when you simply need to map keys to values 
 
 
 If you need functions as values, then you should absolutely use an object for that. In objects, these functions are called methods and you can use the this keyword to access properties of the same object, which is impossible in maps. Also, when working with JSON data, you will probably be using objects for that as well, unless you then want to convert the objects to maps (but that is something that we usually do not do)
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 19: May 3, 2021
@@ -576,6 +629,9 @@ console.log(airline.slice(0, airline.indexOf(" "))); --> Tap
 
 
 ** Note: This does not change the underlying string, because it is impossible to mutate strings. They are primitives.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 20: May 4, 2021
@@ -614,6 +670,9 @@ const plane = "A320neo";
 console.log(plane.includes("A320")); --> true
 
 console.log(plane.startsWith("Air")); --> false
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 21: May 5, 2021
@@ -692,6 +751,9 @@ const newMessage = “Bad Weather.. All Departures Delayed… ”;
 console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 22: May 6, 2021
 
 **Today's Progress**: Functions: Default Parameters
@@ -742,6 +804,9 @@ Default values can contain any expression. For example, we can multiply x 1.2. W
 price = 199 * numPassengers
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 23: May 7, 2021
 
 **Today's Progress**: Functions: How Passing Arguments Works - Value vs.
@@ -760,6 +825,9 @@ On the other hand, when we pass an object as an argument on a function, the func
 - So, when we pass primitive values, the function works with a value, which is a copy of the original value
 
 - When we pass an object, the function works with a value that address to the spot where the original object is in the memory (still is not a reference)
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 24: May 8, 2021
@@ -805,6 +873,9 @@ First class functions are just a feature that a programming language either has 
 
 
 There are however higher order functions in practice, which are possible because the language supports first class functions.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 25: May 9, 2021
@@ -963,6 +1034,10 @@ Recap: We called the call method, which called the book function, with the this 
 
 The apply method does basically the same thing. The only difference is that the apply method does not receive a list of arguments. Instead, it will take an array of the arguments.
 
+
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 26: May 10, 2021
 
 **Today's Progress**: The Bind Method
@@ -1016,6 +1091,10 @@ const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(100));
 → 123
 
+
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 27: May 11, 2021
 
 **Today's Progress**: Immediately Invoked Function Expressions (IIFE)
@@ -1037,6 +1116,9 @@ Why was this pattern invented? We already know that functions create scopes. It 
 
 
 Many times we need to protect our variables, from being accidentally overwritten by some other parts of the program, or even with external scripts or libraries.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 28: May 12, 2021
@@ -1089,6 +1171,9 @@ In this example, the Booker function has access to the passengerCount variable b
 
 
 How does the callback function get access to the header variable? The explanation is the closure. The header is in the "backpack" of this function.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 29: May 13, 2021
@@ -1146,6 +1231,9 @@ SAME AS DOING: console.log([...arr, ...arr2]);
 Join Method: Results with a string with the seperator that we specify.
 
 console.log(letters.join(" - ")); --> a - b - c - d - e - f - g - h - i - j 
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 30: May 14, 2021
@@ -1250,6 +1338,9 @@ When should you use for each and when should you use for of loop? One fundamenta
 So if you really need to break out of a loop, then you have to keep using the for of loop, but other than that then it just comes down to personal preference.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 31: May 15, 2021
 
 **Today's Progress**: forEach with Maps and Sets
@@ -1305,6 +1396,8 @@ currenciesUnique.forEach(function(value, key, map) {
 The key here is exactly the same as the value. Why is that? A set doesn't have keys and it doesn't have indexes either. So there is no value that would make sense for the key.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
 
 ### Day 32: May 16, 2021
 
@@ -1321,6 +1414,9 @@ The key here is exactly the same as the value. Why is that? A set doesn't have k
 
 
 GitHub Repo: https://github.com/rosajen27/bankist
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 33: May 24, 2021
@@ -1394,6 +1490,9 @@ checkDogs(dogsJulia, dogsKate);
 checkDogs(dogsJulia2, dogsKate2);
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 34: May 25, 2021
 
 **Today's Progress**: Data Transformations: map, filter, reduce
@@ -1433,6 +1532,9 @@ Example: [3, 1, 4, 3, 2] <-- original array
 Reduce: accumulator + current = [13]
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 35: May 26, 2021
 
 **Today's Progress**: Polishing Portfolio, GitHub, and Resume
@@ -1442,6 +1544,9 @@ Reduce: accumulator + current = [13]
 ✨ Portfolio: https://rosajen27.github.io
 👾 GitHub: https://github.com/rosajen27
 📄 Resume: https://bit.ly/2Svsirg
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 36: May 27, 2021
@@ -1460,6 +1565,9 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 - Used the Map method to convert EUR to USD
 - Used the Map method to return movement descriptions
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 37: May 28, 2021
@@ -1481,6 +1589,9 @@ const username = user.toLowerCase().split(" ").map
 }).join("");
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 38: May 29, 2021
 
 **Today's Progress**: Using the Filter Method to filter out negative values (withdrawals) in Bankist App.
@@ -1497,6 +1608,9 @@ const deposits = movements.filter(function(movement) {
 	return movement > 0;
 	
 });
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 39: May 30, 2021
@@ -1519,6 +1633,9 @@ const balance = movements.reduce(function(accumulator, currentValue, i, arr) {
 	return accumulator + currentValue;
 	
 }, 0);
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ### Day 40: May 31, 2021
@@ -1591,6 +1708,9 @@ calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ### Day 41: June 7, 2021
 
 **Today's Progress**: Practiced Chaining Methods together in Bankist App.
@@ -1650,7 +1770,10 @@ const totalDepositsUSD = movements
 console.log(totalDepositsUSD);
 
 
-### Day 41: June 8, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 42: June 8, 2021
 
 **Today's Progress**: Continued to practiced Chaining Methods together in Bankist App.
 
@@ -1667,7 +1790,10 @@ We should not overuse chaining, and instead optimize it. Chaining many methods o
 It is a bad practice in JavaScript to chain methods that mutate the underlying original array. An example of that is the splice or reverse methods. 
 
 
-### Day 42: June 9, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 43: June 9, 2021
 
 **Today's Progress**: Solved a Chaining Methods Coding Challenge provided by Jonas Schmedtmann's JavaScript Course.
 
@@ -1744,7 +1870,10 @@ const avg2Arrow = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1Arrow, avg2Arrow);
 
 
-### Day 43: June 10, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 44: June 10, 2021
 
 **Today's Progress**: The Find Method
 
@@ -1768,7 +1897,10 @@ movements.find(function(movement) {
 });
 
 
-### Day 44: June 11, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 45: June 11, 2021
 
 **Today's Progress**: Implementing the log in feature to Bankist Application
 
@@ -1783,7 +1915,10 @@ GitHub Repo: https://github.com/rosajen27/bankist
 - dynamically use interest rate depending on the current user
 
 
-### Day 45: June 12, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 46: June 12, 2021
 
 **Today's Progress**: Implementing transfers feature to Bankist Application
 
@@ -1799,7 +1934,10 @@ GitHub Repo: https://github.com/rosajen27/bankist
 - user should also not be able to transfer money to own/same account
 
 
-### Day 46: June 13, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 47: June 13, 2021
 
 **Today's Progress**: The findIndex Method
 
@@ -1822,7 +1960,10 @@ const index = accounts.findIndex(function (account) {
 GitHub Repo: https://github.com/rosajen27/bankist
 
 
-### Day 47: June 14, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 48: June 14, 2021
 
 **Today's Progress**: Implementing the log out feature to Bankist Application
 
@@ -1831,7 +1972,10 @@ GitHub Repo: https://github.com/rosajen27/bankist
 **Thoughts**: When the user logs out or deletes their account, input fields should be cleared and the UI should be hidden.
 
 
-### Day 48: June 15, 2021
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 49: June 15, 2021
 
 **Today's Progress**: Using the some and every methods within Bankist Application in order to implement bank loan functionality.
 

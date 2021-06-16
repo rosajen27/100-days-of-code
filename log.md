@@ -1418,13 +1418,15 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 -----------------------------------------------------------------------------------------------------------------
 
+(Personal Note: I took several days off from coding last week due to an unexpected loss in the family. 💔)
+
+
+-----------------------------------------------------------------------------------------------------------------
+
 
 ### Day 33: May 24, 2021
 
-**Today's Progress**: (Personal Note: I took several days off from coding last week due to an unexpected loss in the family. 💔)
-
-
-Spent some time today reviewing previous learning about arrays in order to complete a coding challenge. 
+**Today's Progress**: Spent some time today reviewing previous learning about arrays in order to complete a coding challenge. 
 
 Coding challenge provided by Jonas Schmedtmann's JavaScript Course.
 

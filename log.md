@@ -2031,7 +2031,7 @@ The loan functionality will allow the user to:
 
 ### Day 50: June 16, 2021
 
-**Today's Progress**: ✨ 50 days ✨ - flat metho
+**Today's Progress**: ✨ 50 days ✨ - flat method
 
 
 **Thoughts**: What if we wanted to take all these elements in the separate arrays, and put them all together in one big array? We can use the flat method. Using the flat method will remove the nested arrays and flatten the array.

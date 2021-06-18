@@ -2099,3 +2099,94 @@ console.log(overallBalance); --> 17840
 
 
 -----------------------------------------------------------------------------------------------------------------
+
+
+### Day 51: June 17, 2021
+
+**Today's Progress**: sorting arrays
+
+
+**Thoughts**: Sorting Arrays will sort arrays in ABC order. It will also mutate the original array. The sort method also does the sorting based on strings. So basically, what it does is to convert everything to strings and then it does the sorting itself.
+
+
+// Strings
+
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+
+console.log(owners.sort()); --> ["Adam", "Jonas", "Martha", "Zach"];
+
+
+// Numbers
+
+const movement = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+console.log(movements.sort()); --> [-130, -400, -650, 1300, 200, 3000, 450, 70]
+
+
+And if we look at the results above as if they were strings, then the result actually makes sense. So the minus you see always comes first. Then afterwards, you start with the first digit, which starts with 1. Followed by a number that starts with 2, then 3, then 4, and finally 7. So these three are alphabetically ordered if they were strings.
+
+
+In order to fix this we need to do the following:
+
+
+// think of a and b as being two consecutive numbers in the array
+
+// ASCENDING ORDER
+
+// return < 0 - A, B (keep order)
+
+// return > 0 - B, A (switch order)
+
+movements.sort(function (a, b) {
+
+	if (a > b) {
+
+		return 1;
+
+	} else if (a < b) {
+
+		return -1;
+
+	}
+
+});
+
+
+console.log(movements); --> [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+
+Now as we see here, the array is now sorted in an ascending order. That is because basically the sort method keeps looping over the array and applying the callback function until everything is in an ascending order according to the rules that we established.
+
+
+So returning 1 basically means to switch the order.
+
+
+// DESCENDING ORDER
+
+If you wanted to sort in descending order, you would switch it the other way around.
+
+movements.sort(function (a, b) {
+
+	if (a > b) {
+
+		return -1;
+
+	} else if (a < b) {
+
+		return 1;
+
+	}
+
+});
+
+console.log(movements); --> [3000, 1300, 450, 200, 70, -130, -400, -650]
+
+
+Now, if you have a mixed array, like with strings and numbers together, then this is not gonna work and it is advised to simply not to use the sort method in these cases anyway.
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+Applied this knowledge into the Bankist App by adding the sort button functionality. This will allow the user to sort their movements/transactions in descending order.
+
+GitHub Repo: https://github.com/rosajen27/bankist

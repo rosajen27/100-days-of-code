@@ -2190,3 +2190,235 @@ Now, if you have a mixed array, like with strings and numbers together, then thi
 Applied this knowledge into the Bankist App by adding the sort button functionality. This will allow the user to sort their movements/transactions in descending order.
 
 GitHub Repo: https://github.com/rosajen27/bankist
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 52: June 18, 2021
+
+**Today's Progress**: learning how to programmatically create and fill arrays
+
+
+**Thoughts**: So far when using arrays I have used them like this:
+
+
+[1, 2, 3, 4, 5, 6, 7]
+
+or
+
+new Array(1, 2, 3, 4, 5, 6, 7)
+
+
+In these cases, we already have our data, so therefore we could manually create these arrays. However, there is a way to generate arrays programmatically - without having to define all the items manually. There are many situations in which this is necessary and there are also multiple ways of doing it. 
+
+
+The easiest one is to use the Array() constructor function:
+
+const x = new Array(7);
+
+
+We might think that this is going to create an array with only one element number seven. But instead it creates a new array with seven empty elements in there and it simply contains nothing.
+
+console.log(x); --> (7) [empty x 7]
+
+
+The reason for that is this weird behavior of this Array() function which does it so that whenever we only pass in one argument, then it creates a new empty argument with that length.
+
+
+So if we don't know about this special particularity of the Array() constructor function then this can lead to weird errors.
+
+
+The only method we can call on this empty array is the fill() method. 
+
+
+So that's x.fill() and then all we need to do is to pass in a value and it will then fill up the entire array with this specific value. This does actually mutate the underlying array.
+
+
+x.fill(1);
+
+console.log(x); --> (7) [1, 1, 1, 1, 1, 1, 1]
+
+
+So besides this value that we want to fill the array with, we can also specify where we want it to start to fill.
+
+
+x.fill(1, 3);
+
+console.log(x); --> (7) [empty x 3, 1, 1, 1, 1]
+
+--
+
+x.fill(1, 3, 5);
+
+console.log(x); --> (7) [empty x 3, 1, 1, empty x 2]
+
+
+--
+
+
+We can also use the fill() method on other arrays. It does not have to be an empty array.
+
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
+arr.fill(23, 2, 6);
+
+console.log(arr); --> [1, 2, 23, 23, 23, 23, 7]
+
+
+--
+
+
+What if he wanted to create this arr array programmatically? We could use the Array.from() function.
+
+// Array here is a function, and then on this function object, we call the from() method. We are using it on the Array() contructor.
+
+const y = Array.from({length: 7}, function() {
+
+	return 1;
+
+});
+
+console.log(y); --> (7) [1, 1, 1, 1, 1, 1, 1]
+
+--
+
+const z = Array.from({length: 7}, function(currentElement, i) {
+
+	return i + 1;
+
+});
+
+console.log(z) --> (7) [1, 2, 3, 4, 5, 6, 7]
+
+
+--
+
+Another example: You can create an array with 100 random dice rolls.
+
+
+const diceRoll = Array.from({length: 100}, function() {
+
+	return Math.floor(Math.random() * 6 + 1);
+
+
+});
+
+console.log(diceRoll);
+
+
+--
+
+
+Iterables such as Strings, Maps, or Sets can be converted to real arrays using Array.from(). That's also the reason for the name of the function, because we can create arrays from other things.
+
+
+Another great example of an array-like structure is the result of using querySelectorAll(). Using querySelectorAll() returns a NodeList, which is something like an array, which contains all the selected elements. BUT it is not a real array, and so it doesn't have methods like map() or reduce(), for example. 
+
+So if we actually wanted to use a real array method like that on a NodeList, we would first need to convert the NodeList to an array.
+
+
+// An example with the Bankist App
+
+labelBalance.addEventListener("click", function () {
+
+  const movementsUI = Array.from(document.querySelectorAll(".movements__value"));
+
+
+  console.log(movementsUI.map(function (el) {
+
+    return Number(el.textContent.replace('€', ''));
+
+
+  }));
+
+});
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 53: June 19, 2021
+
+**Today's Progress**: Which array method to use?
+
+
+**Thoughts**: The best way to figure out which method to use in each situation is by starting to ask the question, what do I actually want from this method? In order to help with this decision, we can categorize the methods, and then easily choose between them.
+
+**To mutate original array**
+***Add to original***
+- .push (end)
+- .unshift (start)
+
+
+***Remove from original***
+- .pop (end)
+- . shift (start)
+- .splice (any)
+
+***Others***
+- .reverse
+- .sort
+- .fill
+
+
+**A new array**
+***Computed from original***
+- .map (loop)
+
+***Filtered using condition***
+- .filter
+
+***Portion of original***
+- .slice
+
+***Adding original to other***
+- .concat
+
+***Flattening the original***
+- .flat
+- .flatMap
+
+
+**An array index**
+***Based on value***
+- .indexOf
+
+***Based on test condition***
+- .findIndex
+
+
+**An array element**
+***Based on test condition***
+- .find
+
+
+**To know if array includes**
+***Based on value***
+- .includes
+
+***Based on test condition***
+- .some
+- .every
+
+
+**A new string**
+***Based on separator string***
+- .join
+
+
+**To transform to value**
+***Based on accumulator***
+- .reduce
+
+(boil down array to a single value of any type: number, string, boolean, or even new array or object)
+
+
+**To just loop array**
+***Based on callback***
+- .forEach
+
+(does not create a new array, just loops over it)

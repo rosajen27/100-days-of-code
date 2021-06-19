@@ -2348,11 +2348,12 @@ labelBalance.addEventListener("click", function () {
 
 **Thoughts**: The best way to figure out which method to use in each situation is by starting to ask the question, what do I actually want from this method? In order to help with this decision, we can categorize the methods, and then easily choose between them.
 
-**To mutate original array**
+
+### To mutate original array
+
 ***Add to original***
 - .push (end)
 - .unshift (start)
-
 
 ***Remove from original***
 - .pop (end)
@@ -2365,7 +2366,8 @@ labelBalance.addEventListener("click", function () {
 - .fill
 
 
-**A new array**
+### A new array
+
 ***Computed from original***
 - .map (loop)
 
@@ -2383,7 +2385,8 @@ labelBalance.addEventListener("click", function () {
 - .flatMap
 
 
-**An array index**
+### An array index
+
 ***Based on value***
 - .indexOf
 
@@ -2391,12 +2394,14 @@ labelBalance.addEventListener("click", function () {
 - .findIndex
 
 
-**An array element**
+### An array element
+
 ***Based on test condition***
 - .find
 
 
-**To know if array includes**
+### To know if array includes
+
 ***Based on value***
 - .includes
 
@@ -2405,19 +2410,22 @@ labelBalance.addEventListener("click", function () {
 - .every
 
 
-**A new string**
+### A new string
+
 ***Based on separator string***
 - .join
 
 
-**To transform to value**
+### To transform to value
+
 ***Based on accumulator***
 - .reduce
 
 (boil down array to a single value of any type: number, string, boolean, or even new array or object)
 
 
-**To just loop array**
+## To just loop array
+
 ***Based on callback***
 - .forEach
 

@@ -2351,6 +2351,7 @@ labelBalance.addEventListener("click", function () {
 
 ### To mutate original array
 
+
 ***Add to original***
 - .push (end)
 - .unshift (start)
@@ -2366,7 +2367,11 @@ labelBalance.addEventListener("click", function () {
 - .fill
 
 
+----------
+
+
 ### A new array
+
 
 ***Computed from original***
 - .map (loop)
@@ -2385,7 +2390,11 @@ labelBalance.addEventListener("click", function () {
 - .flatMap
 
 
+----------
+
+
 ### An array index
+
 
 ***Based on value***
 - .indexOf
@@ -2394,13 +2403,20 @@ labelBalance.addEventListener("click", function () {
 - .findIndex
 
 
+----------
+
+
 ### An array element
 
 ***Based on test condition***
 - .find
 
 
+----------
+
+
 ### To know if array includes
+
 
 ***Based on value***
 - .includes
@@ -2410,13 +2426,21 @@ labelBalance.addEventListener("click", function () {
 - .every
 
 
+----------
+
+
 ### A new string
+
 
 ***Based on separator string***
 - .join
 
 
+----------
+
+
 ### To transform to value
+
 
 ***Based on accumulator***
 - .reduce
@@ -2424,7 +2448,11 @@ labelBalance.addEventListener("click", function () {
 (boil down array to a single value of any type: number, string, boolean, or even new array or object)
 
 
+----------
+
+
 ## To just loop array
+
 
 ***Based on callback***
 - .forEach

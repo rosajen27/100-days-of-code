@@ -2458,3 +2458,117 @@ labelBalance.addEventListener("click", function () {
 - .forEach
 
 (does not create a new array, just loops over it)
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+### Day 54: June 20, 2021
+
+**Today's Progress**: Array Methods Practice
+
+
+**Thoughts**: 
+
+## Exercise #1: Calculate how much has been deposited in total in the bank.
+
+
+// map method because we basically want to create a new array out of the accounts array.
+
+
+const bankDepositSum = accounts.map(function(account) {
+
+	return account.movements.flat();
+
+});
+
+console.log(bankDepositSum); --> (4) [Array(8), Array(8), Array(8), Array(5)]
+
+0: (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+1: (8) [5000, 3400, -150, -790, -3210, -1000, 8500, -30]
+
+2: (8) [200, -200, 340, -300, -20, 50, 400, -460]
+
+3: (5) [430, 1000, 700, 50, 90]
+
+
+------------------
+
+// Now, how do we get all of these values out of the arrays and into the main arrays? Whenever we have an array of a arrays, how can we basically remove all the values into the parent array?
+
+
+For that, we can use the flat method.
+
+
+const bankDepositSum = accounts.flatMap(function(account) {
+
+	return account.movements;
+
+});
+
+console.log(bankDepositSum); --> (29) [200, 450, -400, 3000, -650, -130, 70, 1300, 5000, 3400, -150, -790, -3210, -1000, 8500, -30, 200, -200, 340, -300, -20, 50, 400, -460, 430, 1000, 700, 50, 90]
+
+-----------------------------------------
+
+// Now we filter for the deposits (positive values) and all them all together
+
+
+const bankDepositSum = accounts.flatMap(function(account) {
+
+	return account.movements;
+
+}).filter(function(movement) {
+
+	return movement > 0;
+
+}).reduce(function(sum, cur) {
+
+	return sum + cur
+
+}, 0);
+
+console.log(bankDepositSum); --> 25180
+
+
+-----------------------------------------
+
+
+## Exercise 2: Count how many deposits there have been in the bank with at least $1,000
+
+// using filter
+
+const numDeposits1000 = accounts.flatMap(function(account) {
+
+	return account.movements;
+
+}).filter(function(movement) {
+
+	return movement >= 1000;
+
+}).length;
+
+
+console.log(numDeposits1000); --> 6
+
+
+
+// using reduce
+
+const numDeposits1000 = accounts.flatMap(function(account) {
+
+	return account.movements;
+
+}).reduce(function(count, cur) {
+	return count + cur >= 1000 ? count + 1 : count;
+}, 0);
+
+
+console.log(numDeposits1000); --> 6
+
+
+
+-----------------------------------------
+
+

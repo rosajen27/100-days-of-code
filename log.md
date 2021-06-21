@@ -2572,3 +2572,93 @@ console.log(numDeposits1000); --> 6
 -----------------------------------------
 
 
+### Day 55: June 21, 2021
+
+**Today's Progress**: Array Methods Practice Part 2
+
+
+**Thoughts**: 
+
+## Exercise #3: Create an object which contains the sum of the deposits and of the withdrawals.
+
+We already know that reduce boils down an array to just one value. So that value might be an object. It could even be a new array as well. In fact, we could use reduce to replace many of the other methods that we have. 
+
+
+const sums = accounts.flatMap(function (account) {
+
+	return account.movements;
+
+}).reduce(function (sums, cur) {
+
+	cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+
+	return sums;
+
+}, {deposits: 0, withdrawals: 0});
+
+
+console.log(sums); --> {deposits: 25180, withdrawals: -7340}
+
+-----------------------------------------
+
+We can also destructure this object immediately by...
+
+
+const {deposits, withdrawals} = accounts.flatMap(function (account) {
+
+	return account.movements;
+
+}).reduce(function (sums, cur) {
+
+	cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+
+	// another way -- sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+
+	return sums;
+
+}, {deposits: 0, withdrawals: 0});
+
+
+console.log(deposits, withdrawals); --> {25180 -7340}
+
+-----------------------------------------
+
+
+## Exercise #3: Create a function to convert any string to a title case (all the words in a sentence are capitalized - with some exceptions)
+
+const convertTitleCase = function (title) {
+
+
+	// words that should not be capitalized
+
+	const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+
+
+	// conversion ** read note below **
+
+	const titleCase = title
+
+	.toLowerCase()
+
+	.split(" ")
+
+	.map(word =>
+
+		exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+
+		)
+
+		.join(" ");
+
+	
+	return titleCase;
+
+
+};
+
+
+console.log(convertTitleCase("this is a NICE string")); --> This Is a Nice String
+
+
+
+** Note: Here we used the exceptions array to exclude words in exceptions array from being capitalized. Excluding kind of sounds like filtering, but that's not what we want here because we still want to keep an array of the same length. We just don't want to apply this to all the words. So we will do exceptions and then we are going to check if the current word is included in that array (includes() method). So with the includes() method, we are checking for that word. And then as you notice, we'll return a boolean -- so true, false. Then we can use that boolean to basically ask if the word is an exception or not. So if the word is included in the exceptions array, then we want to simply return that word (as is in lowercase). And only otherwise we want to then return the capitalized version.

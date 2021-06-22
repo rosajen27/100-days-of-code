@@ -2628,37 +2628,172 @@ console.log(deposits, withdrawals); --> {25180 -7340}
 
 const convertTitleCase = function (title) {
 
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
 
-	// words that should not be capitalized
+ 
+  const titleCase = title
 
-	const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+    .toLowerCase()
 
+    .split(' ')
 
-	// conversion ** read note below **
+    .map(function (word) {
 
-	const titleCase = title
+      return exceptions.includes(word)
 
-	.toLowerCase()
+        ? word
 
-	.split(" ")
+        : word[0].toUpperCase() + word.slice(1);
 
-	.map(word =>
+    })
 
-		exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    .join(' ');
 
-		)
-
-		.join(" ");
-
-	
-	return titleCase;
-
+ 
+  return titleCase;
 
 };
 
 
-console.log(convertTitleCase("this is a NICE string")); --> This Is a Nice String
+console.log(convertTitleCase("this is a NICE string"));
 
 
 
 ** Note: Here we used the exceptions array to exclude words in exceptions array from being capitalized. Excluding kind of sounds like filtering, but that's not what we want here because we still want to keep an array of the same length. We just don't want to apply this to all the words. So we will do exceptions and then we are going to check if the current word is included in that array (includes() method). So with the includes() method, we are checking for that word. And then as you notice, we'll return a boolean -- so true, false. Then we can use that boolean to basically ask if the word is an exception or not. So if the word is included in the exceptions array, then we want to simply return that word (as is in lowercase). And only otherwise we want to then return the capitalized version.
+
+
+
+-----------------------------------------
+
+
+### Day 56: June 22, 2021
+
+**Today's Progress**: Coding challenge provided by Jonas Schmedtmann's JavaScript Course
+
+
+**Thoughts**: Coding Challenge:
+
+Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little. Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite. Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion.
+
+
+const dogs = [
+
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+
+];
+
+
+
+// v Loop over the 'dogs' array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property.
+
+
+const recommendedFood = function (dogs) {
+
+  dogs.recFood = Math.trunc(dogs.weight ** 0.75 * 28);
+
+};
+
+dogs.forEach(recommendedFood);
+
+console.log(dogs);
+
+
+// x Find Sarah's dog and log to the console whether it's eating too much or too little.
+
+const sarahsDog = dogs.find(function (dog) {
+
+  return dog.owners.includes("Sarah");
+
+});
+
+console.log(sarahsDog);
+
+console.log(`Sarah's dog is eating too ${sarahsDog.curFood > sarahsDog.recFood ? "much" : "little"} food.`);
+
+
+// vx Create an array containing all owners of dogs who eat too much and an array with all owners of dogs who eat too little
+
+const ownersEatTooMuch = dogs.filter(function (dog) {
+
+  return dog.curFood > dog.recFood
+
+}).flatMap(function (dog) {
+
+  return dog.owners
+
+});
+
+console.log(ownersEatTooMuch);
+
+
+const ownersEatTooLittle = dogs.filter(function (dog) {
+
+  return dog.curFood < dog.recFood
+
+}).flatMap(function (dog) {
+
+  return dog.owners
+
+});
+
+console.log(ownersEatTooLittle);
+
+
+// v Log a string to the console for each array created
+
+console.log(`${ownersEatTooMuch.join(" and ")}'s dogs eat too much!`);
+
+console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
+
+
+// vx Log to the console whether there is any dog eating exactly the amount of food that is recommended
+
+const exactFood = dogs.some(function (dog) {
+
+  return dog.curFood === dog.recFood;
+
+});
+
+console.log(exactFood);
+
+
+// v Log to the console whether there is any dog eating an okay amount of food
+
+const okayFood = dogs.some(function (dog) {
+
+  return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+
+});
+
+console.log(okayFood);
+
+
+// v Create an array containing the dogs that are eating an okay amount of food
+
+const okayFoodArr = dogs.filter(function (dog) {
+
+  return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+
+});
+
+console.log(okayFoodArr);
+
+
+// vx Create a shallow copy of the 'dogs' array and sort it by recommended food portion in an ascending order
+
+const copy = dogs.slice().sort(function (a, b) {
+
+  return a.recFood - b.recFood;
+
+});
+
+console.log(copy);
+
+
+(Note: Personal codes for future reference. v = completely solved on own | x = did not solve on own | vx = partially solved on own or hints helped)

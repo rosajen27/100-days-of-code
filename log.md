@@ -2797,3 +2797,28 @@ console.log(copy);
 
 
 (Note: Personal codes for future reference. v = completely solved on own | x = did not solve on own | vx = partially solved on own or hints helped)
+
+
+
+-----------------------------------------
+
+
+
+### Day 57: June 23, 2021
+
+**Today's Progress**: Repeating yesterday's Coding Challenge provided by Jonas Schmedtmann's JavaScript Course
+
+
+**Thoughts**: Since there were a few steps in the coding challenge that I could not solve on my own, I decided to repeat solving this challenge today in order to solidify what I have learned before moving on to the next topic. Repitiion has proven to be helpful in understanding when and why certain methods should be used.
+
+
+I was able to answer steps 1-4 and 7-8 independently. With step 5 & 6, I tend to forget that the some() method exists. I first attempted to solve by using the filter() and reduce() methods, but would get opposite result.
+
+
+The reduce() method did not work in this situation because this method is used to boil ("reduce") down all of the elements of the original array into one single value.
+
+
+The filter() method did not work in this situation because this method is used to filter for elements in the original array, which satisfies a certain condition.
+
+
+The some() method works because if there is any value for which this condition is true, then the some method will return true.

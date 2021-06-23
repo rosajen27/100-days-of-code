@@ -2809,7 +2809,7 @@ console.log(copy);
 **Today's Progress**: Repeating yesterday's Coding Challenge provided by Jonas Schmedtmann's JavaScript Course
 
 
-**Thoughts**: Since there were a few steps in the coding challenge that I could not solve on my own, I decided to repeat solving this challenge today in order to solidify what I have learned before moving on to the next topic. Repitiion has proven to be helpful in understanding when and why certain methods should be used.
+**Thoughts**: Since there were a few steps in the coding challenge that I could not solve on my own, I decided to repeat solving this challenge today in order to solidify what I have learned before moving on to the next topic. Repetition has proven to be helpful in understanding when and why certain methods should be used.
 
 
 I was able to answer steps 1-4 and 7-8 independently. With step 5 & 6, I tend to forget that the some() method exists. I first attempted to solve by using the filter() and reduce() methods, but would get opposite result.

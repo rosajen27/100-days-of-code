@@ -2822,3 +2822,74 @@ The filter() method did not work in this situation because this method is used t
 
 
 The some() method works because if there is any value for which this condition is true, then the some method will return true.
+
+const dogs = [
+
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+
+];
+
+// 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property.
+// Formula: recommendedFood = weight ** 0.75 * 28
+const recommendedFood = function (dog) {
+  dog.recFood = Math.trunc(dog.weight ** 0.75 * 28);
+};
+dogs.forEach(recommendedFood);
+console.log(dogs);
+
+// 2. Find Sarah's dog and log to the console whether it's eating too much or too little
+const sarahsDog = dogs.find(function (dog) {
+  return dog.owners.includes("Sarah");
+});
+console.log(sarahsDog);
+console.log(`Sarah's dog is eating ${sarahsDog.curFood > sarahsDog.recFood ? "too much" : "too little"} food.`);
+
+// 3. Create an array containing all the owners of dogs who eat too much and an array with all owners of dogs who eat too little
+const ownersEatTooMuch = dogs.filter(function (dog) {
+  return dog.curFood > dog.recFood;
+}).flatMap(function (dog) {
+  return dog.owners;
+});
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs.filter(function (dog) {
+  return dog.curFood < dog.recFood;
+}).flatMap(function (dog) {
+  return dog.owners;
+});
+console.log(ownersEatTooLittle);
+
+// 4. Log a string to the console for each array created
+console.log(`${ownersEatTooMuch.join(" and ")}'s dogs each too much!`);
+console.log(`${ownersEatTooLittle.join(" and ")}'s dogs each too little!`);
+
+// 5. Log to the console whether there is any dog eating exact amount of recommended food
+const exactAmountFood = dogs.some(function (dog) {
+  return dog.curFood === dog.recFood;
+});
+console.log(exactAmountFood);
+
+// 6. Log to the console whether there is any dog eating an okay amount of food
+// Formula: currentFood > (recommendedFood * 0.90) && currentFood < (recommendedFood * 1.10)
+const okayAmountFood = dogs.some(function (dog) {
+  return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+});
+console.log(okayAmountFood);
+
+// 7. Create an array containing the dogs that are eating an ok amount of food
+const okayAmountFoodArr = dogs.filter(function (dog) {
+  return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+});
+console.log(okayAmountFoodArr);
+
+// 8. Create a shallow copy of the dogs array and sort it by recommended food portion in ascending order
+const dogsCopy = dogs.slice().sort(function (a, b) {
+  return a.recFood - b.recFood;
+});
+console.log(dogsCopy);

@@ -2836,60 +2836,213 @@ const dogs = [
 ];
 
 // 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property.
+
 // Formula: recommendedFood = weight ** 0.75 * 28
+
 const recommendedFood = function (dog) {
+
   dog.recFood = Math.trunc(dog.weight ** 0.75 * 28);
+
 };
+
 dogs.forEach(recommendedFood);
+
 console.log(dogs);
 
+
+
 // 2. Find Sarah's dog and log to the console whether it's eating too much or too little
+
 const sarahsDog = dogs.find(function (dog) {
+
   return dog.owners.includes("Sarah");
+
 });
+
+
 console.log(sarahsDog);
+
 console.log(`Sarah's dog is eating ${sarahsDog.curFood > sarahsDog.recFood ? "too much" : "too little"} food.`);
 
-// 3. Create an array containing all the owners of dogs who eat too much and an array with all owners of dogs who eat too little
+
+
+// 3. Create an array containing all the owners of dogs who eat too much and an array with all owners of dogs who eat 
+too little
+
 const ownersEatTooMuch = dogs.filter(function (dog) {
+
+
   return dog.curFood > dog.recFood;
+
 }).flatMap(function (dog) {
+
   return dog.owners;
+
 });
+
 console.log(ownersEatTooMuch);
 
+
+
 const ownersEatTooLittle = dogs.filter(function (dog) {
+
   return dog.curFood < dog.recFood;
+
 }).flatMap(function (dog) {
+
   return dog.owners;
+
 });
+
 console.log(ownersEatTooLittle);
 
+
+
 // 4. Log a string to the console for each array created
+
 console.log(`${ownersEatTooMuch.join(" and ")}'s dogs each too much!`);
+
 console.log(`${ownersEatTooLittle.join(" and ")}'s dogs each too little!`);
 
+
+
 // 5. Log to the console whether there is any dog eating exact amount of recommended food
+
 const exactAmountFood = dogs.some(function (dog) {
+
   return dog.curFood === dog.recFood;
+
 });
+
 console.log(exactAmountFood);
 
+
+
 // 6. Log to the console whether there is any dog eating an okay amount of food
+
 // Formula: currentFood > (recommendedFood * 0.90) && currentFood < (recommendedFood * 1.10)
+
 const okayAmountFood = dogs.some(function (dog) {
+
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+
 });
+
 console.log(okayAmountFood);
 
+
+
 // 7. Create an array containing the dogs that are eating an ok amount of food
+
 const okayAmountFoodArr = dogs.filter(function (dog) {
+
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
+
 });
+
 console.log(okayAmountFoodArr);
 
+
+
 // 8. Create a shallow copy of the dogs array and sort it by recommended food portion in ascending order
+
 const dogsCopy = dogs.slice().sort(function (a, b) {
+
   return a.recFood - b.recFood;
+
 });
+
 console.log(dogsCopy);
+
+
+
+-----------------------------------------
+
+
+
+### Day 58: June 24, 2021
+
+**Today's Progress**: Converting & Checking Numbers
+
+
+**Thoughts**: In JavaScript, all numbers are presented internally as floating point numbers. So basically, always as decimals, no matter if we actually write them as integers or as decimals.
+
+
+console.log(23 === 23.0); --> true
+
+
+23 is, in fact, the same as 23.0. And that's the reason why we only have one data type for all numbers. Also, numbers are represented internally in a 64 base 2 format. So that means that numbers are always stored in a binary format -- they're only composed of zeros and ones.
+
+
+Now, in this binary form, it is very hard to represent some fractions that are very easy to represent in the base 10 system that we are used to. Base 10 is basically the numbers from zero to nine, while binary is base 2 and so that's the numbers zero and one.
+
+
+There are certain numbers that are very difficult to represent in base 2. One example of that is the fraction 0.1. And that then results in very weird results like this.
+
+
+console.log(0.1 + 0.2); --> 0.30000000000000004
+
+
+This is kind of a running joke in JavaScript because this result should, of course, be 0.3 But JavaScript simply has no better way of representing this number.
+
+
+So in base 10, 1/10 is simply 0.1. And so that's very easy to represent. But, for example, if we were trying to do 3/10, then that is also impossible to represent for us, right? It would be this number here (3.33333333333 etc) and three until infinity, okay?
+
+
+And so in binary, the same thing happens with 0.1. We get basically an infinite fraction and that then results in a weird result like this one (0.30000000000000004).
+
+--
+
+- Conversion: To convert a string into a number you can do either of the following:
+
+console.log(Number(23)); or simply use the plus operator console.log(+23);
+
+
+- Parsing: You can also parse a number from a string:
+
+console.log(Number.parseInt("30px")); --> 30
+
+
+console.log(Number.parseInt("e30px")); --> NaN
+
+
+console.log(Number.parseInt("2.5rem")); --> 2.5
+
+
+console.log(Number.parseFloat("2.5rem")); --> 2
+
+
+Note: in order for this to work, the string has to start with a number. The parseInt function actually accepts a second argument, which is the so-called regex. And the regex is the base of the numeral system that we are using. So here we are simply using base 10 numbers. So numbers from zero to nine. And most of the time, we are doing that and so we should always pass in the number 10 here. So that can avoid some bugs in some situations.
+
+
+The parseFloat function should be your go-to whenever you need to read a value out of a string -- for example, coming from CSS.
+
+
+- isNAN: check if value is not a number
+
+
+console.log(Number.isNaN(20)); --> false
+
+console.log(Number.isNaN("20")); --> false
+
+console.log(Number.isNaN(+"20X")); --> true
+
+console.log(Number.isNaN(23/0)); --> false
+
+
+In summary, the Number.isNan()-method only returns true if the variable supplied as an argument is of the value NaN, and of the type Number.
+
+
+- isFinite: this methos is better when trying to check if a value is a number or not
+
+
+console.log(Number.isFinite(20)); --> true
+
+console.log(Number.isFinite("20")); --> false
+
+console.log(Number.isFinite(+"20X")); --> false
+
+console.log(Number.isFinite(23/0)); --> false
+
+
+

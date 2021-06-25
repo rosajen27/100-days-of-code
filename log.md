@@ -3046,3 +3046,116 @@ console.log(Number.isFinite(23/0)); --> false
 
 
 
+-----------------------------------------
+
+
+
+### Day 59: June 25, 2021
+
+**Today's Progress**: Math + Rounding
+
+
+**Thoughts**: 
+
+
+
+- Square Root
+
+console.log(Math.sqrt(25)); --> 5
+
+console.log(25 ** (1/2)); --> 5
+
+
+
+- Maximum value
+
+console.log(Math.max(5, 18, 23, 11, 2)); --> 23
+
+console.log(Math.max(5, 18, "23", 11, 2)); --> 23
+
+console.log(Math.max(5, 18, "23px", 11, 2)); --> NaN (Parsing does not work in this case)
+
+
+
+- Minimum Value
+
+console.log(Math.min(5, 18, 23, 11, 2)); --> 2
+
+
+
+- Constants
+
+console.log(Math.PI); --> 3.141592653589793
+
+console.log(Math.PI * Number.parseFloat("10px") ** 2); // Calculating area of a circle with radius of 10 --> 314.
+1592653589793
+
+console.log(Math.trunc(Math.random() * 6) + 1); // Generate a random number between 1 - 6
+
+
+
+// will return a random number between min & max
+
+const randomInt = function(min, max) {
+
+	return Math.trunc(Math.random() * (max - min) + 1) + min;
+
+};
+
+console.log(randomInt(1, 20));
+
+
+
+- Rounding integers
+
+// Remove digits after the decimal point
+
+console.log(Math.trunc(23.3)); --> 23
+
+
+
+// Rounded to nearest whole number
+
+console.log(Math.round(23.3)); --> 23
+
+console.log(Math.round(23.9)); --> 24
+
+
+
+
+// Rounded UP
+
+console.log(Math.ceil(23.3)); --> 24
+
+console.log(Math.ceil(23.9)); --> 24 
+
+
+
+// Rounded DOWN
+
+console.log(Math.floor(23.3)); --> 23
+
+console.log(Math.floor(23.9)); --> 23 
+
+
+
+- Rounding decimals
+
+console.log(2.7).toFixed(0); --> 3 // will return as a string, not a number
+
+console.log(2.7).toFixed(3); --> 2.700
+
+console.log(2.345).toFixed(2); --> 2.35
+
+console.log(+2.345).toFixed(2); // plus sign will convert a string to a number
+
+----------
+
+Bankist App Updates
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+
+- Math.floor() method implemented when user requests loan
+
+- .toFixed() method implemented so that all dollar amounts are shown as $x.xx

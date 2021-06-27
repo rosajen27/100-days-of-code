@@ -3159,3 +3159,63 @@ GitHub Repo: https://github.com/rosajen27/bankist
 - Math.floor() method implemented when user requests loan
 
 - .toFixed() method implemented so that all dollar amounts are shown as $x.xx
+
+-----------------------------------------
+
+
+
+### Day 60: June 26, 2021
+
+**Today's Progress**: The Remainder Operator
+
+**Thoughts**: The remainder operator returns the remainder of a division. 
+
+
+console.log(5 % 2); --> 1 Remainder
+
+console.log(5 / 2); --> 2.5 // Because 5 = 2 * 2 + 1
+
+
+console.log(8 % 3); --> 2 Remainder
+
+console.log(8 / 3); --> 2.6666666 // Because 8 = 2 * 3 + 2
+
+
+One thing that is many times used for programming, is to check whether a certain number is even or odd. A number is even when it is divisible by two (meaning -- if we divide it by two, the remainder is zero).
+
+console.log(6 % 2); --> 0 
+
+
+const isEven = function(n) {
+
+	return n % 2 === 0;
+
+}
+
+
+console.log(isEven(8)); --> true
+
+console.log(isEven(3)); --> false
+
+
+Real World Example: If we wanted to change the background color of every other transaction:
+
+labelBalance.addEventListener("click", function() {
+	[...document.querySelectorAll(".movements__row")].forEach(function(row, i) {
+		if (i % 2 === 0) row.style.backgroundColor = "orangered";
+	});
+});
+
+-----------------------------------------
+
+
+
+### Day 61: June 27, 2021
+
+**Today's Progress**: BigInt
+
+
+**Thoughts**: 
+
+
+

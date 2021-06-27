@@ -3198,12 +3198,18 @@ console.log(isEven(8)); --> true
 console.log(isEven(3)); --> false
 
 
-Real World Example: If we wanted to change the background color of every other transaction:
+Real World Example: If we wanted to change the background color of every other transaction in Bankist App:
+
+
 
 labelBalance.addEventListener("click", function() {
+
 	[...document.querySelectorAll(".movements__row")].forEach(function(row, i) {
+
 		if (i % 2 === 0) row.style.backgroundColor = "orangered";
+
 	});
+
 });
 
 -----------------------------------------
@@ -3215,7 +3221,34 @@ labelBalance.addEventListener("click", function() {
 **Today's Progress**: BigInt
 
 
-**Thoughts**: 
+**Thoughts**: As previously learned, numbers are represented internally as 64 bits. That means that there are exactly 64 ones or zeros to represent any given number. Now of these 64 bits, only 53 are used to actually store the digits themselves. The rest are for storingg the position of the decimal point and the sign. 
 
 
+If there are only 53 bits to store the number, that means that there is a limit of how big numbers can be, and we can calculate that number.
 
+
+console.log(2 ** 53 - 1); --> 9007199254740991 // This is essentially the biggest number that JavaScript can safely represent
+
+
+console.log(Number.MAX_SAFE_INTEGER); --> 9007199254740991 // This number is so important that it's even stored into the number namespace MAX SAFE INTEGER. So any integer that is larger than this, is not safe and that means it cannot be represented accurately. So if we do calculations with numbers that are bigger than this, then we might lose precision.
+
+
+This can be a problem sometimes because in some situations, we might need really big numbers. For example - for database IDs or when interacting with real 60 bit numbers. 
+
+
+However, since ES2020 - a new primivite was added, which is called BigInt (big integer). It can be used to store numbers as large as we want. 
+
+
+console.log(123456789123456789123456789); --> 1.2345678912345679e+26
+
+console.log(123456789123456789123456789n); --> 123456789123456789123456789n // Including the n at the end, transforms a regular number into a BigInt number.
+
+
+All usual operators still work the same. However, what is not possible is mixing BigInts with regular numbers - you would have to fist use the BigInt constructor.
+
+
+const huge = 123456789123456789123456789n;
+
+const num = 23;
+
+console.log(huge * BigInt(num));

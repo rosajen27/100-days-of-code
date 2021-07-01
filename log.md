@@ -3212,6 +3212,8 @@ labelBalance.addEventListener("click", function() {
 
 });
 
+
+
 -----------------------------------------
 
 
@@ -3252,3 +3254,72 @@ const huge = 123456789123456789123456789n;
 const num = 23;
 
 console.log(huge * BigInt(num));
+
+
+
+-----------------------------------------
+
+
+
+### Day 62: July 1, 2021
+
+**Today's Progress**: (Returned from mini vacation :) ) -- Creating Dates
+
+
+**Thoughts**:
+
+// Create a date
+
+const now = new Date();
+
+console.log(now); --> // *displays current date and time at this very moment*
+
+
+// Parse date from a date string
+
+console.log(new Date("December 24, 2021")); --> Fri Dec 24 2021 00:00:00 GMT-0500 (Eastern Standard Time)
+
+
+We can also pass in year, month, day, hour, minute, and second into the constructor. Important Note: The MONTH is ZERO BASED (0 = January).
+
+
+console.log(new Date(2037, 10, 19, 15, 23, 5)); --> Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+
+
+// Working with dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+
+console.log(future); --> Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+
+
+console.log(future.getFullYear()); --> 2037
+
+console.log(future.getMonth()); --> 10 *remember this is zero based*
+
+console.log(future.getDate()); --> 19
+
+console.log(future.getDay()); --> 4 // Thursday
+
+console.log(future.getHours()); --> 15
+
+console.log(future.getMinutes()); --> 23
+
+console.log(future.getSeconds()); --> 0
+
+console.log(future.getISOString()); --> 2037-11-19T15:23:00.000Z
+
+
+console.log(future.getTime()); --> 2142256980000 *amount of milliseconds that have passed since Jan 1, 1970*
+
+console.log(new Date(2142256980000)); Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+
+
+// Setting a date
+
+future.setFullYear(2040);
+
+console.log(future); --> Mon Nov 19 2040 15:23:00 GMT-0500 (Eastern Standard Time)
+
+
+You can also use this to set month, date, etc.

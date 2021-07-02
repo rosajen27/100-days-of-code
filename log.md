@@ -3323,3 +3323,125 @@ console.log(future); --> Mon Nov 19 2040 15:23:00 GMT-0500 (Eastern Standard Tim
 
 
 You can also use this to set month, date, etc.
+
+
+----------
+
+Bankist App Updates
+
+GitHub Repo: https://github.com/rosajen27/bankist
+
+
+- Display Current Date under 'Current Balance' heading
+
+- For each movement/transaction - display date
+
+- Added dates to loans and transfers movements/transactions
+
+
+
+
+-----------------------------------------
+
+
+
+### Day 63: July 2, 2021
+
+**Today's Progress**: Operations with dates
+
+
+**Thoughts**: 
+
+// Calculations with dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+
+console.log(Number(future)); --> 2142274980000 // time stamp in milliseconds
+
+console.log(+future); --> 2142274980000
+
+
+
+const calcDaysPassed = function(date1, date2) {
+
+	return date2 - date1;
+
+
+}
+
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+
+console.log(days1); --> 864000000
+
+
+
+
+
+const calcDaysPassedConverted = function(date1, date2) {
+
+	// convert milliseconds - 
+
+	// * 1000 to convert milliseconds to seconds
+
+	// * 60 to convert seconds to minutes
+
+	// * 60 to convert minutes to hours
+
+	// * 24 to convert hours to days
+
+	return date2 - date1 / (1000 * 60 * 60 * 24);
+
+}
+
+
+
+const days2 = calcDaysPassedConverted(new Date(2037, 3, 14), new Date(2037, 3, 24));
+
+console.log(days2); --> 10 // days
+
+-----------------------------
+
+We can use this function to format and display or dates in a different way within the Bankist application.
+For example, if one movement happened today, then instead of the current date, it can display "today", then if it happened yesterday, it can display "yesterday". And then if it happened two days ago or five days ago, instead of the date.
+
+
+This has been featured on many social media platforms. For example, if you post something on Facebook, and if you didn't watch it the next day, it will say that you posted it yesterday, it's not going to display the exact date.
+
+
+const calcDaysPassed = function(date1, date2) {
+
+	return Math.round(Math.abs(date2 - date1 / (1000 * 60 * 60 * 24)));
+
+}
+
+
+const daysPassed = calcDaysPassed(new Date(), date) {
+
+	if (daysPassed === 0) {
+
+		return "Today";
+
+	} else if (daysPassed === 1) {
+
+		return "Yesterday";
+
+	} else if (daysPassed <= 7) {
+
+		return `${daysPassed} days ago`
+
+	} else {
+
+		    const day = `${now.getDate()}`.padStart(2, 0);
+
+    		const month = `${now.getMonth() + 1}`.padStart(2, 0); // because it is zero based
+
+    		const year = now.getFullYear();
+
+			return `${day}/${month}/${year}`;
+
+	}
+
+};
+
+
+*Note: I decided not to apply this to the application* 

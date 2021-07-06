@@ -3445,3 +3445,281 @@ const daysPassed = calcDaysPassed(new Date(), date) {
 
 
 *Note: I decided not to apply this to the application* 
+
+
+
+
+
+-----------------------------------------
+
+
+
+### Day 64: July 3, 2021
+
+**Today's Progress**: Internationalizing Dates
+
+
+**Thoughts**: 
+
+Instead of coding dates like this:
+
+    const now = new Date();
+
+    const day = `${now.getDate()}`.padStart(2, 0);
+
+    const month = `${now.getMonth() + 1}`.padStart(2, 0); // because it is zero based
+
+    const year = now.getFullYear();
+
+    const hour = `${now.getHours()}`.padStart(2, 0);
+
+    const min = `${now.getMinutes()}`.padStart(2, 0);
+
+    labelDate.textContent = `${month}/${day}/${year}, ${hour}:${min}`;
+
+
+
+You can use the Internationalization API:
+
+const now = new Date();
+
+labelDate.textContent = new Intl.DateTimeFormat("en-US").format(now);
+
+
+ISO Language Code Table: http://www.lingoes.net/en/translator/langcode.htm
+
+-----------------------------------------
+You can also display time by providing an options object to the function:
+
+
+const now = new Date();
+
+const options = {
+
+	hour: "numeric",
+
+	minute: "numeric",
+
+	day: "numeric",
+
+	month: "numeric",
+
+	year: "numeric",
+
+	weekday: "long"
+}
+
+labelDate.textContent = new Intl.DateTimeFormat("en-US", options).format(now);
+
+*Other options include "long", "2-digit", "short", "narrow"*
+
+-----------------------------------------
+
+In many situations, it actually makes more sense to not define locale manually, but to simply get it from the user's browser.
+
+const now = new Date();
+
+const locale = navigator.language;
+
+const options = {
+
+	hour: "numeric",
+
+	minute: "numeric",
+
+	day: "numeric",
+
+	month: "numeric",
+
+	year: "numeric",
+
+	weekday: "long"
+}
+
+labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
+
+
+-----------------------------------------
+
+
+
+### Day 65: July 4, 2021
+
+**Today's Progress**: Internationalizing Numbers
+
+
+**Thoughts**: 
+
+const num = 3884764.23;
+
+
+
+console.log("US: ", new Intl.NumberFormat("en-US").format(num));
+
+console.log("Germany: ", new Intl.NumberFormat("de-DE").format(num));
+
+console.log("Syria: ", new Intl.NumberFormat("ar-SY").format(num));
+
+
+
+--> 
+
+US:  3,884,764.23
+
+Germany:  3.884.764,23
+
+Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣
+
+
+
+-----------------------------------------
+
+const num = 3884764.23;
+
+const options = {
+
+	style: "unit",
+
+	unit: "mile-per-hour",
+
+};
+
+console.log("US: ", new Intl.NumberFormat("en-US", options).format(num));
+
+console.log("Germany: ", new Intl.NumberFormat("de-DE", options).format(num));
+
+console.log("Syria: ", new Intl.NumberFormat("ar-SY", options).format(num));
+
+console.log(navigator.language, new Intl.NumberFormat(navigator.language, options).format(num));
+
+
+
+-->
+
+US:  3,884,764.23 mph
+
+Germany:  3.884.764,23 mi/h
+
+Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣ ميل/س
+
+en-US 3,884,764.23 mph
+
+-----------------------------------------
+
+Some other examples include:
+
+
+const options = {
+
+	style: "unit",
+
+	unit: "celsius"
+
+};
+
+
+
+const options = {
+
+	style: "percent",
+
+};
+
+
+
+const options = {
+
+	style: "currency",
+
+	currency: "EUR"
+
+};
+
+*Note: We do infact have to label the currency, as it is not determined by the locale*
+
+-----------------------------------------
+
+
+
+### Day 66: July 5, 2021
+
+**Today's Progress**: Timers (setTimeout & setInterval)
+
+
+**Thoughts**: The setTimeout() timer runs just once, after a defined time, while the setInterval() timer keeps running forever, until we stop it.
+
+We can use setTimeout to execute some code at some point in the future.
+
+
+setTimeout(function() {
+
+	console.log("Here is your pizza 🍕"); 
+
+}, 3000);
+
+
+--> // after 3 seconds, the console will log the message above
+
+
+Any argument that you pass after the delay, will be arguments to the function.
+
+
+setTimeout(function(ing1, ing2) {
+
+	console.log(`Here is your pizza 🍕 with ${ing1} and ${ing2}`); 
+
+}, 3000, "olives", "spinach");
+
+
+
+--> // after 3 seconds, the console will log the message above
+
+
+
+-----------------------------------------
+
+
+
+We can also cancel the timer, at least until before the delay has actually passed. 
+
+
+
+const ingredients = ["olives", "spinach"];
+
+
+
+const pizzaTimer = setTimeout(function(ing1, ing2) {
+
+	console.log(`Here is your pizza 🍕 with ${ing1} and ${ing2}`); 
+
+}, 3000, ...ingredients);
+
+console.log("Waiting...");
+
+
+
+if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
+
+
+-----------------------------------------
+// setInterval
+
+setInterval(function() {
+	const now = new Date();
+	console.log(now);
+}, 1000);
+
+--> // will print the date every second on the console
+
+-----------------------------------------
+
+
+
+### Day 67: July 6, 2021
+
+**Today's Progress**: Implementing a countdown timer & completion of Bankist App
+
+
+**Thoughts**: GitHub Repo: https://github.com/rosajen27/bankist
+
+For security reasons, real bank applications will log users out after some inactive time. A 5 minute countdown timer was implemented, which is displayed in the UI. User will be logged out after 5 minutes of inactivity. With this addition, the Bankist Application is now complete.

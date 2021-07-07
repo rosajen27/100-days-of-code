@@ -3723,3 +3723,37 @@ setInterval(function() {
 **Thoughts**: GitHub Repo: https://github.com/rosajen27/bankist
 
 For security reasons, real bank applications will log users out after some inactive time. A 5 minute countdown timer was implemented, which is displayed in the UI. User will be logged out after 5 minutes of inactivity. With this addition, the Bankist Application is now complete.
+
+
+
+-----------------------------------------
+
+
+
+### Day 68: July 7, 2021
+
+**Today's Progress**: DOM
+
+
+**Thoughts**: The DOM is basically the interface between all the JS code and the browser, or more specifically HTML documents that are rendered in and by the browser.
+
+
+- The DOM allows us to make JS interact with the browser
+- We can write JS to create, modify, and delete HTML elements; set styles, classes and attributes; and listen and respond to events
+- DOM tree is generated from an HTML document, which we can then interact with
+- DOM is a very complex API (application programming interface) that contains lots of methods and properties to interact with the DOM tree [querySelector(), addEventListener(), createElement(), innerHTML(), textContent, children, etc]
+
+
+How to DOM API is organized behind the scenes:
+
+- Every single node in the DOM tree, is of the type Node
+- Each Node is represented in JS by an object. This object gets special node methods and properties such as textContent, child nodes, parent nodes, clone nodes, and many others
+- There are different kinds of Nodes that can be represented as the element, text, comment, or document type
+- So whenever there is text inside any element, we already know that it gets its own node. That node will be of the type text
+- The same actually happens for HTML comments
+- For the element itself, there is the element type of node. And this type of node gives each HTML acess to a ton of useful properties such as innerHTML, classList, children or parent elements. There are also many useful methods like append, remove, insertAdjacentHTML, querySelector, etc
+- Each element will be represented internally as an object
+- The element type has internally an HTML element, child type. That element type itself has exactly one child type for each HTML element that exists in HTML
+- We have a special type for buttons, images, links, etc. This is important because each of these HTML elements can have different unique properties (For example, an image has a source attribute in HTML, which no other element has)
+- Inheritance of Methods and Properties: Inheritance means that all the child types will also get access to the methods and properties of all their parent node types (for ecample, an HTML element will get access to everything from the element type, like innerHTMl, or classList)
+- Document: Document is just another type of Node, so it contains important methods such as querySelector, createElement, and getElementbyID

@@ -3757,3 +3757,64 @@ How to DOM API is organized behind the scenes:
 - We have a special type for buttons, images, links, etc. This is important because each of these HTML elements can have different unique properties (For example, an image has a source attribute in HTML, which no other element has)
 - Inheritance of Methods and Properties: Inheritance means that all the child types will also get access to the methods and properties of all their parent node types (for ecample, an HTML element will get access to everything from the element type, like innerHTMl, or classList)
 - Document: Document is just another type of Node, so it contains important methods such as querySelector, createElement, and getElementbyID
+
+
+
+-----------------------------------------
+
+
+
+### Day 69: July 8, 2021
+
+**Today's Progress**: Selecting, Creating, and Deleting Elements (review)
+
+
+**Thoughts**: SELECTING - We have a special way of selecting the entire document of any webpage(document), and that is documentElement. We can also easily select the head and body.
+
+console.log(document.documentElement);
+
+console.log(document.head);
+
+console.log(document.body);
+
+
+document.querySelector(".header"); --> // will return the first element that matches the selector.
+
+const allSections = document.querySelectorAll(".section"); --> // will return all elements that matches the selector.
+
+console.log(allSections); --> // will return a node list that contains all of the elements that are selected by this selector
+
+-----
+
+document.getElementByID("section--1");
+
+const allButtons = document.getElementsByTagName("button");
+
+console.log(allButtons); --> // returns all of the buttons on our webpage. This method actually returns an HTML collection, which is different from a Node list. An HTML collection is actually a so called live collection, which means if the DOM changes, then this collection is also immediately updated automatically. The same does not happen with a Node list - it does not update itself.
+
+
+document.getElementsByClassName("btn"); --> // will also return a live HTML collection
+
+--------------------------------------------------------
+
+CREATING & INSERTING - We can create HTML elements using insertAdjacentHTML or createElement. If we want it to appear onto the page, then we have to manually insert it.
+
+const header = document.querySelector(".header");
+
+const message = document.createElement("div");
+
+message.classList.add("cookie-message");
+
+message.innerHTML = "We use cookies for improved functionality and analytics. <button class='btn btn--close--cookie'>Got it!</button>";
+
+header.append(message);
+
+// two other methods include .before() and .after() - which will appear before or after the element as a sibling
+
+--------------------------------------------------------
+
+DELETE -
+
+document.querySelector(".btn--close--cookie").addEventListener("click", function() {
+	message.remove();
+});

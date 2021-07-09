@@ -3818,3 +3818,98 @@ DELETE -
 document.querySelector(".btn--close--cookie").addEventListener("click", function() {
 	message.remove();
 });
+
+
+-----------------------------------------
+
+
+
+### Day 70: July 9, 2021
+
+**Today's Progress**: Styles, Attributes, Classes (review)
+
+
+**Thoughts**: 
+
+// STYLES
+
+message.style.backgroundColor = "#37383d";
+
+message.style.width = "120%";
+
+
+
+console.log(message.style.height); --> // returns nothing because using the style property like this here only works for inline styles that we set ourselves also using this style property
+
+
+console.log(message.style.backgroundColor); --> // this will return the background color because it is an inline style, so a style that we set manually ourselves
+
+
+console.log(message.style.color); --> // returns nothing because we cannot get a style that is hidden inside of a class or that does not exist
+
+----------
+
+console.log(getComputerStyle(message)); --> // returns large object with all styles
+
+console.log(getComputedStyle(message).color);
+
+console.log(getComputedStyle(message).height);
+
+// COMPUTED, which means that it's the real style as it appears on the page - even if we do not declare it in our CSS
+
+// since getComputerStyle returns a string, we must parse the digits and turn it into a number before we can add a number to it.
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
+
+----------
+
+// CSS Variables (Custom Properties)
+
+document.documentElement.style.setProperty("--color-primary", "orangered"); --> // everywhere in our style where we used the primary color, it is now orange red
+
+----------
+
+// ATTRIBUTES
+
+Examples of attributes include source, alt, class, IDs, etc. So in JS ofcourse we can access and change these different attributes. 
+
+
+const logo = document.querySelector(".nav__logo");
+
+console.log(logo.alt); --> // will display alternative text
+
+console.log(logo.src); --> // will display absolute URL -- the same is true for href links
+
+console.log(logo.className); --> // will display class name
+
+console.log(logo.designer); --> // undefined because it is a NON STANDARD
+
+console.log(logo.getAttribute("designer")); --> Jonas
+
+
+So if we specify them in HTML, then JS will automatically create these properties on the object, but if we add some other property that is not a standard then JS will not create a property on the object (in order to be able to do this you must use getAttribute).
+
+
+Just as we can read these attributes, we can also define them.
+
+
+logo.alt = "Beautiful minimalist logo";
+
+logo.setAttribute("company", "Bankist"); 
+
+----------
+
+// Data Attributes
+
+console.log(logo.dataset.versionNumber); --> // So data, and data attributes are a special kind of attributes that start with the words data. Often used when working with the UI and especially when data needs to be stored in the UI (in the HTML code)
+
+
+----------
+
+// CLASSES
+
+logo.classList.add();
+logo.classList.remove();
+logo.classList.toggle();
+logo.classList.contains();
+

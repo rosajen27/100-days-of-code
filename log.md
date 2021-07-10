@@ -3913,3 +3913,113 @@ logo.classList.remove();
 logo.classList.toggle();
 logo.classList.contains();
 
+
+-----------------------------------------
+
+
+
+### Day 71: July 10, 2021
+
+**Today's Progress**: Smooth scrolling with JavaScript
+
+
+**Thoughts**: *The simplest way to implement smooth scroll would be through css, however this is an alternative way of doing it with JavaScript*
+
+html {
+
+scroll-behavior: smooth;
+
+}
+
+----------
+
+// Smooth Scrolling with JavaScript (Manually)
+
+
+// the name of the button
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+
+
+// the name of the section we want to scroll to
+
+const section1 = document.querySelector("#section--1");
+
+
+// scroll event listener
+
+btnScrollTo.addEventListener("click", function(e) {
+	
+	// get the coordinates of the element that we want to scroll to
+  	
+	const s1coords = section1.getBoundingClientRect();
+	
+
+	// returns a DOM rectangle, but not the best element to understand this
+
+  	console.log(s1coords);
+
+
+	// returns rectangle for the button that was clicked
+	
+	// x: the distance between the border OF THE VISIBLE VIEWPORT
+	
+	// y: the distance from the top OF THE VISIBLE VIEWPORT
+	
+	// width and height of button
+	
+	// top: is similar to y, but it isn't always - because when we scroll, x and y actually change*
+
+  	console.log(e.target.getBoundingClientRect());
+
+
+  	// returns current scroll position, relative to the top and border of the page
+	
+	console.log("Current Scroll Positions(X/Y)", window.pageXOffset, window.pageYOffset);
+  	
+
+	// returns height and width of viewport
+
+	console.log("height/width of the visible viewport", document.documentElement.clientHeight, document.documentElement.clientWidth);
+
+
+  	// Scrolling
+
+  	// The purpose of getting these coordinates is to then tell JS where to scroll to
+	  
+	window.scrollTo({
+		
+		// add current scroll position + top value
+		// this will allow us to determine the position of section we are scrolling to, not relative to the VIEWPORT, but instead to the TOP OF THE PAGE
+		
+		top: s1coords.top + window.pageYOffset,
+
+
+		// add current scroll position + border value
+		
+		left: s1coords.left + window.pageXOffset, 
+
+
+		behavior: "smooth",
+
+	});
+
+
+});
+
+-------------
+
+// Modern Method of Smooth Scrolling- only words in modern browsers
+
+btnScrollTo.addEventListener("click", function (e) {
+
+  section1.scrollIntoView({ behavior: "smooth" });
+
+});
+
+
+----------
+
+Implemented Smooth Scrolling on to my new project, Bankist Ad -- a marketing website for previously completed Bankist App.
+
+GitHub Repo: https://github.com/rosajen27/bankist-ad

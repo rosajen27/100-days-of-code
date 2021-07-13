@@ -4095,3 +4095,56 @@ h1.onmouseenter = function(e) {
 // a third way of attaching an event listener to an element (using an HTML attribute -- should NOT be used)
 
 <h1 onclick="alert('HTML alert!')">Header</h1>
+
+
+
+-----------------------------------------
+
+
+
+### Day 73: July 12, 2021
+
+**Today's Progress**: Event Propagation: Bubbling & Capturing
+
+
+**Thoughts**: Events propagate (bubble and capture) -- meaning its events transmit from one place to another
+
+
+<html>
+
+<head>
+
+<title>Title</title>
+
+</head>
+
+<body>
+
+<section>
+
+<p>A paragraph with a <a>link</a></p>
+
+</section>
+
+</body>
+
+
+DOM Tree: Document --> Element HTML --> Element BODY --> Element SECTION --> Element P --> Element A
+
+
+Let's say that a click happens on the link. The DOM would generate a click event right away. However, this event is NOT generated at the target element (the element where the event happened ie. the click on the anchor element). Instead, the event is actually generated at the root of the document, so at the very top of the DOM tree.
+
+
+1. From there, the so-called CAPTURING PHASE happens, where the event then travels all the way down, from the document root to the target element. As the event travels down the tree, it will pass through EVERY single parent element of the target element, until it finally reaches its target.
+
+
+2. As soon as the event reaches the target, the TARGET PHASE begins -- Where events can be handled right at the target (such as with Event Listeners). Event Listeners wait for a certain event to happen on a certain element. As soon as the event occurs, it runs the attached callback function.
+
+
+3. After reaching the target, the event then actually travels all the way up to the document route again, in the so-called BUBBLING PHASE. So we say that events bubble up, from the target to the document root. Just like the capturing phase, the event passes through all its parents element (just the parents -- not through any sibling elements). 
+
+
+Importance: It is as if each event happened in each of the parent elements. So again, as the event bubbles through a parent element, it's as if the event had happened right in that very element. What this means if that if we attach the same event listener, for example, to the section element, then we would get the exact same alert window for the section element as well. So we would have handled the same exact event twice -- once at its targer, and once at one of its parent element. This behavior will allow us to implement powerful patterns. 
+
+
+By default, events can only be handled in the target, and in the bubbling phase. However, we can set up event listeners in a way that they listen to events in the capturing phase instead. Most elements capture and bubble, but not all types of events have a capturing and bubbling phase. Some of them are created right on the target element, so we can only handle them there.

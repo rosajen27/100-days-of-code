@@ -4148,3 +4148,74 @@ Importance: It is as if each event happened in each of the parent elements. So a
 
 
 By default, events can only be handled in the target, and in the bubbling phase. However, we can set up event listeners in a way that they listen to events in the capturing phase instead. Most elements capture and bubble, but not all types of events have a capturing and bubbling phase. Some of them are created right on the target element, so we can only handle them there.
+
+
+
+-----------------------------------------
+
+
+
+### Day 74: July 13, 2021
+
+**Today's Progress**: Event Propagation in practice
+
+
+**Thoughts**:
+
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+
+const randomColor = () => `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+
+document.querySelector(".nav__link").addEventListener("click", function (e) {
+
+	this.style.backgroundColor = randomColor();
+
+	console.log("LINK", e.target, e.currentTarget);
+
+});
+
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+
+	this.style.backgroundColor = randomColor();
+
+	console.log("CONTAINER", e.target, e.currentTarget);
+
+});
+
+
+document.querySelector(".nav").addEventListener("click", function (e) {
+
+	this.style.backgroundColor = randomColor();
+
+	console.log("NAV", e.target, e.currentTarget);
+
+});
+
+
+*Remember that in an event handler, the this keyword points always to the element on which that event handler is 
+attached -- in this case it is going to be document.querySelector(".nav__link")*
+
+
+In this exercise, the click event was handled in all three elements, which have a click event handler. 
+
+
+The event actually happens at the document root and from there it then travels down to the target element -- in this 
+case that is the clicked link. And then from there, it bubbles up. Bubbling up means that basically it's as if the 
+event had also happened in all of the parent elements. 
+
+
+e.target - The target is always the same in all three handlers -- which is the element where the click first happened. 
+It appears in all three handlers because all of them are essentially handling the exact same event (because of event 
+bubbling). 
+
+
+e.currentTarget - not the same. the currentTarget is exactly the same as the this keyword. 
+
+
+// stop propagation
+
+e.stopPropagation(); -- Only the background color of the clicked link has changed. The parent elements will not change their background color, which means that the event never arrived at those elements. In practice, it is usually not a good idea to stop propagation. 

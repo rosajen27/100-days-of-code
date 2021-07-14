@@ -4219,3 +4219,65 @@ e.currentTarget - not the same. the currentTarget is exactly the same as the thi
 // stop propagation
 
 e.stopPropagation(); -- Only the background color of the clicked link has changed. The parent elements will not change their background color, which means that the event never arrived at those elements. In practice, it is usually not a good idea to stop propagation. 
+
+
+
+-----------------------------------------
+
+
+
+### Day 75: July 14, 2021
+
+**Today's Progress**: Implemented smooth scrolling behavior in the navigation on Bankist Marketing webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+
+**Thoughts**:
+
+// Without Event Delegation
+
+document.querySelectorAll(".nav__link").forEach(function(el) {
+
+  el.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    const id = this.getAttribute("href");
+
+    document.querySelector(id).scrollIntoView({ behavior: "smooth"});
+
+  });
+
+});
+
+
+This solution works, but the problem is that it is not effecient. The callback function has been added once to three navigation links -- so the exact same function is attached to 3 elements. What if we had 100? 1,000? 10,000 elements? If we were to attached attach an event handler to each element like this, then we would be creating thousands of copies of the same event handler, which would impact performance. The better solution is to use event delegation.
+
+----------
+
+// Event Delegation
+
+So in event delegation, we use the fact that events bubble up. And we do that by putting the eventListener on a common parent of ALL the elements that we are interested in. And so in our example, it's the nav links container that's around all of the links. And then we can basically catch that event in this common parent element, and handle it there because we also know where the event actually originated (we can figure that out by looking at the events.target property).
+
+
+// 1. Add event listener to common parent element
+
+// 2. Determine what element originated the event (e.target)
+
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+
+	console.log(e.target);
+
+  if (e.target.classList.contains("nav__link")) {
+
+    e.preventDefault();
+
+    const id = e.target.getAttribute("href");
+
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+
+  }
+
+});

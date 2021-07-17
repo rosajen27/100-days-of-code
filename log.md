@@ -4281,3 +4281,240 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
   }
 
 });
+
+
+
+-----------------------------------------
+
+
+
+### Day 76: July 15, 2021
+
+**Today's Progress**: DOM Traversing
+
+
+**Thoughts**: DOM Traversing is basically walking through the DOM -- Which means that we can select an element based on another element. This is very important because sometimes we need to select elements relative to a certain other element. For example, a direct child or a direct parent element.
+
+
+const h1 = document.querySelector("h1");
+
+
+// Going downwards: child
+
+
+console.log(h1.querySelectorAll(".highlight"));
+
+console.log(h1.childNodes);
+
+console.log(h1.children);
+
+h1.firstElementChild.style.color = "white";
+
+h1.lastElementChild.style.color = "orangered";
+
+
+// Going upwards: parents
+
+console.log(h1.parentNode);
+
+console.log(h1.parentElement);
+
+h1.closest(".header").style.background = "var(--gradient-secondary)";
+
+
+// Going sidewards: siblings
+
+console.log(h1.previousElementSibling);
+
+console.log(h1.nextElementSibling);
+
+console.log(h1.parentElement.children);
+
+// change style to all of the siblings except the selected element itself
+
+[...h1.parentElement.children].forEach(function(el) {
+
+	if (el !== h1) el.style.transform = "scale(0.5)";
+
+});
+
+
+-----------------------------------------
+
+
+
+### Day 77: July 16, 2021
+
+**Today's Progress**: Implemented tabbed components to Bankist Marketing Webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: The whole idea when building components like this is to just add and remove classes as necessary to manipulate the content to our needs. 
+
+
+Displaying and Hiding Content = Adding and Removing classes
+
+
+-----------------------------------------
+
+
+
+### Day 78: July 17, 2021
+
+**Today's Progress**: Implemented menu fade animation on Bankist Marketing Webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: Links will fade out when we hover over one of them, except for the link that we actually are hovering over
+
+const nav = document.querySelector(".nav");
+
+
+nav.addEventListener("mouseover", function (e) {
+
+  if (e.target.classList.contains("nav__link")) {
+
+    const link = e.target;
+
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+
+    const logo = link.closest(".nav").querySelector("img");
+
+
+
+    siblings.forEach(function (el) {
+
+      if (el !== link) {
+
+        el.style.opacity = 0.5;
+
+        logo.style.opacity = 0.5;
+
+      }
+
+    });
+
+  }
+
+});
+
+
+
+nav.addEventListener("mouseout", function (e) {
+
+  if (e.target.classList.contains("nav__link")) {
+
+    const link = e.target;
+
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+
+    const logo = link.closest(".nav").querySelector("img");
+
+
+
+    siblings.forEach(function (el) {
+
+      if (el !== link) {
+
+        el.style.opacity = 1;
+
+        logo.style.opacity = 1;
+
+      }
+
+    });
+
+  }
+
+});
+
+----------
+
+DRY PRINCIPAL
+
+
+const handleHover = function (e, opacity) {
+
+	if (e.target.classList.contains("nav__link")) {
+
+    const link = e.target;
+
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+
+    const logo = link.closest(".nav").querySelector("img");
+
+
+
+    siblings.forEach(function (el) {
+
+      if (el !== link) {
+
+        el.style.opacity = opacity;
+
+        logo.style.opacity = opacity;
+
+      }
+
+    });
+
+  }
+
+};
+
+
+
+nav.addEventListener("mouseover", function(e) {
+
+	handleHover(e, 0.5);
+
+});
+
+
+
+nav.addEventListener("mouseover", function(e) {
+
+	handleHover(e, 1);
+
+});
+
+----------
+
+We could also remove the anonymous callback functions altogether by using the bind method. 
+
+
+The Bind Method creates a copy of the function that it is called on and it will set the this keyword in this function call to whatever value that we pass in to bind.
+
+const handleHover = function (e) {
+
+	if (e.target.classList.contains("nav__link")) {
+
+    const link = e.target;
+
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+
+    const logo = link.closest(".nav").querySelector("img");
+
+
+
+    siblings.forEach(function (el) {
+
+      if (el !== link) {
+
+        el.style.opacity = this;
+
+        logo.style.opacity = this;
+
+      }
+
+    });
+
+  }
+
+};
+
+
+// Passing "argument" into handler
+
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+
+nav.addEventListener("mouseout", handleHover.bind(1));

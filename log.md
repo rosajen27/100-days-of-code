@@ -4518,3 +4518,70 @@ const handleHover = function (e) {
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+
+-----------------------------------------
+
+
+
+### Day 79: July 18, 2021
+
+**Today's Progress**: Implemented sticky navigation on Bankist Marketing Webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: Sticky Navigation is when the navigation bar becomes attached to the top of the page, after we scroll to a certain point. 
+
+
+Using the intersection observer API:
+
+const header = document.querySelector(".header");
+
+// dynamically get the height of the nav bar
+
+const navHeight = nav.getBoundingClientRect().height;
+
+
+
+// the functionality that we want to happen - add and remove sticky class
+
+const stickyNav = function (entries) {
+
+  const [entry] = entries;
+
+  console.log(entry);
+
+  if (!entry.isIntersecting) {
+
+    nav.classList.add("sticky");
+
+  } else {
+
+
+    nav.classList.remove("sticky");
+  }
+
+
+
+};
+
+
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+
+  root: null,
+
+  // when 0% of the header is visible, then we want something to happen
+
+  threshold: 0,
+
+  // height of navigation - nav will appear 90 pixels before the threshold is reached
+
+  rootMargin: `-${navHeight}`,
+
+});
+
+
+// use the header observer to observe the header
+
+headerObserver.observe(header);

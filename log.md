@@ -4585,3 +4585,146 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 // use the header observer to observe the header
 
 headerObserver.observe(header);
+
+
+-----------------------------------------
+
+
+
+### Day 80: July 19, 2021
+
+**Today's Progress**: Implemented revealing elements on scroll on Bankist Marketing Webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: Dynamically applied hidden CSS class to each section. This will make the opacity of the section to 0 (invisible), and will move content down by 8rem. This class will be removed as we scroll down the page and each section will be revealed to the user.
+
+.section--hidden {
+
+  opacity: 0;
+
+  transform: translateY(8rem);
+
+}
+
+----------
+
+const allSections = document.querySelectorAll(".section");
+
+
+const revealSection = function (entries, observer) {
+
+  const [entry] = entries;
+
+
+
+  if (entry.isIntersecting) {
+
+    entry.target.classList.remove("section--hidden");
+
+    observer.unobserve(entry.target);
+
+  }
+
+}
+
+
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+
+  root: null,
+
+  threshold: 0.15,
+
+});
+
+
+
+
+allSections.forEach(function (section) {
+
+  sectionObserver.observe(section);
+
+  section.classList.add("section--hidden");
+
+});
+
+
+-----------------------------------------
+
+
+
+### Day 81: July 20, 2021
+
+**Today's Progress**: Implemented Lazy Loading Images on Bankist Marketing Webpage
+
+GitHub Rep: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: One of the most important things when building any website is performance. Images have by far the biggest impact on page loading. So it's very important that images are optimized on any page. For that, we can use a strategy called Lazy Loading Images.
+
+
+The idea is to... As we scroll to use HTML to load one of these low resolution images, and then replace this low resolution image with the high resolution one that is specified in the data-src attribute and remove the css blur effect.
+
+
+.lazy-img {
+
+  filter: blur(20px);
+
+}
+
+
+const imgTargets = document.querySelectorAll("img[data-src]");
+
+
+
+const loadImg = function (entries, observer) {
+
+  const [entry] = entries;
+
+
+
+  if (entry.isIntersecting) {
+
+    // Replace src with data-src
+
+    entry.target.src = entry.target.dataset.src;
+
+
+
+    // Remove blur filter once high resolution img is loaded
+
+    entry.target.addEventListener("load", function () {
+
+      entry.target.classList.remove("lazy-img");
+
+    });
+
+
+    observer.unobserve(entry.target);
+
+  }
+
+};
+
+
+
+const imgObserver = new IntersectionObserver(loadImg, {
+
+  root: null,
+
+  threshold: 0,
+
+  // start loading images 200px before threshold
+
+  rootMargin: "200px",
+
+
+});
+
+
+
+imgTargets.forEach(function (img) {
+
+  imgObserver.observe(img);
+
+});

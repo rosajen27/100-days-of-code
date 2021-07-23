@@ -4819,4 +4819,53 @@ btnLeft.addEventListener("click", function () {
 
 });
 
-----------
+
+
+-----------------------------------------
+
+
+### Day 83: July 23, 2021
+
+**Today's Progress**: Implemented Carousel Component for Testimonials on Bankist Marketing webpage (continued)
+
+Repo: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: Using Dots to navigate testimonials:
+
+
+const dotContainer = document.querySelector(".dots");
+
+
+
+const createDots = function () {
+
+  // create a dot element for each slide
+
+  slides.forEach(function (slide, index) {
+
+    dotContainer.insertAdjacentHTML("beforeend", `<button class="dots__dot" data-slide="${index}"></button>`);
+
+  });
+
+};
+
+createDots();
+
+
+
+dotContainer.addEventListener("click", function (e) {
+
+  if (e.target.classList.contains("dots__dot")) {
+
+    const slideNum = e.target.dataset.slide;
+
+
+    slides.forEach(function (slide, index) {
+
+      slide.style.transform = `translateX(${100 * (index - slideNum)}%)`;
+
+    });
+
+  }
+
+});

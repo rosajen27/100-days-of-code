@@ -4728,3 +4728,95 @@ imgTargets.forEach(function (img) {
   imgObserver.observe(img);
 
 });
+
+
+
+-----------------------------------------
+
+
+### Day 81-82: July 21-22, 2021
+
+**Today's Progress**: Implemented Carousel Component for Testimonials on Bankist Marketing webpage
+
+Repo: https://github.com/rosajen27/bankist-ad
+
+**Thoughts**: Clicking the left and right arrows:
+
+
+const slides = document.querySelectorAll(".slide");
+
+const btnLeft = document.querySelector(".slider__btn--left");
+
+const btnRight = document.querySelector(".slider__btn--right");
+
+
+
+let currentSlide = 0;
+
+const maxSlide = slides.length;
+
+
+
+slides.forEach(function (slide, index) {
+
+  // 0%, 100%, 200%, 300%
+
+  slide.style.transform = `translateX(${100 * index}%)`;
+
+});
+
+
+
+// next slide
+
+btnRight.addEventListener("click", function () {
+
+  if (currentSlide === (maxSlide - 1)) {
+
+    currentSlide = 0;
+
+  } else {
+
+    currentSlide++;
+
+  }
+
+
+
+  slides.forEach(function (slide, index) {
+
+    // currentSlide = 1: -100%, 0%, 100%, 200%
+
+    slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
+
+  });
+
+});
+
+
+
+btnLeft.addEventListener("click", function () {
+
+  if (currentSlide === 0) {
+
+    currentSlide = maxSlide - 1;
+
+  } else {
+
+    currentSlide--;
+
+  }
+
+
+
+  slides.forEach(function (slide, index) {
+
+    // currentSlide = 1: -100%, 0%, 100%, 200%
+
+    slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
+
+  });
+
+});
+
+----------

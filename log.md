@@ -4869,3 +4869,67 @@ dotContainer.addEventListener("click", function (e) {
   }
 
 });
+
+
+
+-----------------------------------------
+
+
+### Day 84: July 24, 2021
+
+**Today's Progress**: Defer and Async Script Loading
+
+**Thoughts**: Regular vs. Async vs. Defer - these attributes influence the way in which the javascript file is fetched and executed. In the HTML, we can write the script tag in the document head, or usually at the end of the body.
+
+----------
+
+REGULAR - <script src="script.js">
+
+(Use if you need to support old browers)
+
+
+// ❌ Head -- never include the script in the head
+
+// ✅ Body -- *Scripts are fetched and executed after the HTML is completely parsed*
+
+
+HTML is parsed, then the script tag is found at the end of the document, then the script is fetched and excecuted (*However, this is still not perfect because the script could have been downloaded before, while the HTML was still being parsed*)
+
+
+So when we include a script without any attribute in the head, what will the page loading process look like over time? Well, as the user loads the page and receives the HTML, the HTML code will start to be parsed by the browser and parsing the HTML is basically building the DOM tree from the HTML elements.
+
+
+Then at a certain point, it will find or a script tag, start to fetch the script, snd then execute it. Now, during all this time, the HTML parsing will actually stop. So it will be waiting for the script to get fetched and executed. Only after that, the rest of the HTML can be parsed. And at the end of that parsing, the DOM content loaded event will finally get fired, which is not ideal. We don't want the browser to be just sitting there doing nothing, because this can have a huge impact on performance. Plus, in this case, the script will actually be executed before the DOM is ready.
+
+----------
+
+Async - <script async src="script.js">
+
+(Use for 3rd-party scripts where order doesn't matter)
+
+
+// Head -- *Scripts are fetched asynchronously and executed immediately*
+
+
+The script is loaded at the same time as the HTML is parsed, in an asynchronous way, which is an advantage. However, the HTML parsing still stops for the script execution. So the script is downloaded asynchronously, but then it's executed right away in a synchronous way - so the HTML code has to wait for being parsed.
+
+*Usually the DOMContentLoaded event waits for all scripts to execute, except for async scripts. So, DOMContentLoaded does NOT wait for an async script.*
+
+
+*Scripts NOT guaranteed to execute in order*
+
+----------
+
+Defer - <script defer src="script.js">
+
+(Overall the best solution - use for your own scrips, and when order matters)
+
+
+// ✅ Head -- *Scripts are fetched asynchronously and executed after the HTML is completely parsed*
+
+
+When deferring what happens is that the script is still loaded asynchronously, but the execution of the script is deffered until the end of the HTML parsing. So in practice, loading time is similar to the asynch attribute, but the key difference that would defer the HTML parsing is never interrupted, because the script is only executed at the end. Many times, this is exactly what we want.
+
+*DOMContentLoaded event fires after defer script is executed.*
+
+*Scripts are executed in order*

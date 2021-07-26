@@ -4933,3 +4933,21 @@ When deferring what happens is that the script is still loaded asynchronously, b
 *DOMContentLoaded event fires after defer script is executed.*
 
 *Scripts are executed in order*
+
+
+
+-----------------------------------------
+
+
+### Day 85: July 25, 2021
+
+**Today's Progress**: Updated Portfolio, LinkedIn, Resume, GitHub
+
+**Thoughts**: Built new portfolio from scratch using HTML, CSS, BootStrap, and JavaScript. Updated LinkedIn, Resume, and GitHub pages for a more minimalistic and cohesive look.
+
+
+Portfolio: https://rosajen27.github.io/
+
+LinkedIn: https://linkedin.com/in/rosajen27
+
+Resume: https://rosajen27.github.io/assets/img/Jennifer-Rosa-Resume.pdf

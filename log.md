@@ -1,6 +1,6 @@
 # 100 Days Of Code - Log
 
-Udemy Course: The Complete JavaScript Course 2021 by Jonas Schmedtmann
+Note: Many activities are from Udemy Course: The Complete JavaScript Course 2021 by Jonas Schmedtmann
 
 -----------------------------------------------------------------------------------------------------------------
 ### Day 1: April 15, 2021

@@ -5019,3 +5019,51 @@ Allocations
 **Today's Progress**: Coding Exercises
 
 **Thoughts**: Practiced solving several coding exercises keeping in mind readibility and scalability
+
+
+
+-----------------------------------------
+
+
+### Day 88: July 28, 2021
+
+**Today's Progress**: Reviewed the basics of data structures
+
+**Thoughts**: 
+
+
+DATA STRUCTURE - collection of values
+
+ALGORITHMS - the steps or processes we put into place to manipulate these collections of values
+
+
+Data structures + Algorithms = Programs
+
+A person who knows how data structures and algorithms work and how to use them, can write programs
+
+
+
+What is a data structure?
+
+
+A data structure is a collection of values
+
+The values can have functions applied to them
+
+Each one is different in what it can do and what it is best used for
+
+Each data structure is specialized for its own thing
+
+
+You can think of data structures as any sort of compartment or container
+
+ie. backpacks, fridge, cabinet, packing box
+
+Each one of these containers are useful for its own thing
+
+
+That's what data structure really is
+
+It's a way to organize data so what we can go into the backpack and retrieve that data really easy
+
+So in our programming world, we can store things like numbers, strings, boolean types

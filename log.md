@@ -1,6 +1,6 @@
 # 100 Days Of Code - Log
 
-Note: Many activities are from Udemy Course: The Complete JavaScript Course 2021 by Jonas Schmedtmann
+### Learning from various Udemy Courses
 
 -----------------------------------------------------------------------------------------------------------------
 ### Day 1: April 15, 2021
@@ -5008,3 +5008,14 @@ Data Structures
 Function Call
 
 Allocations
+
+
+
+-----------------------------------------
+
+
+### Day 87: July 27, 2021
+
+**Today's Progress**: Coding Exercises
+
+**Thoughts**: Practiced solving several coding exercises keeping in mind readibility and scalability

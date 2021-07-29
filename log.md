@@ -5067,3 +5067,83 @@ That's what data structure really is
 It's a way to organize data so what we can go into the backpack and retrieve that data really easy
 
 So in our programming world, we can store things like numbers, strings, boolean types
+
+
+
+-----------------------------------------
+
+
+### Day 89: July 29, 2021
+
+**Today's Progress**: Reviewed classes in JavaScript
+
+**Thoughts**: 
+
+
+// reference type
+
+var object1 = { value: 10 };
+
+var object2 = object1;
+
+var object3 = { value: 10 };
+
+// object 2 is referring to what's inside object 1
+
+// object 3 does not equal object 1 - it is an entirely different object, even though what's inside is the same
+
+
+// context vs scope
+
+// scope is created when it sees {}
+
+// context tells you where we are within the object (this)
+
+
+// instantiation
+
+class Player {
+
+    constructor(name, type) {
+
+        console.log('player', this);
+
+        this.name = name;
+
+        this.type = type;
+
+    }
+
+    introduce() {
+
+        console.log(`Hi! I am ${this.name} and I'm a ${this.type}`);
+
+    }
+
+}
+
+
+
+class Wizard extends Player {
+
+    constructor(name, type) {
+
+        super(name, type)
+
+        console.log('wizard', this);
+
+    }
+
+    play() {
+
+        console.log(`Weeeeee! I'm a ${this.type}`);
+
+    }
+
+}
+
+
+
+const wizard1 = new Wizard('Shelly', 'Healer');
+
+const wizard2 = new Wizard('Shawn', 'Dark Magic');

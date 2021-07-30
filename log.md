@@ -5147,3 +5147,14 @@ class Wizard extends Player {
 const wizard1 = new Wizard('Shelly', 'Healer');
 
 const wizard2 = new Wizard('Shawn', 'Dark Magic');
+
+
+
+-----------------------------------------
+
+
+### Day 90: July 30, 2021
+
+**Today's Progress**: Array Coding Challenges
+
+**Thoughts**: Practiced solving various array coding challenges including reserving strings and merging sorted arrays 

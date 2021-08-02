@@ -5157,4 +5157,14 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 
 **Today's Progress**: Array Coding Challenges
 
-**Thoughts**: Practiced solving various array coding challenges including reserving strings and merging sorted arrays 
+**Thoughts**: Practiced solving various array coding challenges including reserving strings and merging sorted arrays
+
+
+-----------------------------------------
+
+
+### Day 91: August 2, 2021
+
+**Today's Progress**: Array Coding Challenges Continued
+
+**Thoughts**: Practiced solving various array coding challenges including: Two Sum, Maximum Subarray, Moving zeroes

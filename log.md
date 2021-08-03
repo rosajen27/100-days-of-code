@@ -5168,3 +5168,13 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 **Today's Progress**: Array Coding Challenges Continued
 
 **Thoughts**: Practiced solving various array coding challenges including: Two Sum, Maximum Subarray, Moving zeroes
+
+
+-----------------------------------------
+
+
+### Day 92: August 3, 2021
+
+**Today's Progress**: Array Coding Challenges Continued
+
+**Thoughts**: Practiced solving various array coding challenges including: Rotate Array, Contains Duplicate

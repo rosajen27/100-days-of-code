@@ -5190,3 +5190,64 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 **Thoughts**: Reviewed and practiced solving various array coding challenges again including: Two Sum, Maximum Subarray, Moving zeroes, Rotate Array, Contains Duplicate
 
 
+-----------------------------------------
+
+
+### Day 94: August 5, 2021
+
+**Today's Progress**: Review Object-Oriented Programming
+
+**Thoughts**: OOP is a programming paradigm (style of the code) based on the concept of objects
+
+* We use objects to model (describe) real-world (i.e. user or todo list item) or abstract (i.e. HTML component or data structure) features
+* Objects may contain data (properties) and code (methods). By using objects, we pack data and the corresponding behavior into one block
+
+```js
+const user = {
+  // DATA
+  user: 'jennifer',
+  password: 'rj27o',
+
+  // BEHAVIOR
+  login(password) {
+    // login logic
+  },
+
+  sendMessage(str) {
+    // sending logic
+  }
+  }
+}
+```
+
+* In OOP, objects are self-contained pieces/blocks of code
+
+* Objects are building blocks of application, and interact with one another
+
+* Interactions happen through a public interface (API): methods that the code outside of the object can access and use to communicate with the object
+
+* OOP was developed with the goal of organizing code, to make it more flexible and easier to maintain (avoid "spaghetti code")
+
+----------
+
+Classes and Instances (Traditional OOP)
+
+
+* class - like a blueprint from which we can create new objects; class itself is not an object
+
+* instances - a real object that we can use in our code, which was created from a class
+
+----------
+
+How do we actually design classes? How do we model real-world data into classes?
+
+
+4 Fundamental OOP Principles
+
+* Abstraction - ignoring or hiding details that don't matter, allowing us to get an overview perspective of the thing we're implementing, instead of messing with details that don't really matter to our implementation. ***(i.e. a cellphone acts like a blackbox without us seeing everything that is happening inside - we hide these details from the user)***
+
+* Encapsulation - Keeping properties and methods private inside the class, so they are not accessible from outside the class. Some methods can be exposed as a public interface (API). Prevents external code from accidentally manipulating internal properties/state
+
+* Inheritance - Making all properties and methods of a certain class available to a child class, forming a heirarchical relationship between classes. This allows us to reuse common logic and to model real-world relationships ***(ie. user class can be the parent of admin)***
+
+* Polymorphism - A child class can overwrite a method it inherited from a parent class 

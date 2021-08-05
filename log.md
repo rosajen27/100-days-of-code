@@ -4650,7 +4650,7 @@ imgTargets.forEach(function (img) {
 -----------------------------------------
 
 
-### Day 81-82: July 21-22, 2021
+### Day 82-83: July 21-22, 2021
 
 **Today's Progress**: Implemented Carousel Component for Testimonials on Bankist Marketing webpage
 
@@ -4740,7 +4740,7 @@ btnLeft.addEventListener("click", function () {
 -----------------------------------------
 
 
-### Day 83: July 23, 2021
+### Day 84: July 23, 2021
 
 **Today's Progress**: Implemented Carousel Component for Testimonials on Bankist Marketing webpage (continued)
 
@@ -4789,7 +4789,7 @@ dotContainer.addEventListener("click", function (e) {
 -----------------------------------------
 
 
-### Day 84: July 24, 2021
+### Day 85: July 24, 2021
 
 **Today's Progress**: Defer and Async Script Loading
 
@@ -4853,7 +4853,7 @@ When deferring what happens is that the script is still loaded asynchronously, b
 -----------------------------------------
 
 
-### Day 85: July 25, 2021
+### Day 86: July 25, 2021
 
 **Today's Progress**: Updated Portfolio, LinkedIn, Resume, GitHub
 
@@ -4871,7 +4871,7 @@ Resume: https://rosajen27.github.io/assets/img/Jennifer-Rosa-Resume.pdf
 -----------------------------------------
 
 
-### Day 86: July 26, 2021
+### Day 87: July 26, 2021
 
 **Today's Progress**: Big O Notation
 
@@ -4928,7 +4928,7 @@ Allocations
 -----------------------------------------
 
 
-### Day 87: July 27, 2021
+### Day 88: July 27, 2021
 
 **Today's Progress**: Coding Exercises
 
@@ -4939,7 +4939,7 @@ Allocations
 -----------------------------------------
 
 
-### Day 88: July 28, 2021
+### Day 89: July 28, 2021
 
 **Today's Progress**: Reviewed the basics of data structures
 
@@ -4987,7 +4987,7 @@ So in our programming world, we can store things like numbers, strings, boolean 
 -----------------------------------------
 
 
-### Day 89: July 29, 2021
+### Day 90: July 29, 2021
 
 **Today's Progress**: Reviewed classes in JavaScript
 
@@ -5067,7 +5067,7 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 -----------------------------------------
 
 
-### Day 90: July 30, 2021
+### Day 91: July 30, 2021
 
 **Today's Progress**: Array Coding Challenges
 
@@ -5077,7 +5077,7 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 -----------------------------------------
 
 
-### Day 91: August 2, 2021
+### Day 92: August 2, 2021
 
 **Today's Progress**: Array Coding Challenges Continued
 
@@ -5087,7 +5087,7 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 -----------------------------------------
 
 
-### Day 92: August 3, 2021
+### Day 93: August 3, 2021
 
 **Today's Progress**: Array Coding Challenges Continued
 
@@ -5097,7 +5097,7 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 -----------------------------------------
 
 
-### Day 93: August 4, 2021
+### Day 94: August 4, 2021
 
 **Today's Progress**: Array Coding Challenges Continued
 
@@ -5107,7 +5107,7 @@ const wizard2 = new Wizard('Shawn', 'Dark Magic');
 -----------------------------------------
 
 
-### Day 94: August 5, 2021
+### Day 95: August 5, 2021
 
 **Today's Progress**: Review Object-Oriented Programming
 

@@ -46,25 +46,19 @@ Today's study session included:
 
 * Old way of retrieving elements of an array:
 
-
+```js
 const = [2, 3, 4];
-
-
-const a = arr[0]; → 2
-
-
-const b = arr[1]; → 3
-
-
-const c = arr[2]; → 4
+const a = arr[0]; // 2
+const b = arr[1]; // 3
+const c = arr[2]; // 4
+```
 
 * Array Destructuring
 
-
+```js
 const = [2, 3, 4];
-
-
-const [x, y, z] = arr; → 2 3 4 
+const [x, y, z] = arr; // 2 3 4 
+```
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -86,21 +80,14 @@ const [x, y, z] = arr; → 2 3 4
 
 **Thoughts**: We can use the spread operator to basically expand an array into all its elements (unpacking all the array elements at once)
 
-
+```js
 const arr = [7, 8, 9];
-
-
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-
-
-console.log(badNewArr); → [1, 2, 7, 8, 9]
-
-
+console.log(badNewArr); // [1, 2, 7, 8, 9]
 
 const newArr = [1, 2, ...arr];
-console.log(newArr); → [1, 2, 7, 8, 9]
-
-
+console.log(newArr); // [1, 2, 7, 8, 9]
+```
 
 Same exact results. What the spread operator does is to basically take all the values out of this arr array and then write them individually as if we wrote 7, 8, 9 manually.
 
@@ -114,30 +101,19 @@ Same exact results. What the spread operator does is to basically take all the v
 
 **Thoughts**: works in the same way with objects as it does with arrays. For example, if you wanted to make a shallow copy of an object named restaurant and then change the name property:
 
-
+```js
 const restaurant = {
-
-
 	name: “Classico Italiano”,
-
-
 	categories: [“Italian”, “Pizzaria”, “Vegetarian, “Organic”],
-
-
 }
 
-
 const restaurantCopy = {...restaurant};
-
-
 restaurantCopy.name = “Ristorante Roma”;
 
+console.log(restaurantCopy.name); // Ristorante Roma
 
-console.log(restaurantCopy.name); → Ristorante Roma
-
-
-console.log(restaurant.name); → Clasicco Italiano
-
+console.log(restaurant.name); // Clasicco Italiano
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -157,47 +133,33 @@ Now the rest pattern uses the exact same syntax, however, to collect multiple el
 
 Spread operator because it is on the right side of the equal sign
 
-
+```js
 const arr = [1, 2, ...[3, 4]];
-
+```
 
 Rest operator because it is on the left side of the equal sign
 
-
+```js
 const [a, b, ...others] = [1, 2, 3, 4, 5];
-
-
-console.log(a, b, others); → 1 2 [3, 4, 5]
-
+console.log(a, b, others); // 1 2 [3, 4, 5]
+```
 
 
 Can also work within functions, to accept any number of parameters:
 
-
+```js
 const add = function(...numbers) {
-
-
 	let sum = 0;
-
 
 	for(let i = 0; i < numbers.length; i++) sum+=numbers[i];
 
-
 	console.log(sum);
-
-
 }
 
-
-
-
-add(2, 3); → 5
-
-
-add(5, 3, 7, 2); → 17
-
-
-add(8, 2, 5, 3, 2, 1, 4); → 25
+add(2, 3); // 5
+add(5, 3, 7, 2); // 17
+add(8, 2, 5, 3, 2, 1, 4); // 25
+```
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -236,19 +198,19 @@ In the case of the AND operator, it works in the exact opposite way of the OR op
 for (const item of menu) console.log(item);
 
 
-→ results in printing each menu item separately in the console
+// results in printing each menu item separately in the console
 
 
 
 What if we also wanted the current index and not just the current element?
 
-
+```js
 for (const item of menu.entries()) {
 	console.log(item);
 }
+```
 
-
-→ results in printing the index of each menu item AND the menu item separately in the console (ex: [0, “Focaccia”] )
+// results in printing the index of each menu item AND the menu item separately in the console (ex: [0, “Focaccia”] )
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -263,79 +225,66 @@ for (const item of menu.entries()) {
 
 Looping over property names (aka keys):
 
-
+```js
 const properties = Object.keys(openingHours);
 
-
 let openStr = `We are open on ${properties.length} days: `;
-
-
 
 for (const day of properties) {
 	openStr += `${day}, `;
 }
 
-
 console.log(openStr);
+```
 
-
-→ We are open on 3 days: thu, fri, sat,
+// We are open on 3 days: thu, fri, sat,
 
 
 Looping over property values:
 
-
+```js
 const values = Object.values(openingHours);
-
 
 console.log(values);
 
 
-→ 0: {open: 12, close: 22}
+// 0: {open: 12, close: 22}
 
+// 1: {open: 11, close: 23}
 
-→ 1: {open: 11, close: 23}
-
-
-→ 2: {open: 0, close: 24}
-
+// 2: {open: 0, close: 24}
+```
 
 
 Entries() (names plus the values together):
 
-
+```js
 const entries = Object.entries(openingHours);
-
 
 console.log(entries);
 
+// 0: [“thu”, {...}]
 
-→ 0: [“thu”, {...}]
+// 1: [“fri”, {...}]
 
-
-→ 1: [“fri”, {...}]
-
-
-→ 2: [“sat”, {...}]
-
+// 2: [“sat”, {...}]
+```
 
 ----------------------------------------------------
+```js
 for (const [day, {open, close}] of entries) {
 
-
-	console.log(`On ${day} we open at ${open} and close at ${close});
-
-    
+	console.log(`On ${day} we open at ${open} and close at ${close});  
 }
+```
+
+// On thu we open at 12 and close at 22
 
 
-→ On thu we open at 12 and close at 22
+// On fri we open at 11 and close at 23
 
 
-→ On fri we open at 11 and close at 23
-
-
-→ On sat we open at 0 and close at 24
+// On sat we open at 0 and close at 24
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -352,48 +301,47 @@ Sets are also iterables, so you can loop over them.
 In sets, there are no indexes, so there is no way of getting values out of a set. If your goal is to actually store values in order and then retrieve it, then the best use case is to just use an array.
 
 
-
+```js
 const ordersSet = new Set([“Pasta”, “Pizza”, “Pizza”, “Risotto”, “Pasta”, “Pizza”]);
 
-
 console.log(ordersSet);
+```
 
-
-→ Set(3) {“Pasta”, “Pizza”, “Risotto”} All the duplicates are gone. 
+// Set(3) {“Pasta”, “Pizza”, “Risotto”} All the duplicates are gone. 
 
 
 Also works with strings
 
-
-console.log(new Set(“Jenny”)); → Set(5) {“J”, “e”, “n”, “n”, “y”}
-
+```js
+console.log(new Set(“Jenny”)); // Set(5) {“J”, “e”, “n”, “n”, “y”}
+```
 
 We can get the size of a set
 
-
-console.log(ordersSet.size); → 3
-
+```js
+console.log(ordersSet.size); // 3
+```
 
 
 We can check if a certain element is in a set
 
-
-console.log(ordersSet.has(“Pizza”); → true 
-
+```js
+console.log(ordersSet.has(“Pizza”); // true 
+```
 
 
 We can add new elements to a set
 
-
+```js
 ordersSet.add(“Garlic Bread”);
-
+```
 
 
 We can also delete elements
 
-
+```js
 ordersSet.delete(“Risotto”);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -407,43 +355,29 @@ The big difference between objects and maps is that in maps, the keys can have a
 The easiest way to create a map is to actually create an empty map. Then you fill up the map with the set method.
 
 
-
+```js
 const rest = new Map();
 
-
 rest.set(“name”, “Classico Italiano”);
-
-
 rest.set(1, “Firenze, Italy”);
-
-
 rest.set(2, “Lisbon, Portugal”);
-
-
 rest.set(“categories”, [“Italian”, “Pizzeria”, “Vegetarian”, “Organic”]);
 
-
 	.set(“open”, 11)
-
-
 	.set(“close”, 23)
-
-
 	.set(true, “We are open”)
-
-
 	.set(false, “We are closed”);
-
+```
 
 
 // example: compare the time and see if restaurant is open or closed
+```js
 const time = 21;
 
-
 console.log(rest.get(time > rest.get(“open”) && time < rest.get(“close”)));
+```
 
-
-→ We are open
+// We are open
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -455,62 +389,44 @@ console.log(rest.get(time > rest.get(“open”) && time < rest.get(“close”)
 
 **Thoughts**: There is another way of populating a new map without having to use the set method.
 
+```js
 const question = new Map([
-
 
 	[“question”, “What is the best programming language in the world?],
 
 
 	[1, “C”],
-
-
 	[2, “Java”],
-
-
 	[3, “JavaScript”],
 
-
 	[“correct”, 3],
-
-
 	[true, “Correct!”],
-
-
 	[false, “Try again!”],
-
 
 ]);
 
 
 console.log(question);
-
+```
 
 // Quiz App
 
-
+```js
 console.log(question.get(“question));
-
 
 for (const [key, value] of question) {
 
-
 	if(typeof key === “number”) console.log(`Answer ${key}: ${value}`);
-
 
 }
 
-
 const answer = Number(prompt(“Your answer?”));
-
-
 console.log(answer);
 
-
-
 console.log(question.get(question.get(“correct”) === answer));
+```
 
-
-→ Correct!
+// Correct!
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -606,30 +522,29 @@ If you need functions as values, then you should absolutely use an object for th
 
 **Thoughts**: Just like in arrays, we can get the character of a string at a certain position. We can also read the length properties of strings, just like we can in arrays. 
 
-
+```js
 const plane = "A320";
 
-console.log(plane[0]); --> A
+console.log(plane[0]); // A
 
-console.log(plane.length) --> 4
-
+console.log(plane.length) // 4
+```
 
 Strings also have methods and some of them are quite similar to the array methods (Strings are also zero based). One good use case is to extract part of a string using the slice method (the slice method needs indexes as arguments).
 
-
-console.log(plane.indexOf("0")); --> A
+```js
+console.log(plane.indexOf("0")); // A
 
 const airline = "TAP Air Portugal"
 
-console.log(plane.slice(4)); --> Air Portugal
+console.log(plane.slice(4)); // Air Portugal
 
-console.log(plane.slice(4, 7)); --> Air
+console.log(plane.slice(4, 7)); // Air
 
-console.log(airline.slice(-2)); --> al
+console.log(airline.slice(-2)); // al
 
-
-console.log(airline.slice(0, airline.indexOf(" "))); --> Tap
-
+console.log(airline.slice(0, airline.indexOf(" "))); // Tap
+```
 
 ** Note: This does not change the underlying string, because it is impossible to mutate strings. They are primitives.
 
@@ -644,36 +559,36 @@ console.log(airline.slice(0, airline.indexOf(" "))); --> Tap
 **Thoughts**: 
 
 // Changing the case of a string
+```js
+console.log(airline.toLowerCase()); // tap air portugal
 
-console.log(airline.toLowerCase()); --> tap air portugal
-
-console.log(airline.toUpperCase()); --> TAP AIR PORTUGAL
-
+console.log(airline.toUpperCase()); // TAP AIR PORTUGAL
+```
 
 // Remove extra whitespace
-
+```js
 const email = "    hello@gmail.com \n";
 
 const trimmedEmail = email.trim();
 
-console.log(trimmedEmail); --> hello@gmail.com
-
+console.log(trimmedEmail); // hello@gmail.com
+```
 
 // Replace
-
+```js
 const priceGB = "288,97";
 
-const priceUS = priceGB.replace(",", "."); --> 288.97
-
+const priceUS = priceGB.replace(",", "."); // 288.97
+```
 
 // Booleans
-
+```js
 const plane = "A320neo";
 
-console.log(plane.includes("A320")); --> true
+console.log(plane.includes("A320")); // true
 
-console.log(plane.startsWith("Air")); --> false
-
+console.log(plane.startsWith("Air")); // false
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -685,23 +600,23 @@ console.log(plane.startsWith("Air")); --> false
 **Thoughts**: 
 
 // Split and Join
+```js
+console.log(“a+very+nice+string”.split(“+”)); // [“a”, “very”, “nice”, “string”]
 
-console.log(“a+very+nice+string”.split(“+”)); → [“a”, “very”, “nice”, “string”]
-
-console.log(“Jennifer Rosa”).split(“ “)); → [“Jennifer”, “Rosa”]
-
+console.log(“Jennifer Rosa”).split(“ “)); // [“Jennifer”, “Rosa”]
+```
 
 Real World Example:
-
+```js
 const [firstName, lastName] = “Jennifer Rosa”.split(“ “); 
 
 const newName = [“Ms.”, firstName, lastName.toUpperCase()].join(“ “);
 
-console.log(newName); → Ms. Jennifer ROSA
-
+console.log(newName); // Ms. Jennifer ROSA
+```
 
 // Create a function that capitalizes the first letter of a name
-
+```js
 const capitalizeName = function(name) {
 
 	const names = name.split(“ “);
@@ -720,20 +635,20 @@ const capitalizeName = function(name) {
 };
 
 
-capitalizeName(“jennifer rosa”); → Jennifer Rosa
-
+capitalizeName(“jennifer rosa”); // Jennifer Rosa
+```
 
 // Padding
-
+```js
 const message = “Go to gate 23!”;
 
-console.log(message.padStart.(25, “+”)); → +++++++++++Go to gate 23!
+console.log(message.padStart.(25, “+”)); // +++++++++++Go to gate 23!
 
-console.log(message.padEnd.(25, “+”)); → Go to gate 23!+++++++++++
-
+console.log(message.padEnd.(25, “+”)); // Go to gate 23!+++++++++++
+```
 
 // Masking
-
+```js
 const maskCreditCard = function(number) {
 
 	const str = String(number);
@@ -744,15 +659,15 @@ const maskCreditCard = function(number) {
 
 }
 
-console.log(maskCreditCard(4337846386467384)); → ************7384
-
+console.log(maskCreditCard(4337846386467384)); // ************7384
+```
 
 // Repeat
-
+```js
 const newMessage = “Bad Weather.. All Departures Delayed… ”;
 
-console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 
-
+console.log(newMessage.repeat(3)); // Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… Bad Weather.. All Departures Delayed… 
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -764,19 +679,15 @@ console.log(newMessage.repeat(3)); → Bad Weather.. All Departures Delayed… B
 **Thoughts**: 
 Sometimes it is useful to have functions where some parameters are set by default, this way we do not have to pass them in manually, in case we don’t want to change the default.
 
-
+```js
 const bookings = [];
 
 const createBooking = function(flightNum, numPassengers, price) {
 
 	const booking = {
-
 		flightNum,
-
 		numPassengers,
-
 		price
-
 	}
 
 	console.log(booking);
@@ -787,16 +698,16 @@ const createBooking = function(flightNum, numPassengers, price) {
 
 createBooking(“LH123”); 
 
-→ {flightNum: “LH123”, numPassengers: undefined, price: undefined}
-
+// {flightNum: “LH123”, numPassengers: undefined, price: undefined}
+```
 
 What we see here was that the numPassengers are the price are set to undefined, because we didn’t specify them. Now we can use short circuiting to our advantage, because we know that these are faulty values. Let’s say we want to set the number of passengers to one by default…
 
-
+```js
 numPassengers = numPassengers || 1;
 
 price = price || 199;
-
+```
 
 This works because whenever this is a falsy value (which undefined is), then the result of the OR operator will be the second operand. 
 
@@ -840,7 +751,7 @@ On the other hand, when we pass an object as an argument on a function, the func
 **Thoughts**: JavaScript is a language that has first class functions, which in technical terms means that functions are so called first citizens. In practice, this means that functions are simply values. Functions are just another “type” of object. And since objects are values, functions are values too. 
 
 And since functions are values, we can do many interesting things with them like storing them in variables or object properties.
-
+```js
 const add = (a, b) => a + b;
 
 const counter = {
@@ -848,29 +759,29 @@ const counter = {
 	value: 23,
 
 	inc: function() { this.value++; }
-
+```
 
 We can also pass functions as arguments to other functions.
-
+```js
 const greet = () => console.log(“Hey Jennifer”);
 
 btnClose.addEventListener(“click”, greet)
-
+```
 
 We can also return a function from another function.
 
 
 We can call methods on functions
-
+```js
 counter.inc.bind(someOtherObject);
-
+```
 
 The fact that JavaScript has first-class functions makes it possible for us to use and write higher order functions. A higher order function is either a function that receives another function as an argument or a function that returns a new function.
-
+```js
 const greet = () => console.log(“Hey Jennifer”);
 
 btnClose.addEventListener(“click”, greet)
-
+```
 
 First class functions are just a feature that a programming language either has or does not have. All it means is that all functions are values. There are no first class functions in practice (it’s just a concept).
 
@@ -889,7 +800,7 @@ There are however higher order functions in practice, which are possible because
 
 Callback functions are functions that we do not call ourselves. But instead, we call JavaScript to basically tell them later. In this case, it is the transformer function that will callback the upperFirstWord and oneWord functions.
 
-
+```js
 const oneWord = function(str) {
 
 	return str.replace(/ /g, “”).toLowerCase();
@@ -904,10 +815,10 @@ const upperFirstWord = function(str) {
 	return [first.toUpperCase(), ...others].join(“ “);
 
 }
-
+```
 
 // higher order function (a function that takes in another function)
-
+```js
 const transformer = function(str, fn) {
 
 	console.log(`Original string: ${str});
@@ -919,21 +830,21 @@ const transformer = function(str, fn) {
 }
 
 transformer(“JavaScript is the best!”, upperFirstWord);
+```
+// Original string: JavaScript is the best!
 
-→ Original string: JavaScript is the best!
+// Transformed string: JAVASCRIPT is the best!
 
-→ Transformed string: JAVASCRIPT is the best!
+// Transformed by: UpperFirstWord
 
-→ Transformed by: UpperFirstWord
-
-
+```js
 transformer(“JavaScript is the best!”, oneWord);
+```
+// Original string: JavaScript is the best!
 
-→ Original string: JavaScript is the best!
+// Transformed string: javascriptisthebest!
 
-→ Transformed string: javascriptisthebest!
-
-→ Transformed by: oneWord
+// Transformed by: oneWord
 
 
 Why are callback functions helpful? The first big advantage of this is that it makes it easy to split up our code into more reusable and interconnected parts. Callback functions also allow us to create abstraction (hide the detail of some code implementation because we don’t really care about all of that detail. This allows us to think about problems at a higher, more abstract level).
@@ -943,7 +854,7 @@ Functions Returning Functions
 
 What is the point of having a function returning another function? It is extremely useful in some situations, especially if we’re using an important programming paradigm called functional programming. 
 
-
+```js
 const greet = function(greeting) {
 
 	return function(name) {
@@ -958,16 +869,16 @@ const greeterHey = greet(“Hey”);
 
 greeterHey(“Jennifer”);
 
-→ Hey Jennifer
+// Hey Jennifer
 
 
 greet(“Hello”)(“Jen”);
 
-→ Hello Jen
-
+// Hello Jen
+```
 
 The Call and Apply Methods
-
+```js
 const jetblue = {
 
 	airline: “Jetblue”,
@@ -990,13 +901,13 @@ jetblue.book(239, “Jennifer Rosa”);
 
 jetblue.book(635, “John Smith”);
 
-→ Jennifer Rosa booked a seat on Jetblue flight JB239
+// Jennifer Rosa booked a seat on Jetblue flight JB239
 
-→ John Smith booked a seat on Jetblue flight JB635
+// John Smith booked a seat on Jetblue flight JB635
 
 console.log(jetblue);
 
-→ {airline: “Jetblue”, iataCode: “JB”, bookings” Array(2), book: f}
+// {airline: “Jetblue”, iataCode: “JB”, bookings” Array(2), book: f}
 
 
 // new airline
@@ -1015,22 +926,22 @@ const eurowings = {
 const book = jetblue.book;
 
 
-book(23, “John Snow”); → Uncaught TypeError: Cannot read property ‘airline’ of undefined at book
-
+book(23, “John Snow”); // Uncaught TypeError: Cannot read property ‘airline’ of undefined at book
+```
 
 So, how do we tell JavaScript that we want to create a booking on the new Eurowings airline? We need to tell JavaScript explicitly what the this keyword should be like. There are three function methods that can do this: call, apply, bind.
 
-
+```js
 book.call(eurowings, 23, “John Snow”);
 
 console.log(eurowings);
 
-→ {name: “Eurowings”, iataCode: “EW”, bookings: Arr(1)}
+// {name: “Eurowings”, iataCode: “EW”, bookings: Arr(1)}
 
 	Bookings: Array(1)
 
 	0: {flight: “EW23”, name: “John Snow”}
-
+```
 
 Recap: We called the call method, which called the book function, with the this keyword set to eurowings. This allows us to manually and explicitly set the this keyword of any function that we want to call.
 
@@ -1046,7 +957,7 @@ The apply method does basically the same thing. The only difference is that the 
 **Today's Progress**: The Bind Method
 
 **Thoughts**: Just like the Call Method, bind also allows us to manually set the this keywords for any function call. Now, the difference is that bind does not immediately call the function. Instead, it returns a new function where the this keyword is bound. So it is set to whatever value we pass into bind. 
-
+```js
 const eurowings = {
 	name: “Eurowings”,
 	iataCode: “EW”,
@@ -1058,19 +969,20 @@ const bookEW = book.bind(eurowings);
 // note: this will NOT call the book function. Instead, it will return a new function where the this keyword will always be set to Eurowings. 
 
 bookEW(23, “Steven Williams”); 
-→ Steven Williams booked a seat on Eurowings flight EW23
-// note: this now looks like the normal book function call again. That is because this function already has the this keyword set in stone basically. So we no longer need to specify the this keyword again. 
+// Steven Williams booked a seat on Eurowings flight EW23
+// note: this now looks like the normal book function call again. That is because this function already has the this keyword set in stone basically. So we no longer need to specify the this keyword again.
+```
 The bind method is really useful because we could now go ahead and do the same for multiple airlines. So creating one booking function for each of the airlines. This then makes it easier to book a flight for each of the airlines if we have to do it multiple times.
-
+```js
 const bookEW = book.bind(eurowings); 
 const bookJB = book.bind(jetblue);
-
+```
 // Bind Method with Event Listeners
 In an event listener function, the this keyword always points to the element on which that handler is attached to. In this case, jetblue.buyPlane is the handler function and it is attached to the document.querySelector(“.buy”) button element. Therefore, inside of the handler function, the this keyword will point to the button element. 
 
 In order for the this keyword to point to the jetblue object instead, we need to manually define the this keyword by passing in a function with the bind method. Bind is going to return a new function, so the this keyword should be jetblue so that’s exactly what we define. So the end result is that the number of planes should increase each time we press the button.
 
-
+```js
 jetblue.planes = 300;
 jetblue.buyPlane = function() {
 	console.log(this);
@@ -1081,18 +993,22 @@ jetblue.buyPlane = function() {
 document
 	.querySelector(“.buy”)
 	.addEventListener(“click”, jetblue.buyPlane.bind(jetblue));
-
+```
 
 // Partial Application
 Partial application means that we can preset parameters.
+```js
 const addTax = (rate, value) => value + value * rate;
 console.log(addTax(0.1, 200));
-→ 220
+// 220
+```
 
 We can use the bind method to preset the rate to always be 23% for example.
+```js
 const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(100));
-→ 123
+// 123
+```
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -1104,7 +1020,7 @@ console.log(addVAT(100));
 
 **Thoughts**: Sometimes in JavaScript, we need a function that is only executed once, and then never again. So basically a function that disappears right after it’s called once. We can trick JavaScript into thinking that this anonymous function is an expression by wrapping it in parentheses and then calling it.
 
-
+```js
 (function() {
 
 	console.log(“This will never run again.”);
@@ -1113,7 +1029,7 @@ console.log(addVAT(100));
 
 
 (() => console.log(“This will ALSO never run again”))();
-
+```
 
 Why was this pattern invented? We already know that functions create scopes. It is important to note that one scope does not have access to variables from an inner scope. Therefore, we say that all data defined inside a scope is private and encapsulated. Data encapsulation and data privacy are important concepts in programming.
 
@@ -1130,7 +1046,7 @@ Many times we need to protect our variables, from being accidentally overwritten
 
 **Thoughts**: A closure is not a feature that we explicitly use. We don’t create closures manually, it happens automatically in certain situations. 
 
-
+```js
 const secureBooking = function() {
 
 	let passengerCount = 0;
@@ -1145,7 +1061,7 @@ const secureBooking = function() {
 }
 
 const booker = secureBooking();
-
+```
 
 
 A closure makes a function remember all the variables that existed at the function’s “birth place”.
@@ -1156,7 +1072,7 @@ A function always has access to the variable environment of the execution contex
 
 In this example, the Booker function has access to the passengerCount variable because it’s basically defined in the scope in which the Booker function was actually created. So in a sense, the scope chain is actually preserved through the closure, even when a scope has already been destroyed because its execution context is gone. This means that even though the execution context has actually been destroyed, the variable environment somehow keeps living somewhere in the engine. 
 
-
+```js
  (function () {
 
  const header = document.querySelector('h1');
@@ -1171,7 +1087,7 @@ In this example, the Booker function has access to the passengerCount variable b
  })
 
  })();
-
+```
 
 How does the callback function get access to the header variable? The explanation is the closure. The header is in the "backpack" of this function.
 
@@ -1189,22 +1105,22 @@ How does the callback function get access to the header variable? The explanatio
 
 Slice Method: we can extract part of any array, but without changing the orginial array.
 
-
+```js
 let arr = ["a", "b", "c", "d", "e"];
 
 
-console.log(arr.slice(2)); --> ["c", "d", "e"]
+console.log(arr.slice(2)); // ["c", "d", "e"]
 
-console.log(arr.slice(2, 4)); --> ["c", "d"]
+console.log(arr.slice(2, 4)); // ["c", "d"]
 
-console.log(arr.slice(-2)); --> ["d", "e"]
+console.log(arr.slice(-2)); // ["d", "e"]
 
-console.log(arr.slice(-1)); --> ["e"]
+console.log(arr.slice(-1)); // ["e"]
 
-console.log(arr.slice(1, -2)); --> ["b", "c"]
+console.log(arr.slice(1, -2)); // ["b", "c"]
 
-console.log(arr.slice()); --> ["a", "b" "c", "d", "e"] //shallow copy
-
+console.log(arr.slice()); // ["a", "b" "c", "d", "e"] //shallow copy
+```
 SAME AS DOING console.log([...arr]);
 
 
@@ -1214,27 +1130,27 @@ Splice Method: works similar to the slice method, but the fundamental difference
 
 
 Reverse Method: Reverses the order of the array. This method also mutates the original array.
-
+```js
 const arr2 = ["j", "i", "h", "g", "f"];
 
-console.log(arr2.reverse()); --> ["f", "g", "h", "i", "j"]
-
+console.log(arr2.reverse()); // ["f", "g", "h", "i", "j"]
+```
 
 
 Concat Method: Concatinates two arrays. This method does not mutate the original array.
-
+```js
 const letters = arrconcat(arr2);
 
-console.log(letters); --> ["a", "b" "c", "d", "e", "f", "g", "h", "i", "j"]
-
+console.log(letters); // ["a", "b" "c", "d", "e", "f", "g", "h", "i", "j"]
+```
 SAME AS DOING: console.log([...arr, ...arr2]);
 
 
 
 Join Method: Results with a string with the seperator that we specify.
-
-console.log(letters.join(" - ")); --> a - b - c - d - e - f - g - h - i - j 
-
+```js
+console.log(letters.join(" - ")); // a - b - c - d - e - f - g - h - i - j 
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1246,14 +1162,14 @@ console.log(letters.join(" - ")); --> a - b - c - d - e - f - g - h - i - j
 **Thoughts**: Let's say that we wanted to loop over an array, in order to print a message for each movement. In this scenario, positive values are deposits and negative values are withdrawals.
 
 
-
+```js
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
+```
 
 
 // for of loop
 
-
+```js
 for (const movement of movements) {
 
 	if(movement > 0) {
@@ -1268,16 +1184,16 @@ for (const movement of movements) {
 
 }
 
---> You deposited 200
+// You deposited 200
 
---> You deposited 450
+// You deposited 450
 
---> You withdrew 400 ... etc. etc.
-
+// You withdrew 400 ... etc. etc.
+```
 
 
 // forEach
-
+```js
 movements.forEach(function(movement) {
 
 	if(movement > 0) {
@@ -1290,13 +1206,13 @@ movements.forEach(function(movement) {
 
 	}
 
-}); --> // Same result as for of loop
-
+}); // // Same result as for of loop
+```
 
 What if we needed access to a counter variable? 
 
 // For of
-
+```js
 for (const [i, movement] of movements.entries()) {
 
 	if(movement > 0) {
@@ -1311,15 +1227,15 @@ for (const [i, movement] of movements.entries()) {
 
 });
 
---> Movement 1: You deposited 200
+// Movement 1: You deposited 200
 
---> Movement 2: You deposited 450
+// Movement 2: You deposited 450
 
---> Movement 3: You withdrew 400 ... etc. etc.
-
+// Movement 3: You withdrew 400 ... etc. etc.
+```
 
 // for Each
-
+```js
 movements.forEach(function(movement, index, array) {
 
 	if(movement > 0) {
@@ -1332,8 +1248,8 @@ movements.forEach(function(movement, index, array) {
 
 	}
 
-}); --> // Same result as for of loop
-
+}); // // Same result as for of loop
+```
 
 
 When should you use for each and when should you use for of loop? One fundamental difference between the two of them is that you cannot break out of a forEach loop. So the continue and break statements do not work in a forEach loop at all. So instead, forEach will always loop over the entire array and there is nothing you can do about it. 
@@ -1350,7 +1266,7 @@ So if you really need to break out of a loop, then you have to keep using the fo
 
 **Thoughts**: We can call forEach on maps.
 
-
+```js
 const currencies = new Map([
 
 	["USD", "United States dollar"],
@@ -1369,33 +1285,33 @@ currencies.forEach(function(value, key, map) {
 }); 
 
 
---> USD: United States Dollar
+// USD: United States Dollar
 
---> EUR: Euro
+// EUR: Euro
 
---> GBP: Pound sterling
-
+// GBP: Pound sterling
+```
 
 We can fall forEach on sets.
 
-
+```js
 const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
 
 console.log(currenciesUnique);
 
---> {"USD", "GBP", "EUR"}
+// {"USD", "GBP", "EUR"}
 
 currenciesUnique.forEach(function(value, key, map) {
 
 	console.log(`${key}: ${value}`);
 });
 
---> USD: USD
+// USD: USD
 
---> GBP: GBP
+// GBP: GBP
 
---> EUR: EUR
-
+// EUR: EUR
+```
 The key here is exactly the same as the value. Why is that? A set doesn't have keys and it doesn't have indexes either. So there is no value that would make sense for the key.
 
 
@@ -1454,7 +1370,7 @@ Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia'
 
 My solution:
 
-
+```js
 const dogsJulia = [3, 5, 2, 12, 7];
 
 const dogsKate = [4, 1, 15, 8, 3];
@@ -1493,7 +1409,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 checkDogs(dogsJulia, dogsKate);
 
 checkDogs(dogsJulia2, dogsKate2);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1583,7 +1499,7 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 **Thoughts**: The username will be the initials of each of the four users.
 
-
+```js
 const user = "Steven Thomas Williams"; // stw
 
 const username = user.toLowerCase().split(" ").map
@@ -1592,7 +1508,7 @@ const username = user.toLowerCase().split(" ").map
   return name[0];
 
 }).join("");
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1607,13 +1523,13 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 
 // filter out negative values (withdrawals)
-
+```js
 const deposits = movements.filter(function(movement) {
 
 	return movement > 0;
 	
 });
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1627,10 +1543,10 @@ GitHub Repo: https://github.com/rosajen27/bankist
 **Thoughts**: The reduce method is used to boil down all the elements in an array to one single value.
 
 
-// accumulator --> SNOWBALL
+// accumulator // SNOWBALL
 
-// 0 --> initial value
-
+// 0 // initial value
+```js
 const balance = movements.reduce(function(accumulator, currentValue, i, arr) {
 
 	console.log(`Iteration ${i}: ${accumulator}`);
@@ -1638,7 +1554,7 @@ const balance = movements.reduce(function(accumulator, currentValue, i, arr) {
 	return accumulator + currentValue;
 	
 }, 0);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1666,7 +1582,7 @@ keeping dogs that are at least 18 years old)
 
 
 My Solution:
-
+```js
 const calcAverageHumanAge = function (ages) {
 
   // MAP
@@ -1711,7 +1627,7 @@ const calcAverageHumanAge = function (ages) {
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1728,7 +1644,7 @@ GitHub Repo: https://github.com/rosajen27/bankist
 We could do each of these operations individually and store each result in a new variable OR instead, we can chain the methods.
 
 We can only chain a method after another one, if the first one returns an array. 
-
+```js
 const totalDepositsUSD = movements
 
   .filter(function (movement) {
@@ -1747,11 +1663,11 @@ const totalDepositsUSD = movements
 
 
 console.log(totalDepositsUSD);
-
+```
 
 You can inspect the current array at any stage of the 'pipeline' using the third parameter of the callback function
 
-
+```js
 console.log(movements);
 
 const totalDepositsUSD = movements
@@ -1773,7 +1689,7 @@ const totalDepositsUSD = movements
   }, 0);
 
 console.log(totalDepositsUSD);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1815,7 +1731,7 @@ Solution:
 
 
 // WRITTEN EXPLICITLY 
-
+```js
 const calcAverageHumanAge = function (ages) {
 
   const avgAges = ages.map(function (age) {
@@ -1853,11 +1769,11 @@ const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1, avg2);
-
+```
 
 
 // WRITTEN WITH ARROW FUNCTIONS
-
+```js
 const calcAverageHumanAgeArrow = ages =>
 
   ages.map(age => (age <= 2 ? age * 2 : 16 + age * 4))
@@ -1873,7 +1789,7 @@ const avg1Arrow = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
 const avg2Arrow = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1Arrow, avg2Arrow);
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1894,13 +1810,13 @@ Usually the goal of the find method is to find exactly one element.
 // Using the Bankist App as an example...
 
 // find the first negative movement (withdrawal)
-
+```js
 movements.find(function(movement) {
 
 	return movement < 0;
 
 });
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -1954,13 +1870,13 @@ The findIndex method is similar to the indexOf method. However, the big differen
 
 But on the other hand, with findIndex we can create a complex condition, such as the one implemented in the Bankist App to delete user from data:
 
-
+```js
 const index = accounts.findIndex(function (account) {
 
       return account.username === currentAccount.username;
 
     });
-
+```
 
 GitHub Repo: https://github.com/rosajen27/bankist
 
@@ -1988,15 +1904,15 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 **Thoughts**: SOME METHOD - Let's say that we would like to know if there has been any deposits (positive movements) on a specific account - so any number above zero.
 
-
+```js
 const anyDeposits = movements.some(function(movement) {
 
 	return movement > 0;
 
 });
 
-console.log(anyDeposits); --> true (this is because there are some movements in the account that is a deposit)
-
+console.log(anyDeposits); // true (this is because there are some movements in the account that is a deposit)
+```
 
 In conclusion, if there is any value for which this condition is true, then the some method will return true.
 
@@ -2007,15 +1923,15 @@ In conclusion, if there is any value for which this condition is true, then the 
 EVERY METHOD - The every method is pretty similar to the some method, but the difference between them is that every only returns true if all of the elements in the array satisfy the condition that we pass in.
 
 If every element passes the test in our callback function, only then the every method returns true, hence the name.
-
+```js
 const everyDeposits = movements.every(function (movement) {
 
 	retun movement > 0;
 
 });
 
-console.log(everyDeposits); --> false (this is because not every single movement in the account is a deposit)
-
+console.log(everyDeposits); // false (this is because not every single movement in the account is a deposit)
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -2036,27 +1952,27 @@ The loan functionality will allow the user to:
 
 **Thoughts**: What if we wanted to take all these elements in the separate arrays, and put them all together in one big array? We can use the flat method. Using the flat method will remove the nested arrays and flatten the array.
 
-
+```js
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8]];
 
-console.log(arr.flat()); --> [1, 2, 3, 4, 5, 6, 7, 8]
-
+console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
 
 What if we have an array which is even deeper nested?
 
-
+```js
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]];
 
-console.log(arrDep.flat()); --> [Array(2), 3, 4, Array(2), 7, 8]
-
+console.log(arrDep.flat()); // [Array(2), 3, 4, Array(2), 7, 8]
+```
 
 This result still contains the two inner arrays. This means that the flat method only goes one level deep, when flattening the array. We can fix that by using the depth argument. 1 is the default depth.
 
-
+```js
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]];
 
-console.log(arrDep.flat(2)); --> [1, 2, 3, 4, 5, 6, 7, 8]
-
+console.log(arrDep.flat(2)); // [1, 2, 3, 4, 5, 6, 7, 8]
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -2068,7 +1984,7 @@ With the Bankist App, let's say that the bank itself wants to calculate the over
 
 The first thing to do is to take the movements out of the accounts array and put them all into one array.
 
-
+```js
 const accountMovements = accounts.map(function 
 
 (account) {
@@ -2077,11 +1993,11 @@ const accountMovements = accounts.map(function
 
 });
 
-console.log(accountMovements); --> // this will return a nested structure (an array which contains other arrays)
+console.log(accountMovements); // // this will return a nested structure (an array which contains other arrays)
 
 
 const allMovements = accountMovements.flat();
-console.log(allMovements); --> // this will return a single array with all movements together
+console.log(allMovements); // // this will return a single array with all movements together
 
 
 Then all we have to do is add them all together.
@@ -2094,8 +2010,8 @@ const overallBalance = allMovements.reduce(function
 
 }, 0);
 
-console.log(overallBalance); --> 17840
-
+console.log(overallBalance); // 17840
+```
 
 
 -----------------------------------------------------------------------------------------------------------------
@@ -2110,18 +2026,18 @@ console.log(overallBalance); --> 17840
 
 
 // Strings
-
+```js
 const owners = ["Jonas", "Zach", "Adam", "Martha"];
 
-console.log(owners.sort()); --> ["Adam", "Jonas", "Martha", "Zach"];
-
+console.log(owners.sort()); // ["Adam", "Jonas", "Martha", "Zach"];
+```
 
 // Numbers
-
+```js
 const movement = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log(movements.sort()); --> [-130, -400, -650, 1300, 200, 3000, 450, 70]
-
+console.log(movements.sort()); // [-130, -400, -650, 1300, 200, 3000, 450, 70]
+```
 
 And if we look at the results above as if they were strings, then the result actually makes sense. So the minus you see always comes first. Then afterwards, you start with the first digit, which starts with 1. Followed by a number that starts with 2, then 3, then 4, and finally 7. So these three are alphabetically ordered if they were strings.
 
@@ -2136,7 +2052,7 @@ In order to fix this we need to do the following:
 // return < 0 - A, B (keep order)
 
 // return > 0 - B, A (switch order)
-
+```js
 movements.sort(function (a, b) {
 
 	if (a > b) {
@@ -2152,8 +2068,8 @@ movements.sort(function (a, b) {
 });
 
 
-console.log(movements); --> [-650, -400, -130, 70, 200, 450, 1300, 3000]
-
+console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+```
 
 Now as we see here, the array is now sorted in an ascending order. That is because basically the sort method keeps looping over the array and applying the callback function until everything is in an ascending order according to the rules that we established.
 
@@ -2164,7 +2080,7 @@ So returning 1 basically means to switch the order.
 // DESCENDING ORDER
 
 If you wanted to sort in descending order, you would switch it the other way around.
-
+```js
 movements.sort(function (a, b) {
 
 	if (a > b) {
@@ -2179,8 +2095,8 @@ movements.sort(function (a, b) {
 
 });
 
-console.log(movements); --> [3000, 1300, 450, 200, 70, -130, -400, -650]
-
+console.log(movements); // [3000, 1300, 450, 200, 70, -130, -400, -650]
+```
 
 Now, if you have a mixed array, like with strings and numbers together, then this is not gonna work and it is advised to simply not to use the sort method in these cases anyway.
 
@@ -2215,14 +2131,14 @@ In these cases, we already have our data, so therefore we could manually create 
 
 
 The easiest one is to use the Array() constructor function:
-
+```js
 const x = new Array(7);
-
+```
 
 We might think that this is going to create an array with only one element number seven. But instead it creates a new array with seven empty elements in there and it simply contains nothing.
-
-console.log(x); --> (7) [empty x 7]
-
+```js
+console.log(x); // (7) [empty x 7]
+```
 
 The reason for that is this weird behavior of this Array() function which does it so that whenever we only pass in one argument, then it creates a new empty argument with that length.
 
@@ -2235,38 +2151,38 @@ The only method we can call on this empty array is the fill() method.
 
 So that's x.fill() and then all we need to do is to pass in a value and it will then fill up the entire array with this specific value. This does actually mutate the underlying array.
 
-
+```js
 x.fill(1);
 
-console.log(x); --> (7) [1, 1, 1, 1, 1, 1, 1]
-
+console.log(x); // (7) [1, 1, 1, 1, 1, 1, 1]
+```
 
 So besides this value that we want to fill the array with, we can also specify where we want it to start to fill.
 
-
+```js
 x.fill(1, 3);
 
-console.log(x); --> (7) [empty x 3, 1, 1, 1, 1]
-
+console.log(x); // (7) [empty x 3, 1, 1, 1, 1]
+```
 --
-
+```js
 x.fill(1, 3, 5);
 
-console.log(x); --> (7) [empty x 3, 1, 1, empty x 2]
-
+console.log(x); // (7) [empty x 3, 1, 1, empty x 2]
+```
 
 --
 
 
 We can also use the fill() method on other arrays. It does not have to be an empty array.
 
-
+```js
 const arr = [1, 2, 3, 4, 5, 6, 7];
 
 arr.fill(23, 2, 6);
 
-console.log(arr); --> [1, 2, 23, 23, 23, 23, 7]
-
+console.log(arr); // [1, 2, 23, 23, 23, 23, 7]
+```
 
 --
 
@@ -2274,31 +2190,31 @@ console.log(arr); --> [1, 2, 23, 23, 23, 23, 7]
 What if he wanted to create this arr array programmatically? We could use the Array.from() function.
 
 // Array here is a function, and then on this function object, we call the from() method. We are using it on the Array() contructor.
-
+```js
 const y = Array.from({length: 7}, function() {
 
 	return 1;
 
 });
 
-console.log(y); --> (7) [1, 1, 1, 1, 1, 1, 1]
-
+console.log(y); // (7) [1, 1, 1, 1, 1, 1, 1]
+```
 --
-
+```js
 const z = Array.from({length: 7}, function(currentElement, i) {
 
 	return i + 1;
 
 });
 
-console.log(z) --> (7) [1, 2, 3, 4, 5, 6, 7]
-
+console.log(z) // (7) [1, 2, 3, 4, 5, 6, 7]
+```
 
 --
 
 Another example: You can create an array with 100 random dice rolls.
 
-
+```js
 const diceRoll = Array.from({length: 100}, function() {
 
 	return Math.floor(Math.random() * 6 + 1);
@@ -2307,7 +2223,7 @@ const diceRoll = Array.from({length: 100}, function() {
 });
 
 console.log(diceRoll);
-
+```
 
 --
 
@@ -2321,7 +2237,7 @@ So if we actually wanted to use a real array method like that on a NodeList, we 
 
 
 // An example with the Bankist App
-
+```js
 labelBalance.addEventListener("click", function () {
 
   const movementsUI = Array.from(document.querySelectorAll(".movements__value"));
@@ -2336,7 +2252,7 @@ labelBalance.addEventListener("click", function () {
 
 });
 
-
+```
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -2476,23 +2392,23 @@ labelBalance.addEventListener("click", function () {
 
 // map method because we basically want to create a new array out of the accounts array.
 
-
+```js
 const bankDepositSum = accounts.map(function(account) {
 
 	return account.movements.flat();
 
 });
 
-console.log(bankDepositSum); --> (4) [Array(8), Array(8), Array(8), Array(5)]
+console.log(bankDepositSum); // (4) [Array(8), Array(8), Array(8), Array(5)]
 
-0: (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// 0: (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-1: (8) [5000, 3400, -150, -790, -3210, -1000, 8500, -30]
+// 1: (8) [5000, 3400, -150, -790, -3210, -1000, 8500, -30]
 
-2: (8) [200, -200, 340, -300, -20, 50, 400, -460]
+// 2: (8) [200, -200, 340, -300, -20, 50, 400, -460]
 
-3: (5) [430, 1000, 700, 50, 90]
-
+// 3: (5) [430, 1000, 700, 50, 90]
+```
 
 ------------------
 
@@ -2501,20 +2417,20 @@ console.log(bankDepositSum); --> (4) [Array(8), Array(8), Array(8), Array(5)]
 
 For that, we can use the flat method.
 
-
+```js
 const bankDepositSum = accounts.flatMap(function(account) {
 
 	return account.movements;
 
 });
 
-console.log(bankDepositSum); --> (29) [200, 450, -400, 3000, -650, -130, 70, 1300, 5000, 3400, -150, -790, -3210, -1000, 8500, -30, 200, -200, 340, -300, -20, 50, 400, -460, 430, 1000, 700, 50, 90]
-
+console.log(bankDepositSum); // (29) [200, 450, -400, 3000, -650, -130, 70, 1300, 5000, 3400, -150, -790, -3210, -1000, 8500, -30, 200, -200, 340, -300, -20, 50, 400, -460, 430, 1000, 700, 50, 90]
+```
 -----------------------------------------
 
 // Now we filter for the deposits (positive values) and all them all together
 
-
+```js
 const bankDepositSum = accounts.flatMap(function(account) {
 
 	return account.movements;
@@ -2529,8 +2445,8 @@ const bankDepositSum = accounts.flatMap(function(account) {
 
 }, 0);
 
-console.log(bankDepositSum); --> 25180
-
+console.log(bankDepositSum); // 25180
+```
 
 -----------------------------------------
 
@@ -2538,7 +2454,7 @@ console.log(bankDepositSum); --> 25180
 ## Exercise 2: Count how many deposits there have been in the bank with at least $1,000
 
 // using filter
-
+```js
 const numDeposits1000 = accounts.flatMap(function(account) {
 
 	return account.movements;
@@ -2550,12 +2466,12 @@ const numDeposits1000 = accounts.flatMap(function(account) {
 }).length;
 
 
-console.log(numDeposits1000); --> 6
+console.log(numDeposits1000); // 6
 
-
+```
 
 // using reduce
-
+```js
 const numDeposits1000 = accounts.flatMap(function(account) {
 
 	return account.movements;
@@ -2565,8 +2481,8 @@ const numDeposits1000 = accounts.flatMap(function(account) {
 }, 0);
 
 
-console.log(numDeposits1000); --> 6
-
+console.log(numDeposits1000); // 6
+```
 
 
 -----------------------------------------
@@ -2583,7 +2499,7 @@ console.log(numDeposits1000); --> 6
 
 We already know that reduce boils down an array to just one value. So that value might be an object. It could even be a new array as well. In fact, we could use reduce to replace many of the other methods that we have. 
 
-
+```js
 const sums = accounts.flatMap(function (account) {
 
 	return account.movements;
@@ -2597,13 +2513,13 @@ const sums = accounts.flatMap(function (account) {
 }, {deposits: 0, withdrawals: 0});
 
 
-console.log(sums); --> {deposits: 25180, withdrawals: -7340}
-
+console.log(sums); // {deposits: 25180, withdrawals: -7340}
+```
 -----------------------------------------
 
 We can also destructure this object immediately by...
 
-
+```js
 const {deposits, withdrawals} = accounts.flatMap(function (account) {
 
 	return account.movements;
@@ -2619,13 +2535,13 @@ const {deposits, withdrawals} = accounts.flatMap(function (account) {
 }, {deposits: 0, withdrawals: 0});
 
 
-console.log(deposits, withdrawals); --> {25180 -7340}
-
+console.log(deposits, withdrawals); // {25180 -7340}
+```
 -----------------------------------------
 
 
 ## Exercise #3: Create a function to convert any string to a title case (all the words in a sentence are capitalized - with some exceptions)
-
+```js
 const convertTitleCase = function (title) {
 
   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
@@ -2656,7 +2572,7 @@ const convertTitleCase = function (title) {
 
 
 console.log(convertTitleCase("this is a NICE string"));
-
+```
 
 
 ** Note: Here we used the exceptions array to exclude words in exceptions array from being capitalized. Excluding kind of sounds like filtering, but that's not what we want here because we still want to keep an array of the same length. We just don't want to apply this to all the words. So we will do exceptions and then we are going to check if the current word is included in that array (includes() method). So with the includes() method, we are checking for that word. And then as you notice, we'll return a boolean -- so true, false. Then we can use that boolean to basically ask if the word is an exception or not. So if the word is included in the exceptions array, then we want to simply return that word (as is in lowercase). And only otherwise we want to then return the capitalized version.
@@ -2675,7 +2591,7 @@ console.log(convertTitleCase("this is a NICE string"));
 
 Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little. Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite. Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion.
 
-
+```js
 const dogs = [
 
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
@@ -2687,12 +2603,12 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 
 ];
-
+```
 
 
 // v Loop over the 'dogs' array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property.
 
-
+```js
 const recommendedFood = function (dogs) {
 
   dogs.recFood = Math.trunc(dogs.weight ** 0.75 * 28);
@@ -2702,10 +2618,10 @@ const recommendedFood = function (dogs) {
 dogs.forEach(recommendedFood);
 
 console.log(dogs);
-
+```
 
 // x Find Sarah's dog and log to the console whether it's eating too much or too little.
-
+```js
 const sarahsDog = dogs.find(function (dog) {
 
   return dog.owners.includes("Sarah");
@@ -2715,10 +2631,10 @@ const sarahsDog = dogs.find(function (dog) {
 console.log(sarahsDog);
 
 console.log(`Sarah's dog is eating too ${sarahsDog.curFood > sarahsDog.recFood ? "much" : "little"} food.`);
-
+```
 
 // vx Create an array containing all owners of dogs who eat too much and an array with all owners of dogs who eat too little
-
+```js
 const ownersEatTooMuch = dogs.filter(function (dog) {
 
   return dog.curFood > dog.recFood
@@ -2743,17 +2659,17 @@ const ownersEatTooLittle = dogs.filter(function (dog) {
 });
 
 console.log(ownersEatTooLittle);
-
+```
 
 // v Log a string to the console for each array created
-
+```js
 console.log(`${ownersEatTooMuch.join(" and ")}'s dogs eat too much!`);
 
 console.log(`${ownersEatTooLittle.join(" and ")}'s dogs eat too little!`);
-
+```
 
 // vx Log to the console whether there is any dog eating exactly the amount of food that is recommended
-
+```js
 const exactFood = dogs.some(function (dog) {
 
   return dog.curFood === dog.recFood;
@@ -2761,10 +2677,10 @@ const exactFood = dogs.some(function (dog) {
 });
 
 console.log(exactFood);
-
+```
 
 // v Log to the console whether there is any dog eating an okay amount of food
-
+```js
 const okayFood = dogs.some(function (dog) {
 
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
@@ -2772,10 +2688,10 @@ const okayFood = dogs.some(function (dog) {
 });
 
 console.log(okayFood);
-
+```
 
 // v Create an array containing the dogs that are eating an okay amount of food
-
+```js
 const okayFoodArr = dogs.filter(function (dog) {
 
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
@@ -2783,10 +2699,10 @@ const okayFoodArr = dogs.filter(function (dog) {
 });
 
 console.log(okayFoodArr);
-
+```
 
 // vx Create a shallow copy of the 'dogs' array and sort it by recommended food portion in an ascending order
-
+```js
 const copy = dogs.slice().sort(function (a, b) {
 
   return a.recFood - b.recFood;
@@ -2794,7 +2710,7 @@ const copy = dogs.slice().sort(function (a, b) {
 });
 
 console.log(copy);
-
+```
 
 (Note: Personal codes for future reference. v = completely solved on own | x = did not solve on own | vx = partially solved on own or hints helped)
 
@@ -2822,7 +2738,7 @@ The filter() method did not work in this situation because this method is used t
 
 
 The some() method works because if there is any value for which this condition is true, then the some method will return true.
-
+```js
 const dogs = [
 
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
@@ -2834,11 +2750,11 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 
 ];
-
+```
 // 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property.
 
 // Formula: recommendedFood = weight ** 0.75 * 28
-
+```js
 const recommendedFood = function (dog) {
 
   dog.recFood = Math.trunc(dog.weight ** 0.75 * 28);
@@ -2848,11 +2764,11 @@ const recommendedFood = function (dog) {
 dogs.forEach(recommendedFood);
 
 console.log(dogs);
-
+```
 
 
 // 2. Find Sarah's dog and log to the console whether it's eating too much or too little
-
+```js
 const sarahsDog = dogs.find(function (dog) {
 
   return dog.owners.includes("Sarah");
@@ -2863,12 +2779,12 @@ const sarahsDog = dogs.find(function (dog) {
 console.log(sarahsDog);
 
 console.log(`Sarah's dog is eating ${sarahsDog.curFood > sarahsDog.recFood ? "too much" : "too little"} food.`);
-
+```
 
 
 // 3. Create an array containing all the owners of dogs who eat too much and an array with all owners of dogs who eat 
 too little
-
+```js
 const ownersEatTooMuch = dogs.filter(function (dog) {
 
 
@@ -2895,19 +2811,19 @@ const ownersEatTooLittle = dogs.filter(function (dog) {
 });
 
 console.log(ownersEatTooLittle);
-
+```
 
 
 // 4. Log a string to the console for each array created
-
+```js
 console.log(`${ownersEatTooMuch.join(" and ")}'s dogs each too much!`);
 
 console.log(`${ownersEatTooLittle.join(" and ")}'s dogs each too little!`);
-
+```
 
 
 // 5. Log to the console whether there is any dog eating exact amount of recommended food
-
+```js
 const exactAmountFood = dogs.some(function (dog) {
 
   return dog.curFood === dog.recFood;
@@ -2915,13 +2831,13 @@ const exactAmountFood = dogs.some(function (dog) {
 });
 
 console.log(exactAmountFood);
-
+```
 
 
 // 6. Log to the console whether there is any dog eating an okay amount of food
 
 // Formula: currentFood > (recommendedFood * 0.90) && currentFood < (recommendedFood * 1.10)
-
+```js
 const okayAmountFood = dogs.some(function (dog) {
 
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
@@ -2929,11 +2845,11 @@ const okayAmountFood = dogs.some(function (dog) {
 });
 
 console.log(okayAmountFood);
-
+```
 
 
 // 7. Create an array containing the dogs that are eating an ok amount of food
-
+```js
 const okayAmountFoodArr = dogs.filter(function (dog) {
 
   return dog.curFood > (dog.recFood * 0.90) && dog.curFood < (dog.recFood * 1.10);
@@ -2941,11 +2857,11 @@ const okayAmountFoodArr = dogs.filter(function (dog) {
 });
 
 console.log(okayAmountFoodArr);
-
+```
 
 
 // 8. Create a shallow copy of the dogs array and sort it by recommended food portion in ascending order
-
+```js
 const dogsCopy = dogs.slice().sort(function (a, b) {
 
   return a.recFood - b.recFood;
@@ -2953,7 +2869,7 @@ const dogsCopy = dogs.slice().sort(function (a, b) {
 });
 
 console.log(dogsCopy);
-
+```
 
 
 -----------------------------------------
@@ -2967,9 +2883,9 @@ console.log(dogsCopy);
 
 **Thoughts**: In JavaScript, all numbers are presented internally as floating point numbers. So basically, always as decimals, no matter if we actually write them as integers or as decimals.
 
-
-console.log(23 === 23.0); --> true
-
+```js
+console.log(23 === 23.0); // true
+```
 
 23 is, in fact, the same as 23.0. And that's the reason why we only have one data type for all numbers. Also, numbers are represented internally in a 64 base 2 format. So that means that numbers are always stored in a binary format -- they're only composed of zeros and ones.
 
@@ -2979,9 +2895,9 @@ Now, in this binary form, it is very hard to represent some fractions that are v
 
 There are certain numbers that are very difficult to represent in base 2. One example of that is the fraction 0.1. And that then results in very weird results like this.
 
-
-console.log(0.1 + 0.2); --> 0.30000000000000004
-
+```js
+console.log(0.1 + 0.2); // 0.30000000000000004
+```
 
 This is kind of a running joke in JavaScript because this result should, of course, be 0.3 But JavaScript simply has no better way of representing this number.
 
@@ -2999,18 +2915,18 @@ console.log(Number(23)); or simply use the plus operator console.log(+23);
 
 
 - Parsing: You can also parse a number from a string:
-
-console.log(Number.parseInt("30px")); --> 30
-
-
-console.log(Number.parseInt("e30px")); --> NaN
+```js
+console.log(Number.parseInt("30px")); // 30
 
 
-console.log(Number.parseInt("2.5rem")); --> 2.5
+console.log(Number.parseInt("e30px")); // NaN
 
 
-console.log(Number.parseFloat("2.5rem")); --> 2
+console.log(Number.parseInt("2.5rem")); // 2.5
 
+
+console.log(Number.parseFloat("2.5rem")); // 2
+```
 
 Note: in order for this to work, the string has to start with a number. The parseInt function actually accepts a second argument, which is the so-called regex. And the regex is the base of the numeral system that we are using. So here we are simply using base 10 numbers. So numbers from zero to nine. And most of the time, we are doing that and so we should always pass in the number 10 here. So that can avoid some bugs in some situations.
 
@@ -3020,30 +2936,30 @@ The parseFloat function should be your go-to whenever you need to read a value o
 
 - isNAN: check if value is not a number
 
+```js
+console.log(Number.isNaN(20)); // false
 
-console.log(Number.isNaN(20)); --> false
+console.log(Number.isNaN("20")); // false
 
-console.log(Number.isNaN("20")); --> false
+console.log(Number.isNaN(+"20X")); // true
 
-console.log(Number.isNaN(+"20X")); --> true
-
-console.log(Number.isNaN(23/0)); --> false
-
+console.log(Number.isNaN(23/0)); // false
+```
 
 In summary, the Number.isNan()-method only returns true if the variable supplied as an argument is of the value NaN, and of the type Number.
 
 
 - isFinite: this methos is better when trying to check if a value is a number or not
 
+```js
+console.log(Number.isFinite(20)); // true
 
-console.log(Number.isFinite(20)); --> true
+console.log(Number.isFinite("20")); // false
 
-console.log(Number.isFinite("20")); --> false
+console.log(Number.isFinite(+"20X")); // false
 
-console.log(Number.isFinite(+"20X")); --> false
-
-console.log(Number.isFinite(23/0)); --> false
-
+console.log(Number.isFinite(23/0)); // false
+```
 
 
 -----------------------------------------
@@ -3060,42 +2976,43 @@ console.log(Number.isFinite(23/0)); --> false
 
 
 - Square Root
+```js
+console.log(Math.sqrt(25)); // 5
 
-console.log(Math.sqrt(25)); --> 5
-
-console.log(25 ** (1/2)); --> 5
-
+console.log(25 ** (1/2)); // 5
+```
 
 
 - Maximum value
+```js
+console.log(Math.max(5, 18, 23, 11, 2)); // 23
 
-console.log(Math.max(5, 18, 23, 11, 2)); --> 23
+console.log(Math.max(5, 18, "23", 11, 2)); // 23
 
-console.log(Math.max(5, 18, "23", 11, 2)); --> 23
-
-console.log(Math.max(5, 18, "23px", 11, 2)); --> NaN (Parsing does not work in this case)
-
+console.log(Math.max(5, 18, "23px", 11, 2)); // NaN (Parsing does not work in this case)
+```
 
 
 - Minimum Value
-
-console.log(Math.min(5, 18, 23, 11, 2)); --> 2
-
+```js
+console.log(Math.min(5, 18, 23, 11, 2)); // 2
+```
 
 
 - Constants
+```js
+console.log(Math.PI); // 3.141592653589793
 
-console.log(Math.PI); --> 3.141592653589793
-
-console.log(Math.PI * Number.parseFloat("10px") ** 2); // Calculating area of a circle with radius of 10 --> 314.
+console.log(Math.PI * Number.parseFloat("10px") ** 2); // Calculating area of a circle with radius of 10 // 314.
+```
 1592653589793
-
+```js
 console.log(Math.trunc(Math.random() * 6) + 1); // Generate a random number between 1 - 6
-
+```
 
 
 // will return a random number between min & max
-
+```js
 const randomInt = function(min, max) {
 
 	return Math.trunc(Math.random() * (max - min) + 1) + min;
@@ -3103,52 +3020,52 @@ const randomInt = function(min, max) {
 };
 
 console.log(randomInt(1, 20));
-
+```
 
 
 - Rounding integers
 
 // Remove digits after the decimal point
-
-console.log(Math.trunc(23.3)); --> 23
-
+```js
+console.log(Math.trunc(23.3)); // 23
+```
 
 
 // Rounded to nearest whole number
+```js
+console.log(Math.round(23.3)); // 23
 
-console.log(Math.round(23.3)); --> 23
-
-console.log(Math.round(23.9)); --> 24
-
+console.log(Math.round(23.9)); // 24
+```
 
 
 
 // Rounded UP
+```js
+console.log(Math.ceil(23.3)); // 24
 
-console.log(Math.ceil(23.3)); --> 24
-
-console.log(Math.ceil(23.9)); --> 24 
-
+console.log(Math.ceil(23.9)); // 24 
+```
 
 
 // Rounded DOWN
+```js
+console.log(Math.floor(23.3)); // 23
 
-console.log(Math.floor(23.3)); --> 23
-
-console.log(Math.floor(23.9)); --> 23 
-
+console.log(Math.floor(23.9)); // 23 
+```
 
 
 - Rounding decimals
+```js
+console.log(2.7).toFixed(0); // 3 // will return as a string, not a number
 
-console.log(2.7).toFixed(0); --> 3 // will return as a string, not a number
+console.log(2.7).toFixed(3); // 2.700
 
-console.log(2.7).toFixed(3); --> 2.700
-
-console.log(2.345).toFixed(2); --> 2.35
+console.log(2.345).toFixed(2); // 2.35
 
 console.log(+2.345).toFixed(2); // plus sign will convert a string to a number
-
+```
 ----------
 
 Bankist App Updates
@@ -3170,20 +3087,20 @@ GitHub Repo: https://github.com/rosajen27/bankist
 
 **Thoughts**: The remainder operator returns the remainder of a division. 
 
+```js
+console.log(5 % 2); // 1 Remainder
 
-console.log(5 % 2); --> 1 Remainder
-
-console.log(5 / 2); --> 2.5 // Because 5 = 2 * 2 + 1
+console.log(5 / 2); // 2.5 // Because 5 = 2 * 2 + 1
 
 
-console.log(8 % 3); --> 2 Remainder
+console.log(8 % 3); // 2 Remainder
 
-console.log(8 / 3); --> 2.6666666 // Because 8 = 2 * 3 + 2
-
+console.log(8 / 3); // 2.6666666 // Because 8 = 2 * 3 + 2
+```
 
 One thing that is many times used for programming, is to check whether a certain number is even or odd. A number is even when it is divisible by two (meaning -- if we divide it by two, the remainder is zero).
-
-console.log(6 % 2); --> 0 
+```js
+console.log(6 % 2); // 0 
 
 
 const isEven = function(n) {
@@ -3193,15 +3110,15 @@ const isEven = function(n) {
 }
 
 
-console.log(isEven(8)); --> true
+console.log(isEven(8)); // true
 
-console.log(isEven(3)); --> false
-
+console.log(isEven(3)); // false
+```
 
 Real World Example: If we wanted to change the background color of every other transaction in Bankist App:
 
 
-
+```js
 labelBalance.addEventListener("click", function() {
 
 	[...document.querySelectorAll(".movements__row")].forEach(function(row, i) {
@@ -3212,7 +3129,7 @@ labelBalance.addEventListener("click", function() {
 
 });
 
-
+```
 
 -----------------------------------------
 
@@ -3228,33 +3145,33 @@ labelBalance.addEventListener("click", function() {
 
 If there are only 53 bits to store the number, that means that there is a limit of how big numbers can be, and we can calculate that number.
 
+```js
+console.log(2 ** 53 - 1); // 9007199254740991 // This is essentially the biggest number that JavaScript can safely represent
 
-console.log(2 ** 53 - 1); --> 9007199254740991 // This is essentially the biggest number that JavaScript can safely represent
 
-
-console.log(Number.MAX_SAFE_INTEGER); --> 9007199254740991 // This number is so important that it's even stored into the number namespace MAX SAFE INTEGER. So any integer that is larger than this, is not safe and that means it cannot be represented accurately. So if we do calculations with numbers that are bigger than this, then we might lose precision.
-
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991 // This number is so important that it's even stored into the number namespace MAX SAFE INTEGER. So any integer that is larger than this, is not safe and that means it cannot be represented accurately. So if we do calculations with numbers that are bigger than this, then we might lose precision.
+```
 
 This can be a problem sometimes because in some situations, we might need really big numbers. For example - for database IDs or when interacting with real 60 bit numbers. 
 
 
 However, since ES2020 - a new primivite was added, which is called BigInt (big integer). It can be used to store numbers as large as we want. 
 
+```js
+console.log(123456789123456789123456789); // 1.2345678912345679e+26
 
-console.log(123456789123456789123456789); --> 1.2345678912345679e+26
-
-console.log(123456789123456789123456789n); --> 123456789123456789123456789n // Including the n at the end, transforms a regular number into a BigInt number.
-
+console.log(123456789123456789123456789n); // 123456789123456789123456789n // Including the n at the end, transforms a regular number into a BigInt number.
+```
 
 All usual operators still work the same. However, what is not possible is mixing BigInts with regular numbers - you would have to fist use the BigInt constructor.
 
-
+```js
 const huge = 123456789123456789123456789n;
 
 const num = 23;
 
 console.log(huge * BigInt(num));
-
+```
 
 
 -----------------------------------------
@@ -3271,56 +3188,56 @@ console.log(huge * BigInt(num));
 // Create a date
 
 const now = new Date();
-
-console.log(now); --> // *displays current date and time at this very moment*
-
+```js
+console.log(now); // // *displays current date and time at this very moment*
+```
 
 // Parse date from a date string
 
-console.log(new Date("December 24, 2021")); --> Fri Dec 24 2021 00:00:00 GMT-0500 (Eastern Standard Time)
+console.log(new Date("December 24, 2021")); // Fri Dec 24 2021 00:00:00 GMT-0500 (Eastern Standard Time)
 
 
 We can also pass in year, month, day, hour, minute, and second into the constructor. Important Note: The MONTH is ZERO BASED (0 = January).
 
-
-console.log(new Date(2037, 10, 19, 15, 23, 5)); --> Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
-
+```js
+console.log(new Date(2037, 10, 19, 15, 23, 5)); // Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+```
 
 // Working with dates
-
+```js
 const future = new Date(2037, 10, 19, 15, 23);
 
-console.log(future); --> Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+console.log(future); // Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
 
 
-console.log(future.getFullYear()); --> 2037
+console.log(future.getFullYear()); // 2037
 
-console.log(future.getMonth()); --> 10 *remember this is zero based*
+console.log(future.getMonth()); // 10 *remember this is zero based*
 
-console.log(future.getDate()); --> 19
+console.log(future.getDate()); // 19
 
-console.log(future.getDay()); --> 4 // Thursday
+console.log(future.getDay()); // 4 // Thursday
 
-console.log(future.getHours()); --> 15
+console.log(future.getHours()); // 15
 
-console.log(future.getMinutes()); --> 23
+console.log(future.getMinutes()); // 23
 
-console.log(future.getSeconds()); --> 0
+console.log(future.getSeconds()); // 0
 
-console.log(future.getISOString()); --> 2037-11-19T15:23:00.000Z
+console.log(future.getISOString()); // 2037-11-19T15:23:00.000Z
 
 
-console.log(future.getTime()); --> 2142256980000 *amount of milliseconds that have passed since Jan 1, 1970*
+console.log(future.getTime()); // 2142256980000 *amount of milliseconds that have passed since Jan 1, 1970*
 
-console.log(new Date(2142256980000)); Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
-
+console.log(new Date(2142256980000)); // Thu Nov 19 2037 15:23:00 GMT-0500 (Eastern Standard Time)
+```
 
 // Setting a date
-
+```js
 future.setFullYear(2040);
 
-console.log(future); --> Mon Nov 19 2040 15:23:00 GMT-0500 (Eastern Standard Time)
-
+console.log(future); // Mon Nov 19 2040 15:23:00 GMT-0500 (Eastern Standard Time)
+```
 
 You can also use this to set month, date, etc.
 
@@ -3353,12 +3270,12 @@ GitHub Repo: https://github.com/rosajen27/bankist
 **Thoughts**: 
 
 // Calculations with dates
-
+```js
 const future = new Date(2037, 10, 19, 15, 23);
 
-console.log(Number(future)); --> 2142274980000 // time stamp in milliseconds
+console.log(Number(future)); // 2142274980000 // time stamp in milliseconds
 
-console.log(+future); --> 2142274980000
+console.log(+future); // 2142274980000
 
 
 
@@ -3371,7 +3288,7 @@ const calcDaysPassed = function(date1, date2) {
 
 const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
 
-console.log(days1); --> 864000000
+console.log(days1); // 864000000
 
 
 
@@ -3397,8 +3314,8 @@ const calcDaysPassedConverted = function(date1, date2) {
 
 const days2 = calcDaysPassedConverted(new Date(2037, 3, 14), new Date(2037, 3, 24));
 
-console.log(days2); --> 10 // days
-
+console.log(days2); // 10 // days
+```
 -----------------------------
 
 We can use this function to format and display or dates in a different way within the Bankist application.
@@ -3407,7 +3324,7 @@ For example, if one movement happened today, then instead of the current date, i
 
 This has been featured on many social media platforms. For example, if you post something on Facebook, and if you didn't watch it the next day, it will say that you posted it yesterday, it's not going to display the exact date.
 
-
+```js
 const calcDaysPassed = function(date1, date2) {
 
 	return Math.round(Math.abs(date2 - date1 / (1000 * 60 * 60 * 24)));
@@ -3442,7 +3359,7 @@ const daysPassed = calcDaysPassed(new Date(), date) {
 	}
 
 };
-
+```
 
 *Note: I decided not to apply this to the application* 
 
@@ -3462,7 +3379,7 @@ const daysPassed = calcDaysPassed(new Date(), date) {
 **Thoughts**: 
 
 Instead of coding dates like this:
-
+```js
     const now = new Date();
 
     const day = `${now.getDate()}`.padStart(2, 0);
@@ -3476,22 +3393,22 @@ Instead of coding dates like this:
     const min = `${now.getMinutes()}`.padStart(2, 0);
 
     labelDate.textContent = `${month}/${day}/${year}, ${hour}:${min}`;
-
+```
 
 
 You can use the Internationalization API:
-
+```js
 const now = new Date();
 
 labelDate.textContent = new Intl.DateTimeFormat("en-US").format(now);
-
+```
 
 ISO Language Code Table: http://www.lingoes.net/en/translator/langcode.htm
 
 -----------------------------------------
 You can also display time by providing an options object to the function:
 
-
+```js
 const now = new Date();
 
 const options = {
@@ -3510,13 +3427,13 @@ const options = {
 }
 
 labelDate.textContent = new Intl.DateTimeFormat("en-US", options).format(now);
-
+```
 *Other options include "long", "2-digit", "short", "narrow"*
 
 -----------------------------------------
 
 In many situations, it actually makes more sense to not define locale manually, but to simply get it from the user's browser.
-
+```js
 const now = new Date();
 
 const locale = navigator.language;
@@ -3537,7 +3454,7 @@ const options = {
 }
 
 labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
-
+```
 
 -----------------------------------------
 
@@ -3549,7 +3466,7 @@ labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 
 
 **Thoughts**: 
-
+```js
 const num = 3884764.23;
 
 
@@ -3562,18 +3479,18 @@ console.log("Syria: ", new Intl.NumberFormat("ar-SY").format(num));
 
 
 
---> 
+// 
 
-US:  3,884,764.23
+// US:  3,884,764.23
 
-Germany:  3.884.764,23
+// Germany:  3.884.764,23
 
-Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣
-
+// Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣
+```
 
 
 -----------------------------------------
-
+```js
 const num = 3884764.23;
 
 const options = {
@@ -3594,21 +3511,21 @@ console.log(navigator.language, new Intl.NumberFormat(navigator.language, option
 
 
 
--->
+//
 
-US:  3,884,764.23 mph
+// US:  3,884,764.23 mph
 
-Germany:  3.884.764,23 mi/h
+// Germany:  3.884.764,23 mi/h
 
-Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣ ميل/س
+// Syria:  ٣٬٨٨٤٬٧٦٤٫٢٣ ميل/س
 
-en-US 3,884,764.23 mph
-
+// en-US 3,884,764.23 mph
+```
 -----------------------------------------
 
 Some other examples include:
 
-
+```js
 const options = {
 
 	style: "unit",
@@ -3634,7 +3551,7 @@ const options = {
 	currency: "EUR"
 
 };
-
+```
 *Note: We do infact have to label the currency, as it is not determined by the locale*
 
 -----------------------------------------
@@ -3650,7 +3567,7 @@ const options = {
 
 We can use setTimeout to execute some code at some point in the future.
 
-
+```js
 setTimeout(function() {
 
 	console.log("Here is your pizza 🍕"); 
@@ -3658,12 +3575,12 @@ setTimeout(function() {
 }, 3000);
 
 
---> // after 3 seconds, the console will log the message above
-
+// // after 3 seconds, the console will log the message above
+```
 
 Any argument that you pass after the delay, will be arguments to the function.
 
-
+```js
 setTimeout(function(ing1, ing2) {
 
 	console.log(`Here is your pizza 🍕 with ${ing1} and ${ing2}`); 
@@ -3672,8 +3589,8 @@ setTimeout(function(ing1, ing2) {
 
 
 
---> // after 3 seconds, the console will log the message above
-
+// // after 3 seconds, the console will log the message above
+```
 
 
 -----------------------------------------
@@ -3683,7 +3600,7 @@ setTimeout(function(ing1, ing2) {
 We can also cancel the timer, at least until before the delay has actually passed. 
 
 
-
+```js
 const ingredients = ["olives", "spinach"];
 
 
@@ -3699,18 +3616,18 @@ console.log("Waiting...");
 
 
 if (ingredients.includes("spinach")) clearTimeout(pizzaTimer);
-
+```
 
 -----------------------------------------
 // setInterval
-
+```js
 setInterval(function() {
 	const now = new Date();
 	console.log(now);
 }, 1000);
 
---> // will print the date every second on the console
-
+// // will print the date every second on the console
+```
 -----------------------------------------
 
 
@@ -3770,7 +3687,7 @@ How to DOM API is organized behind the scenes:
 
 
 **Thoughts**: SELECTING - We have a special way of selecting the entire document of any webpage(document), and that is documentElement. We can also easily select the head and body.
-
+```js
 console.log(document.documentElement);
 
 console.log(document.head);
@@ -3778,27 +3695,27 @@ console.log(document.head);
 console.log(document.body);
 
 
-document.querySelector(".header"); --> // will return the first element that matches the selector.
+document.querySelector(".header"); // // will return the first element that matches the selector.
 
-const allSections = document.querySelectorAll(".section"); --> // will return all elements that matches the selector.
+const allSections = document.querySelectorAll(".section"); // // will return all elements that matches the selector.
 
-console.log(allSections); --> // will return a node list that contains all of the elements that are selected by this selector
-
+console.log(allSections); // // will return a node list that contains all of the elements that are selected by this selector
+```
 -----
-
+```js
 document.getElementByID("section--1");
 
 const allButtons = document.getElementsByTagName("button");
 
-console.log(allButtons); --> // returns all of the buttons on our webpage. This method actually returns an HTML collection, which is different from a Node list. An HTML collection is actually a so called live collection, which means if the DOM changes, then this collection is also immediately updated automatically. The same does not happen with a Node list - it does not update itself.
+console.log(allButtons); // // returns all of the buttons on our webpage. This method actually returns an HTML collection, which is different from a Node list. An HTML collection is actually a so called live collection, which means if the DOM changes, then this collection is also immediately updated automatically. The same does not happen with a Node list - it does not update itself.
 
 
-document.getElementsByClassName("btn"); --> // will also return a live HTML collection
-
+document.getElementsByClassName("btn"); // // will also return a live HTML collection
+```
 --------------------------------------------------------
 
-CREATING & INSERTING - We can create HTML elements using insertAdjacentHTML or createElement. If we want it to appear onto the page, then we have to manually insert it.
-
+CREATING + INSERTING - We can create HTML elements using insertAdjacentHTML or createElement. If we want it to appear onto the page, then we have to manually insert it.
+```js
 const header = document.querySelector(".header");
 
 const message = document.createElement("div");
@@ -3810,15 +3727,15 @@ message.innerHTML = "We use cookies for improved functionality and analytics. <b
 header.append(message);
 
 // two other methods include .before() and .after() - which will appear before or after the element as a sibling
-
+```
 --------------------------------------------------------
 
 DELETE -
-
+```js
 document.querySelector(".btn--close--cookie").addEventListener("click", function() {
 	message.remove();
 });
-
+```
 
 -----------------------------------------
 
@@ -3832,24 +3749,24 @@ document.querySelector(".btn--close--cookie").addEventListener("click", function
 **Thoughts**: 
 
 // STYLES
-
+```js
 message.style.backgroundColor = "#37383d";
 
 message.style.width = "120%";
 
 
 
-console.log(message.style.height); --> // returns nothing because using the style property like this here only works for inline styles that we set ourselves also using this style property
+console.log(message.style.height); // // returns nothing because using the style property like this here only works for inline styles that we set ourselves also using this style property
 
 
-console.log(message.style.backgroundColor); --> // this will return the background color because it is an inline style, so a style that we set manually ourselves
+console.log(message.style.backgroundColor); // // this will return the background color because it is an inline style, so a style that we set manually ourselves
 
 
-console.log(message.style.color); --> // returns nothing because we cannot get a style that is hidden inside of a class or that does not exist
-
+console.log(message.style.color); // // returns nothing because we cannot get a style that is hidden inside of a class or that does not exist
+```
 ----------
-
-console.log(getComputerStyle(message)); --> // returns large object with all styles
+```js
+console.log(getComputerStyle(message)); // // returns large object with all styles
 
 console.log(getComputedStyle(message).color);
 
@@ -3860,59 +3777,59 @@ console.log(getComputedStyle(message).height);
 // since getComputerStyle returns a string, we must parse the digits and turn it into a number before we can add a number to it.
 
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + "px";
-
+```
 ----------
 
 // CSS Variables (Custom Properties)
-
-document.documentElement.style.setProperty("--color-primary", "orangered"); --> // everywhere in our style where we used the primary color, it is now orange red
-
+```js
+document.documentElement.style.setProperty("--color-primary", "orangered"); // // everywhere in our style where we used the primary color, it is now orange red
+```
 ----------
 
 // ATTRIBUTES
 
 Examples of attributes include source, alt, class, IDs, etc. So in JS ofcourse we can access and change these different attributes. 
 
-
+```js
 const logo = document.querySelector(".nav__logo");
 
-console.log(logo.alt); --> // will display alternative text
+console.log(logo.alt); // // will display alternative text
 
-console.log(logo.src); --> // will display absolute URL -- the same is true for href links
+console.log(logo.src); // // will display absolute URL -- the same is true for href links
 
-console.log(logo.className); --> // will display class name
+console.log(logo.className); // // will display class name
 
-console.log(logo.designer); --> // undefined because it is a NON STANDARD
+console.log(logo.designer); // // undefined because it is a NON STANDARD
 
-console.log(logo.getAttribute("designer")); --> Jonas
-
+console.log(logo.getAttribute("designer")); // Jonas
+```
 
 So if we specify them in HTML, then JS will automatically create these properties on the object, but if we add some other property that is not a standard then JS will not create a property on the object (in order to be able to do this you must use getAttribute).
 
 
 Just as we can read these attributes, we can also define them.
 
-
+```js
 logo.alt = "Beautiful minimalist logo";
 
 logo.setAttribute("company", "Bankist"); 
-
+```
 ----------
 
 // Data Attributes
-
-console.log(logo.dataset.versionNumber); --> // So data, and data attributes are a special kind of attributes that start with the words data. Often used when working with the UI and especially when data needs to be stored in the UI (in the HTML code)
-
+```js
+console.log(logo.dataset.versionNumber); // // So data, and data attributes are a special kind of attributes that start with the words data. Often used when working with the UI and especially when data needs to be stored in the UI (in the HTML code)
+```
 
 ----------
 
 // CLASSES
-
+```js
 logo.classList.add();
 logo.classList.remove();
 logo.classList.toggle();
 logo.classList.contains();
-
+```
 
 -----------------------------------------
 
@@ -3924,18 +3841,18 @@ logo.classList.contains();
 
 
 **Thoughts**: *The simplest way to implement smooth scroll would be through css, however this is an alternative way of doing it with JavaScript*
-
+```js
 html {
 
 scroll-behavior: smooth;
 
 }
-
+```
 ----------
 
 // Smooth Scrolling with JavaScript (Manually)
 
-
+```js
 // the name of the button
 
 const btnScrollTo = document.querySelector(".btn--scroll-to");
@@ -4006,17 +3923,17 @@ btnScrollTo.addEventListener("click", function(e) {
 
 
 });
-
+```
 -------------
 
 // Modern Method of Smooth Scrolling- only words in modern browsers
-
+```js
 btnScrollTo.addEventListener("click", function (e) {
 
   section1.scrollIntoView({ behavior: "smooth" });
 
 });
-
+```
 
 ----------
 
@@ -4042,7 +3959,7 @@ We can then listen for these events in our code using Event Listeners, so that w
 
 
 // Mouse enter - similar to the hover effect in CSS. It fires whenever a mouse enters a certain element
-
+```js
 const h1 = document.querySelector("h1");
 
 h1.addEventListener("mouseenter", function(e) {
@@ -4050,7 +3967,7 @@ h1.addEventListener("mouseenter", function(e) {
   alert("addEventListener: You are reading the heading!");
 
 });
-
+```
 ----------
 
 // Using Add Event Listener
@@ -4058,14 +3975,12 @@ h1.addEventListener("mouseenter", function(e) {
 - Using addEventListener allows us to add multiple event listeners to the same event
 - We can also remove an event handler in case we don't need it anymore. This makes it so that we can only listen to the event once
 
-
+```js
 const h1 = document.querySelector("h1");
 
 const alertH1 = function (e) {
 
   alert("addEventListener: You are reading the heading!");
-
-
 
   h1.removeEventListener("mouseenter", alertH1);
 
@@ -4073,29 +3988,29 @@ const alertH1 = function (e) {
 
 
 h1.addEventListener("mouseenter", alertH1);
-
+```
 ----------
 
 - You can also remove it after a certain time has passed:
-
+```js
 setTimeout(() => h1.removeEventListener("mouseenter", alertH1), 3000);
-
+```
 ----------
 
 // a second way of attaching an eventlistener to an element (the "old school way")
-
+```js
 h1.onmouseenter = function(e) {
 
   alert("addEventListener: You are reading the heading!");
 
 };
-
+```
 ----------
 
 // a third way of attaching an event listener to an element (using an HTML attribute -- should NOT be used)
-
+```js
 <h1 onclick="alert('HTML alert!')">Header</h1>
-
+```
 
 
 -----------------------------------------
@@ -4109,7 +4024,7 @@ h1.onmouseenter = function(e) {
 
 **Thoughts**: Events propagate (bubble and capture) -- meaning its events transmit from one place to another
 
-
+```js
 <html>
 
 <head>
@@ -4127,9 +4042,9 @@ h1.onmouseenter = function(e) {
 </section>
 
 </body>
+```
 
-
-DOM Tree: Document --> Element HTML --> Element BODY --> Element SECTION --> Element P --> Element A
+DOM Tree: Document // Element HTML // Element BODY // Element SECTION // Element P // Element A
 
 
 Let's say that a click happens on the link. The DOM would generate a click event right away. However, this event is NOT generated at the target element (the element where the event happened ie. the click on the anchor element). Instead, the event is actually generated at the root of the document, so at the very top of the DOM tree.
@@ -4162,7 +4077,7 @@ By default, events can only be handled in the target, and in the bubbling phase.
 
 **Thoughts**:
 
-
+```js
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 
@@ -4194,7 +4109,7 @@ document.querySelector(".nav").addEventListener("click", function (e) {
 	console.log("NAV", e.target, e.currentTarget);
 
 });
-
+```
 
 *Remember that in an event handler, the this keyword points always to the element on which that event handler is 
 attached -- in this case it is going to be document.querySelector(".nav__link")*
@@ -4236,7 +4151,7 @@ GitHub Rep: https://github.com/rosajen27/bankist-ad
 **Thoughts**:
 
 // Without Event Delegation
-
+```js
 document.querySelectorAll(".nav__link").forEach(function(el) {
 
   el.addEventListener("click", function(e) {
@@ -4250,7 +4165,7 @@ document.querySelectorAll(".nav__link").forEach(function(el) {
   });
 
 });
-
+```
 
 This solution works, but the problem is that it is not effecient. The callback function has been added once to three navigation links -- so the exact same function is attached to 3 elements. What if we had 100? 1,000? 10,000 elements? If we were to attached attach an event handler to each element like this, then we would be creating thousands of copies of the same event handler, which would impact performance. The better solution is to use event delegation.
 
@@ -4265,7 +4180,7 @@ So in event delegation, we use the fact that events bubble up. And we do that by
 
 // 2. Determine what element originated the event (e.target)
 
-
+```js
 document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 	console.log(e.target);
@@ -4281,7 +4196,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
   }
 
 });
-
+```
 
 
 -----------------------------------------
@@ -4295,7 +4210,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 **Thoughts**: DOM Traversing is basically walking through the DOM -- Which means that we can select an element based on another element. This is very important because sometimes we need to select elements relative to a certain other element. For example, a direct child or a direct parent element.
 
-
+```js
 const h1 = document.querySelector("h1");
 
 
@@ -4338,7 +4253,7 @@ console.log(h1.parentElement.children);
 
 });
 
-
+```
 -----------------------------------------
 
 
@@ -4366,7 +4281,7 @@ Displaying and Hiding Content = Adding and Removing classes
 GitHub Rep: https://github.com/rosajen27/bankist-ad
 
 **Thoughts**: Links will fade out when we hover over one of them, except for the link that we actually are hovering over
-
+```js
 const nav = document.querySelector(".nav");
 
 
@@ -4427,12 +4342,12 @@ nav.addEventListener("mouseout", function (e) {
   }
 
 });
-
+```
 ----------
 
 DRY PRINCIPAL
 
-
+```js
 const handleHover = function (e, opacity) {
 
 	if (e.target.classList.contains("nav__link")) {
@@ -4476,14 +4391,14 @@ nav.addEventListener("mouseover", function(e) {
 	handleHover(e, 1);
 
 });
-
+```
 ----------
 
 We could also remove the anonymous callback functions altogether by using the bind method. 
 
 
 The Bind Method creates a copy of the function that it is called on and it will set the this keyword in this function call to whatever value that we pass in to bind.
-
+```js
 const handleHover = function (e) {
 
 	if (e.target.classList.contains("nav__link")) {
@@ -4511,14 +4426,14 @@ const handleHover = function (e) {
   }
 
 };
-
+```
 
 // Passing "argument" into handler
-
+```js
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 
 nav.addEventListener("mouseout", handleHover.bind(1));
-
+```
 
 -----------------------------------------
 
@@ -4534,7 +4449,7 @@ GitHub Rep: https://github.com/rosajen27/bankist-ad
 
 
 Using the intersection observer API:
-
+```js
 const header = document.querySelector(".header");
 
 // dynamically get the height of the nav bar
@@ -4585,7 +4500,7 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 // use the header observer to observe the header
 
 headerObserver.observe(header);
-
+```
 
 -----------------------------------------
 
@@ -4598,7 +4513,7 @@ headerObserver.observe(header);
 GitHub Rep: https://github.com/rosajen27/bankist-ad
 
 **Thoughts**: Dynamically applied hidden CSS class to each section. This will make the opacity of the section to 0 (invisible), and will move content down by 8rem. This class will be removed as we scroll down the page and each section will be revealed to the user.
-
+```js
 .section--hidden {
 
   opacity: 0;
@@ -4606,9 +4521,10 @@ GitHub Rep: https://github.com/rosajen27/bankist-ad
   transform: translateY(8rem);
 
 }
+```
 
 ----------
-
+```js
 const allSections = document.querySelectorAll(".section");
 
 
@@ -4648,7 +4564,7 @@ allSections.forEach(function (section) {
   section.classList.add("section--hidden");
 
 });
-
+```
 
 -----------------------------------------
 
@@ -4665,7 +4581,7 @@ GitHub Rep: https://github.com/rosajen27/bankist-ad
 
 The idea is to... As we scroll to use HTML to load one of these low resolution images, and then replace this low resolution image with the high resolution one that is specified in the data-src attribute and remove the css blur effect.
 
-
+```js
 .lazy-img {
 
   filter: blur(20px);
@@ -4728,7 +4644,7 @@ imgTargets.forEach(function (img) {
   imgObserver.observe(img);
 
 });
-
+```
 
 
 -----------------------------------------
@@ -4742,7 +4658,7 @@ Repo: https://github.com/rosajen27/bankist-ad
 
 **Thoughts**: Clicking the left and right arrows:
 
-
+```js
 const slides = document.querySelectorAll(".slide");
 
 const btnLeft = document.querySelector(".slider__btn--left");
@@ -4818,7 +4734,7 @@ btnLeft.addEventListener("click", function () {
   });
 
 });
-
+```
 
 
 -----------------------------------------
@@ -4832,10 +4748,8 @@ Repo: https://github.com/rosajen27/bankist-ad
 
 **Thoughts**: Using Dots to navigate testimonials:
 
-
+```js
 const dotContainer = document.querySelector(".dots");
-
-
 
 const createDots = function () {
 
@@ -4870,7 +4784,7 @@ dotContainer.addEventListener("click", function (e) {
 
 });
 
-
+```
 
 -----------------------------------------
 
@@ -5081,13 +4995,13 @@ So in our programming world, we can store things like numbers, strings, boolean 
 
 
 // reference type
-
+```js
 var object1 = { value: 10 };
 
 var object2 = object1;
 
 var object3 = { value: 10 };
-
+```
 // object 2 is referring to what's inside object 1
 
 // object 3 does not equal object 1 - it is an entirely different object, even though what's inside is the same
@@ -5101,7 +5015,7 @@ var object3 = { value: 10 };
 
 
 // instantiation
-
+```js
 class Player {
 
     constructor(name, type) {
@@ -5147,7 +5061,7 @@ class Wizard extends Player {
 const wizard1 = new Wizard('Shelly', 'Healer');
 
 const wizard2 = new Wizard('Shawn', 'Dark Magic');
-
+```
 
 
 -----------------------------------------
@@ -5251,3 +5165,54 @@ How do we actually design classes? How do we model real-world data into classes?
 * Inheritance - Making all properties and methods of a certain class available to a child class, forming a heirarchical relationship between classes. This allows us to reuse common logic and to model real-world relationships ***(ie. user class can be the parent of admin)***
 
 * Polymorphism - A child class can overwrite a method it inherited from a parent class 
+
+
+----------
+
+
+OOP in JavaScript: Prototypes
+
+
+* Prototype (contains methods)
+
+* Object (can access methods)
+
+* Objects are linked to a prototype object
+
+* Prototypal Inheritance: the prototype contains methods (behavior) that are accessible to all objects linked to that prototype
+
+* Behavior is delegated to the linked prototype object
+
+
+----------
+
+3 Ways of Implementing Prototypal Inheritance in JS
+
+
+* Constructor Functions - technique to create objects from a function; this is how built-in objects like Arrays, Maps, or Sets are actually implemented
+
+* ES6 Classes - modern alternative to constructor function syntax; behind the scenes, ES6 classes work exactly like constructor functions; ES6 classes do NOT behave like classes in classic OOP
+
+* Object.create() - easiest and most straightforward way of linking an object to a prototype object
+
+----------
+
+Constructor Functions and the New Operator
+
+```js
+const Person = function(firstName, birthYear) {
+  console.log(this); // Person {}
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+const jonas = new Person('Jonas', 1991);
+console.log(jonas); // Person {firstName: "Jonas", birthyear: 1991}
+```
+
+// Behind the Scenes
+
+1. New {} is created
+2. Function is called, this = {}
+3. {} is linked to prototype
+4. Function automatically returns {}

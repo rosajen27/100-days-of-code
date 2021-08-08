@@ -5233,6 +5233,32 @@ console.log(jonas); // Person {firstName: "Jonas", birthyear: 1991}
 
 ### Day 96: August 7, 2021
 
-**Today's Progress**: Created starter files for a mock magazine article webpage. https://github.com/rosajen27/code-magazine
+**Today's Progress**: Started building the layout for a mock magazine article webpage. https://github.com/rosajen27/code-magazine
 
-**Thoughts**: Focused on implementing practicing CSS layouts including floats and flexbox
+**Thoughts**: Focused on implementing practicing CSS layouts including floats and flexbox.
+
+
+Float - The old way of building layouts of all sizes, using the float css property. Still used, but getting outdated fast.
+
+Flexbox - Modern way of laying out elements in a 1-dimensional row without using floats. Perfect for component layouts.
+
+
+Flexbox is a set of related CSS properties for building 1-dimensional layouts.
+
+The main idea behind flexbox is that empty space inside a container element can be automatically divided by its child elements.
+
+Flexbox makes it easy to automatically align items to one another inside a parent container, both horizontally and vertically.
+
+Flexbox solves common problems such as vertical centering and creating equal-height columns.
+
+Flexbox is perfect for replacing floats, allowing us to write fewer and cleaner HTML and CSS code.
+
+
+-----------------------------------------
+
+
+### Day 97: August 8, 2021
+
+**Today's Progress**: 
+
+**Thoughts**: 

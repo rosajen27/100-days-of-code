@@ -5216,3 +5216,23 @@ console.log(jonas); // Person {firstName: "Jonas", birthyear: 1991}
 2. Function is called, this = {}
 3. {} is linked to prototype
 4. Function automatically returns {}
+
+
+-----------------------------------------
+
+
+### Day 96: August 6, 2021
+
+**Today's Progress**: Created starter files for a mock magazine article webpage. Repo: https://github.com/rosajen27/code-magazine
+
+**Thoughts**: The purpose of this webpage is to practice HTML and CSS skills
+
+
+-----------------------------------------
+
+
+### Day 96: August 7, 2021
+
+**Today's Progress**: Created starter files for a mock magazine article webpage. https://github.com/rosajen27/code-magazine
+
+**Thoughts**: Focused on implementing practicing CSS layouts including floats and flexbox

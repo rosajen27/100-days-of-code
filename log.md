@@ -5259,6 +5259,63 @@ Flexbox is perfect for replacing floats, allowing us to write fewer and cleaner 
 
 ### Day 97: August 8, 2021
 
-**Today's Progress**: 
+**Today's Progress**: Completed flexbox version of mock magazine article webpage. Repo: https://github.com/rosajen27/code-magazine
 
-**Thoughts**: 
+**Thoughts**: Flexbox Terminology
+
+
+display: flex
+
+The element on which we want to use flexbox is called the flex container. 
+
+All we have to do in order to create a flex container is to set its display property to flex.
+
+If we do this, then all of the direct children of that flex container become flex items.
+
+The direction in which these items are laid out is called the main axis.
+
+Then the other perpendicular axis is called the cross axis.
+
+
+-----------------------------------------
+
+
+### Day 98: August 13, 2021
+
+**Today's Progress**: Completed CSS Grid version of mock magazine article webpage. Repo: https://github.com/rosajen27/code-magazine
+
+**Thoughts**: CSS GRID
+
+CSS grid is a set of CSS properties for building 2-dimensional layouts
+
+The main idea behind CSS Grid is that we divide a container element into rows and columns that can be filled with its child elements
+
+In two-dimensional contexts, CSS Grid allows us to write less nested HTML and easier-to-read CSS
+
+CSS Gris it not meant to replace flexbox. Instead, they work perfectly together. Need a 1D layout? Use flexbox. Need a 2D layout? Use CSS Grid.
+
+
+BASIC CSS GRID TERMINOLOGY
+
+We create a grid container by setting its display property to grid. (display: grid;)
+
+Then all of the direct children of that grid container become grid items.
+
+Unlike flexbox, we cannot change the direction of the row and column axis.
+
+Grid lines - divides the grid and separates the columns and rows
+
+Grid cells - might be filled by a grid item or not
+
+Gutters/gaps - spaces between the grid items
+
+Grid track - can be a row or column
+
+---------------
+
+* Floats Layout: https://rosajen27.github.io/code-magazine/index.html
+* Flexbox-Layout: https://rosajen27.github.io/code-magazine/flexbox.html
+* CSS Grid Layout: https://rosajen27.github.io/code-magazine/css-grid.html
+
+
+***Same webpage, created with a different layout***

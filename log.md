@@ -5319,3 +5319,13 @@ Grid track - can be a row or column
 
 
 ***Same webpage, created with a different layout***
+
+
+-----------------------------------------
+
+
+### Day 99: August 14, 2021
+
+**Today's Progress**: After spending most of my days furthering my knowledge on JavaScript, HTML, and CSS - I will now be focusing on React.js
+
+**Thoughts**: Check out my newest project I will be working on called Robo Friends https://github.com/rosajen27/robofriends

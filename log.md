@@ -5329,3 +5329,19 @@ Grid track - can be a row or column
 **Today's Progress**: After spending most of my days furthering my knowledge on JavaScript, HTML, and CSS - I will now be focusing on React.js
 
 **Thoughts**: Check out my newest project I will be working on called Robo Friends https://github.com/rosajen27/robofriends
+
+
+-----------------------------------------
+
+
+### Day 100: August 15, 2021
+
+**Today's Progress**: Continuing my React journey and starting my blog!
+
+**Thoughts**: Although I have reached 100 days of coding (woot woot!), I found it very beneficial to jot down notes as I learned new concepts and want to continue doing so. Because of this I will be blogging the rest of my journey on https://rosajen27.blogspot.com/ !
+
+
+In the meantime I will also continue working on my newest React project called Robo Friends https://github.com/rosajen27/robofriends
+
+
+Until next time! 
